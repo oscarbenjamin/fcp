@@ -218,6 +218,11 @@ C code into this file (and will colour the code in for you).
 
 Our basic hello world program in C looks like this:
 
+~~~~~~~ python
+# Print a greeting message
+print("Hello world!")
+~~~~~~~
+
 ```C
 #include <stdio.h>
 
