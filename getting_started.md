@@ -218,7 +218,7 @@ C code into this file (and will colour the code in for you).
 
 Our basic hello world program in C looks like this:
 
-~~~~~~~~~~ C
+```C
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -226,9 +226,7 @@ int main(int argc, char *argv[])
    puts("Hello world!\n");
    return 0;
 }
-~~~~~~~~~~
-
-[//]: # *]
+```
 
 For now I don't want to really focus on what all of the stuff in this C code
 means. Just know that you have to copy it *exactly*. Every letter must be the
