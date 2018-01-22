@@ -12,3 +12,4 @@ Notes
 * Week 1
     * [Outline](outline.html)
     * [Getting started](getting_started.html)
+    * [Basic C](basic_c.html)
