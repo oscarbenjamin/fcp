@@ -223,7 +223,7 @@ Our basic hello world program in C looks like this:
 print("Hello world!")
 ```
 
-~~~~~~~ python
+~~~~~~~
 # Print a greeting message
 print("Hello world!")
 ~~~~~~~
