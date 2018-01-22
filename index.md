@@ -13,4 +13,3 @@ Notes
     * [Outline](outline.html)
     * [Getting started](getting_started.html)
     * [Basic C](basic_c.html)
-    * [Elementary types in C](elementary_types.html)

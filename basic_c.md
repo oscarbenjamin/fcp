@@ -440,4 +440,4 @@ read at all times. (How you write your code is part of the markscheme in this
 unit.)
 
 ------------
-Next section: [elementary types](elementary_types.html)
+That's all for now... Coming soon: [elemen§tary types](elementary_types.html)
