@@ -9,7 +9,7 @@ and run that code using the terminal. We're now in a position to start
 thinking about the C code itself.  First things first let's have another look
 at the hello world C program that we wrote in the previous section:
 
-~~~~~~~~~~ C
+```c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -17,9 +17,7 @@ int main(int argc, char *argv[])
     puts("Hello world!");
     return 0;
 }
-~~~~~~~~~~
-
-[//]: # *]
+```
 
 Now let's go through this from the top. The first line is `#include <stdio.h>`
 and is an example of a `#include` statement. This is similar to an `import`
@@ -80,7 +78,7 @@ the name `b`. The third statement computes the result `a * b` and assigns that
 value to the name `c`. Finally we print a message that shows the value of `c`.
 Hopefully that's all straight-forward. So how do we do the same in C?
 
-~~~~~~~~ C
+~~~~~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -148,7 +146,7 @@ the top of the `main` function but that's not the only way to do it. We can
 make it a bit shorter. For example we can declare all three variables on one
 line like this:
 
-~~~~~~~~ C
+~~~~~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -169,7 +167,7 @@ statements `int a;` etc. This is a handy way of declaring lots of variables
 without using too much screen space. We can also declare each variable at the
 same time as initialising it e.g.:
 
-~~~~~~~~ C
+~~~~~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -189,7 +187,7 @@ initialised. The compiler reads the code in order from start to finish. If we
 refer to a variable before it is declared then the compiler will refuse to
 compile it. So changing the above to
 
-~~~~~~~~ C
+~~~~~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -223,7 +221,7 @@ compiled. In other words the file `variables.exe` will not have been created
 If instead we declare `a` and `b` before using them but don't initialise them
 until after we get a warning.
 
-~~~~ C
+~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -275,7 +273,7 @@ x + 2` or in shorthand `x += 2`. Unlike in Python we also have the increment
 and decrement operators `x++`, `++x`, `x--`, and `--x`. The `++` operators are
 a short form for `x += 1` and the `--` operators are for `x -= 1`. So we have
 
-~~~~ C
+~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -323,7 +321,7 @@ terminal. `printf` is short for "PRINT Formatted" (or something like that) and
 is used to print the formatted value of a variable. The specific line that we
 used above is
 
-~~~~~~~~ C
+~~~~~~~~ c
     printf("c = %d\n", c);
 ~~~~~~~~
 
@@ -361,7 +359,7 @@ this looks like two characters it's really just one special character.
 To see the effect of newline characters try modifying the hello world program
 to use `printf` like this
 
-~~~~~~~~~~ C
+~~~~~~~~~~ c
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -387,7 +385,7 @@ Comments and coding style
 In C as in Python we normally use comments to help explain the meaning of our
 code. For example:
 
-~~~~~~~~~~ C
+~~~~~~~~~~ c
 /*
  * hello.c : prints a nice greeting
  *
@@ -422,7 +420,7 @@ and `}` so the indentation is unnecessary. Also since a semicolon `;` is used
 to mark the end of statements it's not important for them to be on one line as
 it is in Python. This means that we could write the code above like this:
 
-~~~~~~~~~~ C
+~~~~~~~~~~ c
 #include <stdio.h>
 int main(
 int argc, char *          argv[]) {
