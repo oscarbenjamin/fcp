@@ -228,11 +228,11 @@ print("Hello world!")
 print("Hello world!")
 ~~~~~~~
 
-~~~~~~~ C++
+~~~~~~~ c
 #include <stdio.h>
 ~~~~~~~
 
-~~~~~~~ C++
+~~~~~~~ cpp
 #include <stdio.h>
 
 int main(int argc, char *argv[])
