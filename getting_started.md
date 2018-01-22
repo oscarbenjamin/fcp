@@ -230,6 +230,8 @@ print("Hello world!")
 
 ~~~~~~~ c
 #include <stdio.h>
+
+f()
 ~~~~~~~
 
 ~~~~~~~ cpp
