@@ -1,6 +1,6 @@
 % EMAT10006 - Further programming
 % Oscar Benjamin
-% 25th Jan 2016
+% 25th Jan 2018
 
 #
 
@@ -12,61 +12,69 @@
 
 ## Lectures and times
 
-- Lectures 1000 Mondays and 2-hour labs on Friday mornings.
+- Labs 1700-1800 Mondays and 1100-1300 Fridays in QB F.101
 - You are expected to also work outside of those times!
-- 5 weeks of C with me (Oscar Benjamin)
-- 6 weeks of Java with Trevor Martin
+- 9 weeks of C with (until Easter)
+- 3 weeks of Java (after Easter)
 
 ## Assessments
 
-Assessment   Deadline    Weight
-----------   --------    ------
-Basic C test week 14     4%
-C final       week 19     48%
-Java final    week 24     48%
+Assessment    Deadline    Weight
+----------    --------    ------
+Basic C test  week 14     5%
+C final       week 19     70%
+Java final    week 24     25%
 
 ## C deadlines
 
 Assessment   Deadline     Weight
 ----------   --------     ------
-Basic C test week 14      4%
-C part 1     week 15      0%
-C part 2     week 16      0%
-C part 3     week 17      0%
+             week 13
+Basic C test week 14      5%
+             week 15
+             week 16
+             week 17
              reading week
-C final       week 19      48%
+             week 19
+C final      week 20      70%
+Vivas        week 21
+             Easter x3
+             week 22
+             week 23
+Java final   week 24
 
-## First part:
+## C content
 
-Week/date  Lecture and assignments
----------  --------
-Week 13    C
-Week 14    C - Basic C test
-Week 15    C - Part 1 assignment
-Week 16    C - Part 2 assignment
-Week 17    C - Part 3 assignment
-Week 18    Reading week (no lecture or lab)
-Week 19    Java - C final assignment due Thursday.
+* Using the shell/compiler
+* Elementary types
+* Loops and conditionals
+* Functions
+* Makefiles
+* Command line programs
+* Arrays and strings
+* Reading and writing files
+* Structs
 
+## C assignment
 
-## Second part:
+You will complete the C assignment working in pairs.
 
-Week/date  Lecture and assignments
----------  --------
-Week 19    Java - C final assignment due on Thursday.
-Week 20    Java - Part 1
-Easter     (3 week break)
-Week 21    Java
-Week 22    Java - Part 2
-Week 23    Java
-Week 24    Java - (no lecture - bank holiday) Main Java assignment due Friday
+I will randomly assign the pairs (within cohort) once you have submited the
+basic C test. If you don't submit I won't pair you up with anyone.
+
+The assignment will then be assessed by viva (interview) in week 21.
+
+You will submit the same code jointly but are expected to separately write a
+short report explaining what you have done.
 
 ## Plagiarism
 
 We had problems with plagiarism the year before last:
 
 - Fine to work together when not doing assignments
-- Please do NOT work together or share code when you are
+- Obviously fine to work with your partner.
+- Please do NOT work with other pairs.
+- Do not share your code with anyone.
 - (We will check for plagiarism)
 
 More on this later...
@@ -171,21 +179,12 @@ interpreter reads the code and simulates executing it.
 The interpreter itself is a C program that was compiled to machine code (by
 someone else).
 
-## The main assignment
+## How to learn C
 
-The main assignment for this unit will be to write an assembly decompiler.
+Read the notes, and try out the examples. Do hte exercises and make sure that
+you know the answers to the questions.
 
-Need to pay attention to the stuff about machine code!
+Very important: you must actually *try* things. You can not learn to program
+simply by reading.
 
-# Demo ZX256...
-
-# Students not in EMAT or EEE
-
-- There are students here taking this as an optional unit who may not have done
-  the prerequisite unit
-- School of Maths students I'm talking about you!
-- Wait at the end and see me...
-
-# That's all folks...
-
-(See you on Friday)
+So go do it now...
