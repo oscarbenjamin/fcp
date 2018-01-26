@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>This is the title - </title>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        This is the title
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#getting-started">Getting started</a><ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#hello-world-in-python">Hello world in Python</a></li>
+<li><a href="#the-terminal">The terminal</a></li>
+<li><a href="#running-python-from-the-terminal">Running Python from the terminal</a></li>
+<li><a href="#hello-world-in-c">Hello world in C</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="getting-started">Getting started</h1>
+<h2 id="outline">Outline</h2>
+<p>We want to write, compile and run our first C program. There are a few steps to accomplish this. First we will make a very simple program whose only purpose is to print the text &quot;Hello world!&quot;. Making such a program is a long-standing tradition in teaching programming languages dating back to the first textbook for C in 1978. There are good reasons for doing this. There is quite a lot that a programmer will need to understand just to make the simplest of programs. It's important to learn this on a program that is trivially easy before we try to move on to actually doing anything clever in our programs.</p>
+<p>There are three steps to making a C program:</p>
+<ul>
+<li>Write the C code</li>
+<li>Compile the code</li>
+<li>Run the program</li>
+</ul>
+<p>Initially you will make mistakes in all three of these steps so we will focus on the second and third parts for now and keep the C code simple.</p>
+<h2 id="hello-world-in-python">Hello world in Python</h2>
+<p>First things first: how would we make a hello world program in Python? Well in Python we print things using the <code>print</code> function. So our program just looks like:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Print a greeting message</span>
+<span class="bu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)</code></pre></div>
+<p>All we need to do is write that code in a text editor and then save it as <code>hello.py</code> and then we're in business! Now I'm assuming that you already know of some way to run the <code>hello.py</code> program that we've just created. However I specifically want you to run it from the terminal so that's what we're going to look at next. Firstly though create the <code>hello.py</code> program with the code shown above and save it as <code>hello.py</code> and remember what folder you've saved it in. It's very important to remember what folder it is in, and what folder that folder is in and so on. You need to know the full path to the file from the drive letter e.g.:</p>
+<pre><code>C:\Users\Dave\Unistuff\EMAT10006\Week1\hello.py</code></pre>
+<h2 id="the-terminal">The terminal</h2>
+<p>It's now time to introduce the terminal. Windows comes with a terminal but it's inconsistent with the terminals on most other computers. We want to use a terminal that behaves the same as terminals on OSX/Linux etc. so we will be using the MinGW Shell. For those interested this is an example of a <code>bash</code> shell however the details are not important. What matters is how to start the shell on the Windows machines in the computer lab. First click on the start menu and type &quot;min&quot; as shown here:</p>
+<div class="figure">
+<img src="images/start_menu.png" alt="Finding &quot;Min GW&quot; in the start menu" />
+<p class="caption">Finding &quot;Min GW&quot; in the start menu</p>
+</div>
+<p>Now click on the &quot;Min GW&quot; item at the top (or just push enter). This should open the MinGW terminal which then looks something like this:</p>
+<div class="figure">
+<img src="images/mingw_shell.png" alt="The MinGW Shell" />
+<p class="caption">The MinGW Shell</p>
+</div>
+<p>The MinGW Shell is an example of a <em>terminal</em>. This is an interface where you type commands and then hit enter to run the command. Then the command will usually (but not always) print some output that you will see below the command that you typed. You can then type another command.</p>
+<p>One thing to note is the text <code>enojb@IT052970 ~</code>. This means that I am logged in as user <code>enojb</code> on the computer whose name is <code>IT052970</code> and I am currently in the directory called <code>~</code>. The directory <code>~</code> is shorthand meaning my user directory. Your user directory is the particular folder for your user account. On this particular machine it will probably be <code>C:\Users\enojb</code>. However the way that the Windows machines in the University are set up is a little strange. You always have two user directories: one on the <code>C:\</code> drive at e.g. <code>C:\Users\enojb</code> (if <code>enojb</code> was your username) and one on the <code>O:\</code> drive at <code>O:\</code>. The user directory on the <code>C:\</code> drive is saved on the <em>specific</em> computer you are logged into. The <code>O:\</code> drive is a networked drive: the files you save there will be accessible on all of the University's computers. I recommend to always save your work onto the <code>O:\</code> drive so that it doesn't get lost.</p>
+<p>Finally notice the <code>$</code> symbol in the terminal. This is called the <em>prompt</em>. Any command that you type will appear after the prompt. I don't want to use lots and lots of screenshots to demonstrate terminal commands so I'm going to format such terminal sessions like this:</p>
+<pre><code>$ ls
+bin      Desktop    Pictures  src     tmp
+current  Documents  Music     Public  Videos</code></pre>
+<p>To interpret the console session shown above the line beginning with a <code>$</code> shows the command that I typed in the terminal <code>ls</code>. The <code>ls</code> command is a special terminal command that means <em>list</em> the contents of the current directory. In this case the directory is my user directory and it shows all of the folders that are contained within it. To run the <code>ls</code> command you would type <code>l</code>, then <code>s</code> and then push the <code>enter</code> key (try it!). After you hit enter the terminal will run the <code>ls</code> command and the <code>ls</code> command will print out a list of the files and folders in the current directory: this appears on the second and third lines (<code>bin</code>, <code>Desktop</code> etc.).</p>
+<p>The first two commands we want to learn in addition to <code>ls</code> are <code>pwd</code> and <code>cd</code>. The <code>pwd</code> command is short for <em>print working directory</em> and will print out the current working directory. This is the folder that you are currently working in. The <code>cd</code> command is short for <em>change directory</em> and is used to change to a new working directory. You can then use <code>ls</code> to see what is in the new working directory:</p>
+<pre><code>$ pwd
+/users/enojb
+$ cd current/emat10006web
+$ ls
+html  Makefile  src
+$ pwd
+/users/enojb/current/emat10006web</code></pre>
+<p>In the session above I use <code>pwd</code> to show that I am currently in the directory <code>/users/enojb</code> (this is the name of my user directory on this computer). Within my user directory is a folder called <code>current</code> which contains things I am currently working on. In there is a folder called <code>emat10006web</code> which contains the files used for working on this unit. If I want to work in that directory I can change to it by typing <code>cd current/emat10006web</code>. Afterwards my current working directory is <code>/users/enojb/current/emat10006web</code> and if I run <code>ls</code> it will show me the contents of this new directory.</p>
+<h2 id="running-python-from-the-terminal">Running Python from the terminal</h2>
+<p>To run a Python script we need to first write the code and save it in a file called e.g. <code>hello.py</code> as explained <a href="#hello-world-in-python">above</a>. I've already done this and I saved in a folder called <code>current/Unistuff/Week1</code> in my user directory. In order to run the file I first need to open a terminal and then use the <code>cd</code> command to change directory to this folder e.g.:</p>
+<pre><code>$ cd current/Unistuff/Week1/
+$ pwd
+/users/enojb/current/Unistuff/Week1
+$ ls
+hello.py</code></pre>
+<p>So we can see that the current working directory is now <code>/users/enojb/current/Unistuff/Week1</code>. The <code>/users/enojb</code> part is my user directory on this (Linux) computer. We've used <code>ls</code> to see that there is one file in this directory: <code>hello.py</code>. To run the <code>hello.py</code> Python script we run the <code>python</code> command giving it the name of the script we want it to run:</p>
+<pre><code>$ python hello.py
+Hello world!</code></pre>
+<p>We can see that running the script prints out &quot;Hello world!&quot; as expected. You may have already learned a way of running your Python programs using e.g. IDLE but the way that I just ran it from the terminal is really the normal way that a programmer might run a program such as this. It's also what we need to do for our C programs as we'll see in the next section. Before we move on though I think it's important that you test that you are able to run your Python script from the terminal as just described (i.e. actually follow through the steps yourself).</p>
+<p>Another thing we can do with the <code>python</code> command in the terminal is just to enter the Python interactive mode. This behaves like a terminal but where you type Python commands. To do this just run Python with no arguments:</p>
+<pre><code>$ python
+Python 2.7.3 (default, Jun 22 2015, 19:33:41)
+[GCC 4.6.3] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; print(&#39;Hello world!&#39;)
+Hello world!
+&gt;&gt;&gt; exit()
+$</code></pre>
+<p>In the Python interactive shell you get a prompt that looks like <code>&gt;&gt;&gt;</code> rather than <code>$</code> and can type Python commands rather than shell commands. In this case I'm telling it to print hello world and then quitting but you can type more commands while in the interactive shell. To exit the Python shell you can either type <code>exit()</code> or push <code>Ctrl-Z</code> and hit <code>enter</code> (On OSX/Linux you exit with <code>Ctrl-D</code>). After exiting you will return to the normal shell and can see the <code>$</code> prompt.</p>
+<h2 id="hello-world-in-c">Hello world in C</h2>
+<p>Now this is where we actually get to make our first C program. Firstly we need to use a code editor to write our C code. On the University lab machines I recommend &quot;Notepad++&quot;. It's important not to confuse this with the very basic text editor called &quot;Notepad&quot; which comes with Windows. The &quot;++&quot; is supposed to indicate that it's better (and it is <em>much</em> better). Go to the start menu and type &quot;notepad&quot; and then click on &quot;Notepad++&quot; (not &quot;Notepad&quot;) as shown here:</p>
+<div class="figure">
+<img src="images/notepad.png" alt="Running Notepad++" />
+<p class="caption">Running Notepad++</p>
+</div>
+<p>As Notepad++ opens it will show a couple of annoying error messages: just click &quot;No&quot; and then &quot;Cancel&quot; to get past those. Then you're at your new code editor. You can type in your code and save it. First things first Notepad++ is used for writing code in many different programming languages. It won't know what language you're trying to use until you save the file and tell it what file extension to use. For example Python files have the extension &quot;.py&quot;. There are a few different file extensions used in C programming but the main one for now is the &quot;.c&quot; extension which is used for standard C code files. Go to the menu and choose &quot;File&quot; and &quot;Save as&quot;. Now choose the folder to save your file (put it in the same place as <code>hello.py</code>). Give the file the name <code>hello.c</code> and save it. Now Notepad++ will recognise that you are going to type C code into this file (and will colour the code in for you).</p>
+<p>Our basic hello world program in C looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+   puts(<span class="st">&quot;Hello world!</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+<p>For now I don't want to really focus on what all of the stuff in this C code means. Just know that you have to copy it <em>exactly</em>. Every letter must be the same. You cannot swap capital letters for lower case letters. The semicolon <code>;</code> characters must appear in exactly the right places. You must use the same type of slash <code>\</code> character. You must use double <code>&quot;</code> quotes and not single <code>'</code> quotes. Please copy the above code exactly into Notepad++ and save it.</p>
+<p>Now unlike with our Python program a C program needs to be compiled before it can be used. We do this by running the <code>gcc</code> command in the terminal. So open a terminal, <code>cd</code> into the directory containing your <code>hello.c</code> file and compile and run your hello world C program like this:</p>
+<pre><code>$ gcc hello.c -o hello.exe
+$ ./hello.exe
+Hello world!</code></pre>
+<p>Now there are two commands in the terminal session above. First the command <code>gcc hello.c -o hello.exe</code> runs the <code>gcc</code> compiler on our C code. The extra arguments to <code>gcc</code> instruct the compiler that we want to compile the code in the file <code>hello.c</code> and we want the output (<code>-o</code>) file to be called <code>hello.exe</code>. The compiler reads the C code from <code>hello.c</code> and creates the new file <code>hello.exe</code> which is full of unreadable machine code. This is now a native executable file which we can run directly by typing <code>./hello.exe</code> in the terminal. Note that both commands above assume that the working directory of the terminal is set to the folder containing <code>hello.c</code> and <code>hello.exe</code> so you must <code>cd</code> into that folder first.</p>
+<h2 id="summary">Summary</h2>
+<p>And there we have it! During this page we've learned how to</p>
+<ul>
+<li>move around in the terminal</li>
+<li>run a Python program from the terminal</li>
+<li>use the Notepad++ code editor for writing C code</li>
+<li>write the most basic C program</li>
+<li>compile and run a single-file C program</li>
+</ul>
+<hr />
+<p>Next section: <a href="basic_c.html">Basic C</a></p>
+    </div>
+  </body>
+</html>

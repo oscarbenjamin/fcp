@@ -6,6 +6,16 @@ programming). The links below take you to the notes sections which are the
 main material you should read. Below there are also links to the lecture
 slides.
 
+IMPORTANT
+---------
+
+Due to the way the University computers are not properly configured the
+`python` executable is not on the `$PATH` environment variable. To add it to
+`PATH` from the MinGW shell type:
+```
+  TODO - insert command here...
+```
+
 Notes
 -----
 
@@ -13,3 +23,5 @@ Notes
     * [Outline](outline.html)
     * [Getting started](getting_started.html)
     * [Basic C](basic_c.html)
+    * [Elementary types in C](elementary_types.html)
+    * [Installing the compiler](installing.html)

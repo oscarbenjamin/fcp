@@ -218,7 +218,7 @@ C code into this file (and will colour the code in for you).
 
 Our basic hello world program in C looks like this:
 
-~~~~~~~~~~ c
+~~~~~~~~~~ C
 #include <stdio.h>
 
 int main(int argc, char *argv[])

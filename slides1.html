@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Oscar Benjamin" />
+  <title>This is the title - EMAT10006 - Further programming</title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        This is the title
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#section"></a><ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#lectures-and-times">Lectures and times</a></li>
+<li><a href="#assessments">Assessments</a></li>
+<li><a href="#c-deadlines">C deadlines</a></li>
+<li><a href="#first-part">First part:</a></li>
+<li><a href="#second-part">Second part:</a></li>
+<li><a href="#plagiarism">Plagiarism</a></li>
+</ul></li>
+<li><a href="#section-1"></a><ul>
+<li><a href="#popular-programming-languages">Popular programming languages</a></li>
+<li><a href="#family-tree">Family tree</a></li>
+<li><a href="#c">C</a></li>
+<li><a href="#things-written-in-cc">Things written in C/C++</a></li>
+<li><a href="#when-c-is-good">When C is good</a></li>
+<li><a href="#when-c-is-bad">When C is bad</a></li>
+</ul></li>
+<li><a href="#demo-pythonc...">Demo Python/C...</a></li>
+<li><a href="#section-2"></a><ul>
+<li><a href="#compilers-and-interpreters">Compilers and interpreters</a></li>
+<li><a href="#compilation">Compilation</a></li>
+<li><a href="#compilation-in-c">Compilation in C</a></li>
+<li><a href="#python-is-interpreted">Python is interpreted</a></li>
+<li><a href="#the-main-assignment">The main assignment</a></li>
+</ul></li>
+<li><a href="#demo-zx256...">Demo ZX256...</a></li>
+<li><a href="#students-not-in-emat-or-eee">Students not in EMAT or EEE</a></li>
+<li><a href="#thats-all-folks...">That's all folks...</a></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="section"></h1>
+<h2 id="outline">Outline</h2>
+<ul>
+<li>Build on the basics from EMAT10007</li>
+<li>Explore two new programming languages</li>
+<li>Learn additional computing skills/knowledge</li>
+</ul>
+<h2 id="lectures-and-times">Lectures and times</h2>
+<ul>
+<li>Lectures 1000 Mondays and 2-hour labs on Friday mornings.</li>
+<li>You are expected to also work outside of those times!</li>
+<li>5 weeks of C with me (Oscar Benjamin)</li>
+<li>6 weeks of Java with Trevor Martin</li>
+</ul>
+<h2 id="assessments">Assessments</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Assessment</th>
+<th align="left">Deadline</th>
+<th align="left">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Basic C test</td>
+<td align="left">week 14</td>
+<td align="left">4%</td>
+</tr>
+<tr class="even">
+<td align="left">C final</td>
+<td align="left">week 19</td>
+<td align="left">48%</td>
+</tr>
+<tr class="odd">
+<td align="left">Java final</td>
+<td align="left">week 24</td>
+<td align="left">48%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-deadlines">C deadlines</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Assessment</th>
+<th align="left">Deadline</th>
+<th align="left">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Basic C test</td>
+<td align="left">week 14</td>
+<td align="left">4%</td>
+</tr>
+<tr class="even">
+<td align="left">C part 1</td>
+<td align="left">week 15</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">C part 2</td>
+<td align="left">week 16</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">C part 3</td>
+<td align="left">week 17</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">reading week</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">C final</td>
+<td align="left">week 19</td>
+<td align="left">48%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="first-part">First part:</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Week/date</th>
+<th align="left">Lecture and assignments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Week 13</td>
+<td align="left">C</td>
+</tr>
+<tr class="even">
+<td align="left">Week 14</td>
+<td align="left">C - Basic C test</td>
+</tr>
+<tr class="odd">
+<td align="left">Week 15</td>
+<td align="left">C - Part 1 assignment</td>
+</tr>
+<tr class="even">
+<td align="left">Week 16</td>
+<td align="left">C - Part 2 assignment</td>
+</tr>
+<tr class="odd">
+<td align="left">Week 17</td>
+<td align="left">C - Part 3 assignment</td>
+</tr>
+<tr class="even">
+<td align="left">Week 18</td>
+<td align="left">Reading week (no lecture or lab)</td>
+</tr>
+<tr class="odd">
+<td align="left">Week 19</td>
+<td align="left">Java - C final assignment due Thursday.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="second-part">Second part:</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Week/date</th>
+<th align="left">Lecture and assignments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Week 19</td>
+<td align="left">Java - C final assignment due on Thursday.</td>
+</tr>
+<tr class="even">
+<td align="left">Week 20</td>
+<td align="left">Java - Part 1</td>
+</tr>
+<tr class="odd">
+<td align="left">Easter</td>
+<td align="left">(3 week break)</td>
+</tr>
+<tr class="even">
+<td align="left">Week 21</td>
+<td align="left">Java</td>
+</tr>
+<tr class="odd">
+<td align="left">Week 22</td>
+<td align="left">Java - Part 2</td>
+</tr>
+<tr class="even">
+<td align="left">Week 23</td>
+<td align="left">Java</td>
+</tr>
+<tr class="odd">
+<td align="left">Week 24</td>
+<td align="left">Java - (no lecture - bank holiday) Main Java assignment due Friday</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plagiarism">Plagiarism</h2>
+<p>We had problems with plagiarism the year before last:</p>
+<ul>
+<li>Fine to work together when not doing assignments</li>
+<li>Please do NOT work together or share code when you are</li>
+<li>(We will check for plagiarism)</li>
+</ul>
+<p>More on this later...</p>
+<h1 id="section-1"></h1>
+<h2 id="popular-programming-languages">Popular programming languages</h2>
+<div class="figure">
+<img src="images/top10.png" style="width:100.0%" />
+
+</div>
+<p>(From tiobe.com)</p>
+<h2 id="family-tree">Family tree</h2>
+<div class="figure">
+<img src="images/evo-prog-lang.png" style="width:100.0%" />
+
+</div>
+<h2 id="c">C</h2>
+<ul>
+<li>Old but still widely used.</li>
+<li>Standard for working on <em>any</em> hardware.</li>
+<li>Core components in your computer</li>
+</ul>
+<h2 id="things-written-in-cc">Things written in C/C++</h2>
+<ul>
+<li>Windows/OSX/Linux (most operating systems)</li>
+<li>Browsers: Chrome, Firefox etc.</li>
+<li>High end computer games.</li>
+<li>Python</li>
+</ul>
+<p>Python is actually a C program!</p>
+<h2 id="when-c-is-good">When C is good</h2>
+<ul>
+<li>Fast programs</li>
+<li>Embedded systems</li>
+<li>Operating systems</li>
+<li>Core lower-level applications</li>
+<li>Program basic hardware (arduino etc)</li>
+<li>Need to run on specific hardware/OS</li>
+</ul>
+<h2 id="when-c-is-bad">When C is bad</h2>
+<ul>
+<li>Need to quickly make a program</li>
+<li>Speed (of program) is unimportant</li>
+<li>Simple high-level applications</li>
+<li>Need to run on wide range of hardware/OS</li>
+</ul>
+<h1 id="demo-pythonc...">Demo Python/C...</h1>
+<h1 id="section-2"></h1>
+<h2 id="compilers-and-interpreters">Compilers and interpreters</h2>
+<p>Python is <em>interpreted</em> and C is <em>compiled</em> but what does that mean?</p>
+<ul>
+<li>Human readable code. This is the stuff that humans write and look at.</li>
+<li>Machine code. This is what the computer can actually execute.</li>
+</ul>
+<h2 id="compilation">Compilation</h2>
+<p>A compiler converts human code to machine code e.g.:</p>
+<p>Human code:</p>
+<pre><code>int multiply(int a, int b)
+{
+  int c = a * b;
+  return c;
+}</code></pre>
+<p>Machine code (and assembly):</p>
+<pre class="x86asm"><code>   0: 55                    push   %rbp
+   1: 48 89 e5              mov    %rsp,%rbp
+   4: 89 7d ec              mov    %edi,-0x14(%rbp)
+   7: 89 75 e8              mov    %esi,-0x18(%rbp)
+   a: 8b 45 ec              mov    -0x14(%rbp),%eax
+   d: 0f af 45 e8           imul   -0x18(%rbp),%eax
+  11: 89 45 fc              mov    %eax,-0x4(%rbp)
+  14: 8b 45 fc              mov    -0x4(%rbp),%eax
+  17: 5d                    pop    %rbp
+  18: c3                    retq</code></pre>
+<h2 id="compilation-in-c">Compilation in C</h2>
+<p>Running C code is a two-step process:</p>
+<ul>
+<li>Compile the C code to machine code</li>
+<li>Run the compiled code</li>
+</ul>
+<p>The computer can execute machine code directly (fast)</p>
+<h2 id="python-is-interpreted">Python is interpreted</h2>
+<p>When you run your Python program it is not compiled to machine code. The interpreter reads the code and simulates executing it.</p>
+<p>The interpreter itself is a C program that was compiled to machine code (by someone else).</p>
+<h2 id="the-main-assignment">The main assignment</h2>
+<p>The main assignment for this unit will be to write an assembly decompiler.</p>
+<p>Need to pay attention to the stuff about machine code!</p>
+<h1 id="demo-zx256...">Demo ZX256...</h1>
+<h1 id="students-not-in-emat-or-eee">Students not in EMAT or EEE</h1>
+<ul>
+<li>There are students here taking this as an optional unit who may not have done the prerequisite unit</li>
+<li>School of Maths students I'm talking about you!</li>
+<li>Wait at the end and see me...</li>
+</ul>
+<h1 id="thats-all-folks...">That's all folks...</h1>
+<p>(See you on Friday)</p>
+    </div>
+  </body>
+</html>
