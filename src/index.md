@@ -13,7 +13,7 @@ Due to the way the University computers are not properly configured the
 `python` executable is not on the `$PATH` environment variable. To add it to
 `PATH` from the MinGW shell type:
 ```
-  TODO - insert command here...
+  export PATH=$PATH:"/c/Program Files/Anaconda3"
 ```
 
 Notes
