@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Oscar Benjamin" />
+  <title>EMAT10006 - Further Computer Programming - EMAT10006 - Further programming</title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#section"></a><ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#advanced-terminal-usage">Advanced terminal usage</a></li>
+<li><a href="#command-line-programs">Command line programs</a></li>
+<li><a href="#input-arguments">Input arguments</a></li>
+<li><a href="#reading-from-stdin">Reading from stdin</a></li>
+<li><a href="#output-on-stdoutstderr">Output on stdout/stderr</a></li>
+<li><a href="#return-codes">Return codes</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul></li>
+<li><a href="#section-1"></a><ul>
+<li><a href="#make">make</a></li>
+<li><a href="#simple-makefile">Simple makefile</a></li>
+<li><a href="#make-demo">make demo</a></li>
+<li><a href="#how-to-compile-python">How to compile Python</a></li>
+</ul></li>
+<li><a href="#section-2"></a><ul>
+<li><a href="#conditionals-in-c">Conditionals in C</a></li>
+<li><a href="#while-loops-in-c">while loops in C</a></li>
+<li><a href="#for-loops-in-c">for loops in C</a></li>
+<li><a href="#break-and-continue">break and continue</a></li>
+<li><a href="#functions">functions</a></li>
+<li><a href="#functions-output">functions output</a></li>
+<li><a href="#section-3"></a></li>
+</ul></li>
+<li><a href="#section-4"></a><ul>
+<li><a href="#assignment-1">Assignment 1</a></li>
+</ul></li>
+<li><a href="#thats-all-folks...">That's all folks...</a></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="section"><a href="#TOC"></a></h1>
+<h2 id="outline"><a href="#TOC">Outline</a></h2>
+<ul>
+<li>Using the terminal</li>
+<li>Command line programs</li>
+<li>Using make files</li>
+</ul>
+<h2 id="advanced-terminal-usage"><a href="#TOC">Advanced terminal usage</a></h2>
+<ul>
+<li>Typing commands all of the time is tedious</li>
+<li>Let the terminal do the typing!</li>
+<li>tab, up/down, Ctrl-R, history, <code>!!</code>, <code>!$</code> and many more...</li>
+</ul>
+<h2 id="command-line-programs"><a href="#TOC">Command line programs</a></h2>
+<ul>
+<li>Input: arguments via <code>argc</code> and <code>argv</code>.</li>
+<li><p>Input: text/data on <code>stdin</code></p></li>
+<li>Output: text/data on <code>stdout</code>, <code>stderr</code></li>
+<li><p>Output: return code (success, failure)</p></li>
+</ul>
+<h2 id="input-arguments"><a href="#TOC">Input arguments</a></h2>
+<pre><code>/* argcount.c */
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  printf(&quot;argc = %d\n&quot;, argc);
+  return 0;
+}</code></pre>
+<pre><code>$ gcc -Wall -std=c99 argcount.c -o argcount.exe
+$ ./argcount.exe
+argc = 1
+$ ./argcount.exe foo
+argc = 2
+$ ./argcount.exe foo bar
+argc = 3
+$ ./argcount.exe foo bar baz
+argc = 4</code></pre>
+<h2 id="reading-from-stdin"><a href="#TOC">Reading from stdin</a></h2>
+<pre><code>/* getinput.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  printf(&quot;Please enter a character: &quot;);
+
+  /* Read one character from stdin */
+  int c = fgetc(stdin);
+  if( c == EOF )
+  {
+    fprintf(stderr, &quot;\nSomething went wrong...\n&quot;);
+    return 1;
+  }
+
+  printf(&quot;You entered &#39;%c&#39;\n&quot;, (char)c);
+  return 0;
+}</code></pre>
+<pre><code>$ gcc -Wall -std=c99 getinput.c -o getinput.exe
+$ ./getinput.exe
+Please enter a character: q
+You entered &#39;q&#39;</code></pre>
+<h2 id="output-on-stdoutstderr"><a href="#TOC">Output on stdout/stderr</a></h2>
+<pre><code>/* outerr.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  printf(&quot;This is a message to stdout\n&quot;);
+  fprintf(stdout, &quot;So is this...\n&quot;);
+  fprintf(stderr, &quot;This one is for stderr\n&quot;);
+  return 0;
+}</code></pre>
+<pre><code>$ gcc -std=c99 -Wall outerr.c -o outerr.exe
+$ ./outerr.exe
+This is a message to stdout
+So is this...
+This one is for stderr</code></pre>
+<pre><code>$ ./outerr.exe &gt; output.txt
+This one is for stderr
+$ cat output.txt
+This is a message to stdout
+So is this...</code></pre>
+<h2 id="return-codes"><a href="#TOC">Return codes</a></h2>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  if( argc != 2 )
+  {
+    fprintf(stderr, &quot;I want exactly one argument!\n&quot;);
+    return 1;
+  }
+  printf(&quot;Thanks for the argument.\n&quot;);
+  return 0;
+}</code></pre>
+<pre><code>$ gcc -std=c99 -Wall retcode.c -o retcode.exe
+$ ./retcode.exe
+I want exactly one argument!
+$ echo $?
+1</code></pre>
+<pre><code>$ ./retcode.exe foobar
+Thanks for the argument.
+$ echo $?
+0</code></pre>
+<h2 id="summary"><a href="#TOC">Summary</a></h2>
+<ul>
+<li>command line arguments</li>
+<li>stdin, stdout, stderr</li>
+<li>return code</li>
+</ul>
+<h1 id="section-1"><a href="#TOC"></a></h1>
+<h2 id="make"><a href="#TOC">make</a></h2>
+<p>Why make?</p>
+<ul>
+<li>saves typing!</li>
+<li>saves <em>remembering</em>! (more important)</li>
+<li>runs commands efficiently</li>
+</ul>
+<h2 id="simple-makefile"><a href="#TOC">Simple makefile</a></h2>
+<pre><code>all: myprog.exe
+
+myprog.exe: myprogmain.c
+  gcc -std=c99 -Wall myprogmain.c -o myprog.exe</code></pre>
+<p>The file should be called <em>Makefile</em> with a capital <em>M</em>.</p>
+<p>The <code>make</code> command:</p>
+<pre><code>$ make myprog.exe
+gcc -std=c99 -Wall myprogmain.c -o myprog.exe
+$ make myprog.exe
+make: &#39;argcount.exe&#39; is up to date.</code></pre>
+<pre><code>$ make
+make: Nothing to be done for &#39;all&#39;.
+$ touch argcount.c
+$ make
+gcc -std=c99 -Wall argcount.c -o argcount.exe</code></pre>
+<h2 id="make-demo"><a href="#TOC">make demo</a></h2>
+<h2 id="how-to-compile-python"><a href="#TOC">How to compile Python</a></h2>
+<p>Download:</p>
+<pre><code>wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+tar -xzf Python-3.5.1.tgz</code></pre>
+<p>Compile:</p>
+<pre><code>cd Python-3.5.1/
+./configure
+make</code></pre>
+<p>Run:</p>
+<pre><code>$ ./python
+Python 3.5.1 (default, Jan 31 2016, 23:11:01)
+[GCC 4.9.2] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+<h1 id="section-2"><a href="#TOC"></a></h1>
+<h2 id="conditionals-in-c"><a href="#TOC">Conditionals in C</a></h2>
+<pre><code>/* conditional.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  if( argc == 1 )
+  {
+    printf(&quot;No arguments were given.\n&quot;);
+  }
+  else if( argc == 2 )
+  {
+    printf(&quot;One argument was given.\n&quot;);
+  }
+  else
+  {
+    printf(&quot;%d arguments were given.\n&quot;, argc - 1);
+  }
+  return 0;
+}</code></pre>
+<pre><code>$ make
+gcc -std=c99 -Wall conditional.c -o conditional.exe
+$ ./conditional.exe
+No arguments were given.
+$ ./conditional.exe foo
+One argument was given.
+$ ./conditional.exe foo bar
+2 arguments were given.
+$ ./conditional.exe foo bar baz
+3 arguments were given.</code></pre>
+<h2 id="while-loops-in-c"><a href="#TOC">while loops in C</a></h2>
+<pre><code>/* while.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  int x = 3;
+  while( x != 0 )  /* while( x ) */
+  {
+    printf(&quot;x = %d\n&quot;, x);
+    x--;
+  }
+  printf(&quot;finished\n&quot;);
+  return 0;
+}</code></pre>
+<pre><code>$ make
+gcc -std=c99 -Wall while.c -o while.exe
+$ ./while.exe
+x = 3
+x = 2
+x = 1
+finished</code></pre>
+<h2 id="for-loops-in-c"><a href="#TOC">for loops in C</a></h2>
+<pre><code>/* for.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  for(int i=0; i&lt;3; i++)
+  {
+    printf(&quot;i = %d\n&quot;, i);
+  }
+  printf(&quot;finished\n&quot;);
+  return 0;
+}</code></pre>
+<pre><code>$ make
+gcc -std=c99 -Wall for.c -o for.exe
+$ ./for.exe
+i = 0
+i = 1
+i = 2
+finished</code></pre>
+<h2 id="break-and-continue"><a href="#TOC">break and continue</a></h2>
+<pre><code>/* breakcontinue.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  for(int i=0; i&lt;10; i++)
+  {
+    if(i == 3)
+    {
+      continue;
+    }
+    printf(&quot;%d &quot;, i);
+    if(i == 6)
+    {
+      break;
+    }
+  }
+  puts(&quot;&quot;);
+  return 0;
+}</code></pre>
+<pre><code>$ make
+gcc -std=c99 -Wall breakcontinue.c -o breakcontinue.exe
+$ ./breakcontinue.exe
+0 1 2 4 5 6</code></pre>
+<h2 id="functions"><a href="#TOC">functions</a></h2>
+<pre><code>/* functions.c */
+
+#include &lt;stdio.h&gt;
+
+/* function declaration */
+int factorial(int n);
+
+int main(int argc, char *argv[])
+{
+  for(int i=0; i&lt;20; i++)
+  {
+    /* function call */
+    printf(&quot;%d! = %d\n&quot;, i, factorial(i));
+  }
+}
+
+/* function definition */
+int factorial(int n)
+{
+  int product = 1;
+  for(int i=2; i&lt;=n; i++)
+  {
+    product *= i;
+  }
+  return product;
+}</code></pre>
+<h2 id="functions-output"><a href="#TOC">functions output</a></h2>
+<pre><code>$ ./functions.exe
+0! = 1
+1! = 1
+2! = 2
+3! = 6
+4! = 24
+5! = 120
+6! = 720
+7! = 5040
+8! = 40320
+9! = 362880
+10! = 3628800
+11! = 39916800
+12! = 479001600
+13! = 1932053504
+14! = 1278945280
+15! = 2004310016
+16! = 2004189184
+17! = -288522240
+18! = -898433024
+19! = 109641728</code></pre>
+<h2 id="section-3"><a href="#TOC"></a></h2>
+<pre><code>4005d0 &lt;factorial&gt;:
+4005d0:  83 ff 01                cmp    $0x1,%edi
+4005d3:  7e 1f                   jle    4005f4 &lt;factorial+0x24&gt;
+4005d5:  83 c7 01                add    $0x1,%edi
+4005d8:  ba 02 00 00 00          mov    $0x2,%edx
+4005dd:  b8 01 00 00 00          mov    $0x1,%eax
+4005e2:  66 0f 1f 44 00 00       nopw   0x0(%rax,%rax,1)
+4005e8:  0f af c2                imul   %edx,%eax
+4005eb:  83 c2 01                add    $0x1,%edx
+4005ee:  39 fa                   cmp    %edi,%edx
+4005f0:  75 f6                   jne    4005e8 &lt;factorial+0x18&gt;
+4005f2:  f3 c3                   repz retq
+4005f4:  b8 01 00 00 00          mov    $0x1,%eax
+4005f9:  c3                      retq
+4005fa:  66 0f 1f 44 00 00       nopw   0x0(%rax,%rax,1)</code></pre>
+<pre><code>int factorial(int n)          /*  %edi : n       */
+{
+  int product = 1;            /*  %eax : product */
+  for(int i=2; i&lt;=n; i++)     /*  %edx : i       */
+  {
+    product *= i;
+  }
+  return product;
+}</code></pre>
+<h1 id="section-4"><a href="#TOC"></a></h1>
+<h2 id="assignment-1"><a href="#TOC">Assignment 1</a></h2>
+<p>Assignment 1 is up on Blackboard waiting for you.</p>
+<p>There's a script you want to use (DEMO)</p>
+<h1 id="thats-all-folks..."><a href="#TOC">That's all folks...</a></h1>
+<p>(See you on Friday)</p>
+    </div>
+  </body>
+</html>

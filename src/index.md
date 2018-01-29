@@ -37,3 +37,4 @@ Notes
 * [Functions](functions.html)
 * [Quadratic Example](quadratic1.html)
 * [Exercises](exercises2.html)
+* [Slides](slides2.html)
