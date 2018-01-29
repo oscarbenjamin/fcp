@@ -2,7 +2,7 @@
 
 # Source and output folders
 SRC=src
-OUT=.
+OUT=docs
 
 # Pages to build
 PAGES=$SRC/*.md
@@ -13,10 +13,10 @@ CSSFILE=style.css
 TEMPLATE=$SRC/template.html
 
 for mdfile in $PAGES; do
-  echo Compiling $mdfile
-
   pagename=$(basename "${mdfile%.*}")
-  htmlfile=$pagename.html
+  htmlfile=$OUT/$pagename.html
+
+  echo Compiling $mdfile  to  $htmlfile  ...
 
   # Pandoc command:
   pandoc\

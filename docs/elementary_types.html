@@ -6,44 +6,26 @@
   <meta name="generator" content="pandoc" />
   <title>This is the title - </title>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
+table.sourceCode { width: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
   <link rel="stylesheet" href="style.css" type="text/css" />
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -69,38 +51,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
     </div>
     <div id="main">
-<h1 id="elementary-types">Elementary types</h1>
-<h2 id="bits-and-bytes">Bits and bytes</h2>
+<h1 id="elementary-types"><a href="#TOC">Elementary types</a></h1>
+<h2 id="bits-and-bytes"><a href="#TOC">Bits and bytes</a></h2>
 <p>In the previous section we saw how to declare variables of type <code>int</code>. Let's now try to understand a little more about what this means. So <code>int</code> is short for <em>integer</em>. Hopefully you know what an integer is i.e. it's a type of number that is a whole number such as 0, 1, 2, ..., -1, -2, ... etc. Now a computer represents all data and all variables using bits: individual 1s and 0s. So how exactly does that work?</p>
-<p>A bit is a single <em>binary digit</em> which can be a 1 or a 0. In decimal we have 10 digits 0, 1, 2, ..., 9 and to write down an integer larger than 9 we use several of these digits together e.g. 1024. A computer represents integers in the same way using binary digits so for example 1024 is written as 10000000000 (that's a 1 with 10 zeros after it). The idea is the same as when working in base 10 except that there's no higher digit than 1 so when counting it looks like 0, 1, 10, 11, 100, 101, 110, 111, 1000, ... To interpret a number written in binary form let's first consider how to interpret a number in decimal form e.g.: <span class="math display">\[
+<p>A bit is a single <em>binary digit</em> which can be a 1 or a 0. In decimal we have 10 digits 0, 1, 2, ..., 9 and to write down an integer larger than 9 we use several of these digits together e.g. 1024. A computer represents integers in the same way using binary digits so for example 1024 is written as 10000000000 (that's a 1 with 10 zeros after it). The idea is the same as when working in base 10 except that there's no higher digit than 1 so when counting it looks like 0, 1, 10, 11, 100, 101, 110, 111, 1000, ... To interpret a number written in binary form let's first consider how to interpret a number in decimal form e.g.: \[
    123 = 1 \times 100 + 2 \times 10 + 3 \times 1
-\]</span> Each digit in of a number written in decimal form is the coefficient for a different power of 10 with the powers increasing from right to left. In the same way given a binary number we have <span class="math display">\[
+\] Each digit in of a number written in decimal form is the coefficient for a different power of 10 with the powers increasing from right to left. In the same way given a binary number we have \[
     0\mathrm{b}11001 = 1 \times 16 + 1 \times 8 + 0 \times 4 + 0 \times 2 + 1 \times 1
             = 25
-\]</span> Here I'm using the <span class="math inline">\(0\mathrm{b}\)</span> prefix to indicate that a number is represented in binary form (otherwise 11001 looks like eleven thousand and one). So we can see here that each digit in the binary representation of an integer is a coefficient for a power of 2 instead of 10. The powers of 2 come up a lot in computing and should hopefully look familiar: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, etc.</p>
-<p>Another representation of integers that is common in programming is to represent the number in <em>hexadecimal</em> form. In hexadecimal we have 16 digits which go from 0, 1, 2, ..., 9, A, B, C, D, E, F. We will prefix numbers in hexadecimal form with <span class="math inline">\(0\mathrm{x}\)</span> to avoid ambiguity. In this way we have that <span class="math inline">\(15 = 0\mathrm{xF}\)</span>. In hexadecimal form 123 would be written as <span class="math display">\[
+\] Here I'm using the \(0\mathrm{b}\) prefix to indicate that a number is represented in binary form (otherwise 11001 looks like eleven thousand and one). So we can see here that each digit in the binary representation of an integer is a coefficient for a power of 2 instead of 10. The powers of 2 come up a lot in computing and should hopefully look familiar: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, etc.</p>
+<p>Another representation of integers that is common in programming is to represent the number in <em>hexadecimal</em> form. In hexadecimal we have 16 digits which go from 0, 1, 2, ..., 9, A, B, C, D, E, F. We will prefix numbers in hexadecimal form with \(0\mathrm{x}\) to avoid ambiguity. In this way we have that \(15 = 0\mathrm{xF}\). In hexadecimal form 123 would be written as \[
     123 = 0\mathrm{x7B} = 7 \times 16 + 11 \times 1
-\]</span> so that each digit is a coefficient for a power of 16. One hexadecimal digit is equivalent to 4 binary digits so two hexadecimal digits is just right for 1 byte. This means that we can write any byte with a 2 digit hexadecimal number. This is a handy trick that is often used to shorten long binary strings in programming.</p>
+\] so that each digit is a coefficient for a power of 16. One hexadecimal digit is equivalent to 4 binary digits so two hexadecimal digits is just right for 1 byte. This means that we can write any byte with a 2 digit hexadecimal number. This is a handy trick that is often used to shorten long binary strings in programming.</p>
 <p>The easiest way to see the binary or hex representation of an integer is using the Python <code>bin</code> and <code>hex</code> functions which return the representation as a string:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">$ python
+<pre class="sourceCode python"><code class="sourceCode python">$ python
 ...
-<span class="op">&gt;&gt;&gt;</span> <span class="bu">bin</span>(<span class="dv">25</span>)
-<span class="co">&#39;0b11001&#39;</span>
-<span class="op">&gt;&gt;&gt;</span> <span class="bu">bin</span>(<span class="dv">1024</span>)
-<span class="co">&#39;0b10000000000&#39;</span>
-<span class="op">&gt;&gt;&gt;</span> <span class="bu">hex</span>(<span class="dv">25</span>)
-<span class="co">&#39;0x19&#39;</span>
-<span class="op">&gt;&gt;&gt;</span> <span class="bu">hex</span>(<span class="dv">1024</span>)
-<span class="co">&#39;0x400&#39;</span></code></pre></div>
-<p>Now Python's integers can become arbitrarily large as they are allowed to have an arbitrarily large number of binary digits (bits). So in Python we can easily compute something like <span class="math inline">\(2^{1000}\)</span> like so</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">1000</span>
+&gt;&gt;&gt; <span class="dt">bin</span>(<span class="dv">25</span>)
+<span class="st">&#39;0b11001&#39;</span>
+&gt;&gt;&gt; <span class="dt">bin</span>(<span class="dv">1024</span>)
+<span class="st">&#39;0b10000000000&#39;</span>
+&gt;&gt;&gt; <span class="dt">hex</span>(<span class="dv">25</span>)
+<span class="st">&#39;0x19&#39;</span>
+&gt;&gt;&gt; <span class="dt">hex</span>(<span class="dv">1024</span>)
+<span class="st">&#39;0x400&#39;</span></code></pre>
+<p>Now Python's integers can become arbitrarily large as they are allowed to have an arbitrarily large number of binary digits (bits). So in Python we can easily compute something like \(2^{1000}\) like so</p>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; <span class="dv">2</span> ** <span class="dv">1000</span>
 <span class="dv">1071508607186267320948425049060001810561404811</span>
 <span class="dv">7055336074437503883703510511249361224931983788</span>
 <span class="dv">1569585812759467291755314682518714528569231404</span>
 <span class="dv">3598457757469857480393456777482423098542107460</span>
 <span class="dv">5062371141877954182153046474983581941267398767</span>
 <span class="dv">5591655439460770629145711964776865421676604298</span>
-<span class="dv">31652624386837205668069376</span></code></pre></div>
+<span class="dv">31652624386837205668069376</span></code></pre>
 <p>However in C it is a bit more complicated than this. In C every elementary type has a fixed number of bits. The number of bits that computers can use for anything are always multiples of 8. Really the computer doesn't usually deal in individual <em>bits</em>. Rather it works with whole <em>bytes</em> where each byte is a string of 8 bits.</p>
 <p>So let's imagine that we have an 8-bit (1 byte) data type that represents an integer. The values of this 8-bit data type could be as in this table:</p>
 <table>
@@ -180,8 +162,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<p>So with an 8-bit data-type we could represent all of the integers from <span class="math inline">\(0\)</span> to <span class="math inline">\(255\)</span>. The number of values we can represent is given by <span class="math inline">\(2^8=256\)</span> and since we start counting from <span class="math inline">\(0\)</span> the largest representable value is one less than <span class="math inline">\(256\)</span>.</p>
-<p>The 8-bit data-type described above is known as an <em>unsigned</em> type. This is because it cannot represent negative numbers. To represent negative numbers we need to use one of the bits to indicate if the number is positive or negative. The standard way to do this for a <em>signed</em> data-type is called 2's complement and uses the first bit as the <em>sign bit</em>. If the first bit is a <span class="math inline">\(0\)</span> then the value is considered to be positive and the remaining 7 bits give the integer value. If the first bit is a <span class="math inline">\(1\)</span> then the value is negative and the remaining 7 bits count upwards from the minimum possible value. So a <em>signed</em> 8-bit type would look like:</p>
+<p>So with an 8-bit data-type we could represent all of the integers from \(0\) to \(255\). The number of values we can represent is given by \(2^8=256\) and since we start counting from \(0\) the largest representable value is one less than \(256\).</p>
+<p>The 8-bit data-type described above is known as an <em>unsigned</em> type. This is because it cannot represent negative numbers. To represent negative numbers we need to use one of the bits to indicate if the number is positive or negative. The standard way to do this for a <em>signed</em> data-type is called 2's complement and uses the first bit as the <em>sign bit</em>. If the first bit is a \(0\) then the value is considered to be positive and the remaining 7 bits give the integer value. If the first bit is a \(1\) then the value is negative and the remaining 7 bits count upwards from the minimum possible value. So a <em>signed</em> 8-bit type would look like:</p>
 <table>
 <caption>The integer values taken by an <em>8-bit signed integer</em> type shown in binary, hexadecimal and decimal.</caption>
 <thead>
@@ -259,11 +241,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<p>Note that the hex value here is the same as in the unsigned table. This is because I'm treating the hex value as a representation of the bits rather than the numeric value. To interpret a negative signed binary integer think of the first 1 as meaning <span class="math inline">\(-128\)</span> and then add to that the positive integer represented by the remaining 7-bits.</p>
-<h2 id="integers-in-c">Integers in C</h2>
+<p>Note that the hex value here is the same as in the unsigned table. This is because I'm treating the hex value as a representation of the bits rather than the numeric value. To interpret a negative signed binary integer think of the first 1 as meaning \(-128\) and then add to that the positive integer represented by the remaining 7-bits.</p>
+<h2 id="integers-in-c"><a href="#TOC">Integers in C</a></h2>
 <p>In C there are a number of different signed and unsigned integer data types that used fixed numbers of bytes. Usually a type has 1, 2, 4 or 8 bytes (8, 16, 32 or 64 bits). In this particular unit we are only going to consider four of them <code>char</code>, <code>int</code>, <code>unsigned char</code> and <code>unsigned int</code>. Now strictly speaking the number of bits/bytes used for each of these types depends on the compiler used and which operating system you are using and other factors. It's important to know this when working in C but to simplify this discussion I am going to assume the common case which is that <code>char</code>, <code>unsigned char</code> are signed/unsigned 1 byte (8 bit) data types and <code>int</code>, <code>unsigned int</code> are signed/unsigned 4 byte (32 bit) data types.</p>
 <p>So <code>unsigned char</code> is a 1 byte unsigned integer data type. This is exactly like the unsigned type show in the table above. We can create a variable of type <code>unsigned char</code> simply be using that as the name of type when declaring the variable. Here is a short program that shows how to use this type:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* uchar1.c */</span>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* uchar1.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -274,14 +256,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="dt">unsigned</span> <span class="dt">char</span> c = a + b;
   printf(<span class="st">&quot;10 + 3 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
   <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre></div>
+}</code></pre>
 <p>We can run this to see</p>
 <pre><code>$ gcc -Wall uchar1.c -o uchar1.exe
 $ ./uchar1.exe
 10 + 3 = 13</code></pre>
 <p>Now there's two things to notice in <code>uchar.c</code>. Firstly we declare out variables <code>unsigned char</code> to get variables of that type. Secondly in order to print the value of an unsigned char we use the <code>%u</code> format code and we need to <em>cast</em> the variable <code>c</code> to <code>unsigned int</code> (the type that corresponds to the <code>%u</code> format code). We cannot use <code>%d</code> to print an <code>unsigned char</code> as sometimes the wrong value will be printed out if we do.</p>
 <p>To see some perhaps less expected behaviour let's make a program that tests subtraction:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* uchar2.c */</span>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* uchar2.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -292,28 +274,28 @@ $ ./uchar1.exe
   <span class="dt">unsigned</span> <span class="dt">char</span> c = b - a;
   printf(<span class="st">&quot;3 - 10 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
   <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre></div>
+}</code></pre>
 <p>This time we get:</p>
 <pre><code>$ gcc -Wall uchar2.c -o uchar2.exe
 $ ./uchar2.exe
 3 - 10 = 249</code></pre>
 <p>So why does <code>3 - 10</code> give us <code>249</code>? Firstly it depends on the type of the variables involved. In this case we are using <code>unsigned char</code> which can represent integers from <code>0</code> to <code>255</code>.</p>
 <p>To understand how the arithmetic works we can think of it in a few different ways. One way is the idea of <em>wraparound</em>. So if we start from <code>3</code> and repeatedly subtract <code>1</code> then we will get to <code>0</code>. What happens when we subtract <code>1</code> from <code>0</code>? It wraps around from <code>0</code> the smallest integer to <code>255</code> the largest integer. So to subtract <code>10</code> from <code>3</code> it goes 3, 2, 1, 0, 255, 254, 253, 252, 251, 250, 249. And there we have it: <code>249</code>.</p>
-<p>Another way of thinking about the arithmetic is as modular arithmetic. The result we get is equal to the true result <em>modulo 256</em>. What this means is that we calculate the true result and then find the remainder when dividing it by 256. Or perhaps take the true result and add or subtract some multiple of 256 until it is within the range 0-255. In this case we have that <code>10-3</code> is <span class="math inline">\(-7\)</span>. Since <span class="math inline">\(-7\)</span> is outside of the desired range we can add <span class="math inline">\(256\)</span> to it to get <code>249</code> which is in the range.</p>
-<h2 id="exercises">Exercises</h2>
+<p>Another way of thinking about the arithmetic is as modular arithmetic. The result we get is equal to the true result <em>modulo 256</em>. What this means is that we calculate the true result and then find the remainder when dividing it by 256. Or perhaps take the true result and add or subtract some multiple of 256 until it is within the range 0-255. In this case we have that <code>10-3</code> is \(-7\). Since \(-7\) is outside of the desired range we can add \(256\) to it to get <code>249</code> which is in the range.</p>
+<h2 id="exercises"><a href="#TOC">Exercises</a></h2>
 <p>Test out some more calculations to see if you can understand what happens. What do you get from <code>10/3</code>, <code>10%3</code>, <code>255+1</code> or <code>10*100</code>? What happens if you write <code>unsigned char a = -1</code>?</p>
 <p>The signed version of char is just called <code>char</code> (on most compilers). Try using that and testing out arithmetic with negative numbers. See that you can find the minimum and maximum values. What happens when you divide negative numbers e.g. <code>(-10) / 3</code> or <code>(-10) % (-3)</code>? Are the results of these operations the same as in Python?</p>
 <p>In addition to <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>%</code> we have the augmented assignment operators: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>++</code> and <code>--</code>. Test out how these work as well.</p>
 <p>At this point it is good to make sure that you really understand these results and can predict them so test out what you need to ensure that you get it.</p>
-<h2 id="ints-in-c">Ints in C</h2>
-<p>So an <code>int</code> is a signed 4 byte (32 bit) type. The <code>int</code> value of 123 looks like <span class="math display">\[
+<h2 id="ints-in-c"><a href="#TOC">Ints in C</a></h2>
+<p>So an <code>int</code> is a signed 4 byte (32 bit) type. The <code>int</code> value of 123 looks like \[
     123 = 0\mathrm{b}\,\,00000000\,\,00000000\,\,00000000\,\,01111011
-\]</span> Writing out 32-bit numbers in binary is tedious so these are normally written in hexadecimal. The <code>int</code> value of 123 can be written in hexadecimal as <span class="math display">\[
+\] Writing out 32-bit numbers in binary is tedious so these are normally written in hexadecimal. The <code>int</code> value of 123 can be written in hexadecimal as \[
     123 = 0\mathrm{x}\,\,00\,\,00\,\,00\,\,7\mathrm{B}
-\]</span> which is easier to read than the binary form but still shows us the values of the individual bytes (if you know how to read it).</p>
-<p>So how big can an <code>int</code> be? Well since we have 32 binary digits we can do <span class="math inline">\(2^{32} = 4294967296\)</span> possible different values. Since the first bit is the sign bit there are 31 bits to represent the number and the result is that a C <code>int</code> can take any value greater than or equal to <span class="math inline">\(-2^{31}\)</span> and less than or equal to <span class="math inline">\(2^{31}-1\)</span>. So the minimum and maximum values for an <code>int</code> are <span class="math inline">\(-2147483648\)</span> and <span class="math inline">\(2147483647\)</span> respectively.</p>
+\] which is easier to read than the binary form but still shows us the values of the individual bytes (if you know how to read it).</p>
+<p>So how big can an <code>int</code> be? Well since we have 32 binary digits we can do \(2^{32} = 4294967296\) possible different values. Since the first bit is the sign bit there are 31 bits to represent the number and the result is that a C <code>int</code> can take any value greater than or equal to \(-2^{31}\) and less than or equal to \(2^{31}-1\). So the minimum and maximum values for an <code>int</code> are \(-2147483648\) and \(2147483647\) respectively.</p>
 <p>Note that when we write an integer literal e.g. <code>4</code> or <code>123</code> in C code it is implicitly understood to be an object of type <code>int</code> if there are no variables of any other type in the expression. So we can do calculations with <code>int</code> in a more straight-forward way.</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* operations.c */</span>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* operations.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -324,7 +306,7 @@ $ ./uchar2.exe
    printf(<span class="st">&quot;1 - 2 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">1</span> - <span class="dv">2</span>);
    printf(<span class="st">&quot;9 / 3 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">9</span> / <span class="dv">3</span>);
    <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre></div>
+}</code></pre>
 <p>We can run this to get:</p>
 <pre><code>$ gcc -Wall operations.c -o operations.exe
 $ ./operations.exe
@@ -332,9 +314,9 @@ $ ./operations.exe
 2 + 2 = 4
 1 - 2 = -1
 9 / 3 = 3</code></pre>
-<h2 id="overflow">Overflow</h2>
+<h2 id="overflow"><a href="#TOC">Overflow</a></h2>
 <p>You might think that the maximum values for an <code>int</code> is sufficiently large that we don't need to worry about overflow but it can easily happen:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* arithmetic.c */</span>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* arithmetic.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -343,20 +325,20 @@ $ ./operations.exe
    <span class="dt">int</span> a = <span class="dv">1000000</span>; <span class="co">/* one million */</span>
    printf(<span class="st">&quot;1 trillion = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a * a);
    <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre></div>
+}</code></pre>
 <p>If we compile and run this we might see</p>
 <pre><code>$ gcc -Wall arithmetic.c -o arithmetic.exe
 $ ./arithmetic.exe
 1 trillion = -727379968</code></pre>
 <p>Now clearly this is mathematically incorrect. Why did we get this number? Well the correct answer for 1 million squared is 1 trillion but that number is too big to be represented by an <code>int</code> which can have only 4 bytes and has a maximum value of approximately 2 billion. What happens is that when we do a calculation whose result exceeds the possible range of an <code>int</code> the result will <em>overflow</em> and then we end up getting some random number back. For the benefit of the curious reader we can calculate why I got this particular value using Python:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> n <span class="op">=</span> <span class="dv">1000000</span><span class="op">*</span><span class="dv">1000000</span>
-<span class="op">&gt;&gt;&gt;</span> ((n <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">31</span>) <span class="op">%</span> <span class="dv">2</span><span class="op">**</span><span class="dv">32</span>) <span class="op">-</span> <span class="dv">2</span><span class="op">**</span><span class="dv">31</span>
-<span class="op">-</span><span class="dv">727379968</span></code></pre></div>
+<pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; n = <span class="dv">1000000</span>*<span class="dv">1000000</span>
+&gt;&gt;&gt; ((n + <span class="dv">2</span>**<span class="dv">31</span>) % <span class="dv">2</span>**<span class="dv">32</span>) - <span class="dv">2</span>**<span class="dv">31</span>
+-<span class="dv">727379968</span></code></pre>
 <p>However in general when a calculation involving a <em>signed</em> type such as <code>int</code> overflows it is not possible to predict the actual result that the computer will produce. Because of this your program may behave differently when run on different computers so you should avoid ever asking for calculations that would overflow with signed types (with <em>unsigned</em> types the behaviour is always well defined and is explained above with wraparound or modular arithmetic).</p>
-<h2 id="exercises-1">Exercises</h2>
+<h2 id="exercises-1"><a href="#TOC">Exercises</a></h2>
 <p>Play with <code>int</code> and be sure that you understand how it works.</p>
 <p>Similarly try the <code>unsigned int</code> type to make sure that you understand how that works (you'll need to explicitly declare variables of type <code>unsigned int</code> as we did above for <code>unsigned char</code>).</p>
-<h2 id="bitwise-operations">Bitwise operations</h2>
+<h2 id="bitwise-operations"><a href="#TOC">Bitwise operations</a></h2>
 <p>Since in C all of our integer data types are represented by bits there are a number of operations that we can do that will operate on the bits in useful ways. It is not possible in C to operate on individual bits: a byte is the smallest unit that we can use. However we have operations that we can use with bytes that will have particular effects on the bits in each of the bytes. Specifically we have the operators:</p>
 <ul>
 <li>Bitwise AND <code>&amp;</code></li>
@@ -387,23 +369,23 @@ $ ./arithmetic.exe
 <tbody>
 <tr class="odd">
 <td align="left"><code>a</code></td>
-<td align="center"><span class="math inline">\(25\)</span></td>
-<td align="center"><span class="math inline">\(00011001\)</span></td>
+<td align="center">\(25\)</td>
+<td align="center">\(00011001\)</td>
 </tr>
 <tr class="even">
 <td align="left"><code>b</code></td>
-<td align="center"><span class="math inline">\(19\)</span></td>
-<td align="center"><span class="math inline">\(00010011\)</span></td>
+<td align="center">\(19\)</td>
+<td align="center">\(00010011\)</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>a &amp; b</code></td>
-<td align="center"><span class="math inline">\(17\)</span></td>
-<td align="center"><span class="math inline">\(00010001\)</span></td>
+<td align="center">\(17\)</td>
+<td align="center">\(00010001\)</td>
 </tr>
 </tbody>
 </table>
 <p>So the first bit of <code>a &amp; b</code> is chosen by taking the first bit from <code>a</code> and the first bit from <code>b</code> and combining them with the logical AND operation. In this case since both have <code>0</code> for the first bit we get a zero for the first bit of <code>a &amp; b</code>. Since the operation <code>a &amp; b</code> does logical AND for each of the bits in <code>a</code> and <code>b</code> it is called a <em>bitwise</em> operation. We can test it out like so:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* bitwise.c */</span>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* bitwise.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -414,7 +396,7 @@ $ ./arithmetic.exe
   <span class="dt">unsigned</span> <span class="dt">char</span> c = a &amp; b; <span class="co">/* bitwise and */</span>
   printf(<span class="st">&quot;25 &amp; 19 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
   <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre></div>
+}</code></pre>
 <p>Running this we get the expected result:</p>
 <pre><code>$ gcc -Wall bitwise.c -o bitwise.exe
 $ ./bitwise.exe
@@ -433,14 +415,14 @@ $ ./bitwise.exe
 <li><code>0 XOR 1 = 1</code> (False xor True = True)</li>
 <li><code>1 XOR 1 = 0</code> (True xor True = False)</li>
 </ul>
-<p>Finally bitwise NOT operates on a single quantity (unlike the binary operators above) and simply inverts all the bits so that e.g. <span class="math inline">\(10000100\)</span> would become <span class="math inline">\(01111011\)</span>.</p>
-<p>Finally we have the bit-shift operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. These shift the bits to the left or right by a specified amount. For example we can write <code>a &lt;&lt; 2</code> to shift all of the bits in <code>a</code> 2 digits to the left. What do I mean by that? Well suppose that <code>a</code> has bits <span class="math inline">\(00001101\)</span> then <code>a &lt;&lt; 2</code> has bits <span class="math inline">\(00110100\)</span>. Note that in this case this is the same as multiplying <code>a</code> by <span class="math inline">\(4\)</span>.</p>
-<p>When left-shifting any bits that go off the left hand side are thrown away and the right hand side is padded with zeros. So if <code>a</code> has bits <span class="math inline">\(11111111\)</span> then <code>a &lt;&lt; 3</code> has bits <span class="math inline">\(11111000\)</span>. Right-shifting is the same except that we shift the bits to the right. Right-shifting by <span class="math inline">\(N\)</span> is equivalent to dividing by <span class="math inline">\(2^N\)</span> (and rounding down).</p>
-<h2 id="exercises-2">Exercises</h2>
+<p>Finally bitwise NOT operates on a single quantity (unlike the binary operators above) and simply inverts all the bits so that e.g. \(10000100\) would become \(01111011\).</p>
+<p>Finally we have the bit-shift operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. These shift the bits to the left or right by a specified amount. For example we can write <code>a &lt;&lt; 2</code> to shift all of the bits in <code>a</code> 2 digits to the left. What do I mean by that? Well suppose that <code>a</code> has bits \(00001101\) then <code>a &lt;&lt; 2</code> has bits \(00110100\). Note that in this case this is the same as multiplying <code>a</code> by \(4\).</p>
+<p>When left-shifting any bits that go off the left hand side are thrown away and the right hand side is padded with zeros. So if <code>a</code> has bits \(11111111\) then <code>a &lt;&lt; 3</code> has bits \(11111000\). Right-shifting is the same except that we shift the bits to the right. Right-shifting by \(N\) is equivalent to dividing by \(2^N\) (and rounding down).</p>
+<h2 id="exercises-2"><a href="#TOC">Exercises</a></h2>
 <p>So what would <code>25 | 19</code> or <code>25 ^ 19</code> be? How about <code>~25</code> or <code>~19</code>? Can you see a relationship between <code>~17</code>, <code>~25</code> and <code>~19</code>? What happens when you bit-shift these numbers?</p>
 <p>Can you work these out on paper and do you get the same when testing it in the computer?</p>
 <p>(The answer you get to these questions depends on whether you are using <code>unsigned char</code> or <code>unsigned int</code> so be sure to check both!)</p>
-<h2 id="summary">Summary</h2>
+<h2 id="summary"><a href="#TOC">Summary</a></h2>
 <p>I now expect you to understand:</p>
 <ul>
 <li>How integers are represented in binary and in hexadecimal.</li>
