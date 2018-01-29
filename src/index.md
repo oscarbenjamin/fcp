@@ -19,9 +19,21 @@ Due to the way the University computers are not properly configured the
 Notes
 -----
 
-* Week 1
-    * [Outline](outline.html)
-    * [Getting started](getting_started.html)
-    * [Basic C](basic_c.html)
-    * [Elementary types in C](elementary_types.html)
-    * [Installing the compiler](installing.html)
+# Week 1
+
+* [Outline](outline.html)
+* [Getting started](getting_started.html)
+* [Basic C](basic_c.html)
+* [Elementary types in C](elementary_types.html)
+* [Installing the compiler](installing.html)
+* [Slides](slides1.html)
+
+# Week 2
+
+* [Week 2 overview](week2overview.html)
+* [Advanced shell usage](advanced_shell.html)
+* [Make files](makefiles.html)
+* [Loops and branching](loopsbranching.html)
+* [Functions](functions.html)
+* [Quadratic Example](quadratic1.html)
+* [Exercises](exercises2.html)

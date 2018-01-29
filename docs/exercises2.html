@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#exercises">Exercises</a><ul>
+<li><a href="#loops-and-branching">Loops and branching</a></li>
+<li><a href="#functions">Functions</a></li>
+</ul></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="exercises"><a href="#TOC">Exercises</a></h1>
+<h2 id="loops-and-branching"><a href="#TOC">Loops and branching</a></h2>
+<p>Write a program that can determine if a (positive) number is prime. Fill out this skeleton program:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* primetest.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">unsigned</span> <span class="dt">int</span> number = <span class="dv">51</span>;
+
+  <span class="co">/*</span>
+<span class="co">   * Insert code here</span>
+<span class="co">   */</span>
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>Your program should print out</p>
+<pre><code>$ make
+gcc -std=c99 -Wall primetest.c -o primetest.exe
+$ ./primetest.exe
+51 is not prime</code></pre>
+<p>You can test if a number \(N\) is prime by checking if it is divisuble by any number \(n\) where \(2 \leq n\) and \(n^2 \leq N\). Try changing the value of <code>number</code> to check that it works. Now write a program that can print out all the prime numbers less than 100.</p>
+<p>Write a program that can check if an integer \(x\) is a root of a cubic polynomial \[ax^3 + bx^2 + cx + d\] where \(a\), \(b\), \(c\) and \(d\) are integers. Fill out the skeleton</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* isroot.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> x = <span class="dv">5</span>;
+
+  <span class="dt">int</span> a = <span class="dv">1</span>;
+  <span class="dt">int</span> b = -<span class="dv">4</span>;
+  <span class="dt">int</span> c = -<span class="dv">7</span>;
+  <span class="dt">int</span> d = <span class="dv">10</span>;
+
+  <span class="co">/*</span>
+<span class="co">   * Insert code here</span>
+<span class="co">   */</span>
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>Your program should print out something like</p>
+<pre><code>$ make
+gcc -std=c99 -Wall isroot.c -o isroot.exe
+$ ./isroot.exe
+5 is a root of 1x^3 + -4x^2 + -7x + 10</code></pre>
+<p>Try different values for <code>x</code>, <code>a</code>, etc.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Rational_root_theorem">rational root theorem</a> states that any integer root of a cubic with integer coefficients divides \(c\). Hence any integer root \(x\) must satisfy \(-c \le x \le c\) (assuming that \(c\) is positive). Adapt the above program so that it prints out all integer roots of the given cubic. Test your program out with different cubics. Example output might be</p>
+<pre><code>$ ./findroots.exe
+Roots of 1x^3 + -4x^2 + -7x + 10:
+-2 1 5</code></pre>
+<h2 id="functions"><a href="#TOC">Functions</a></h2>
+<p>Take the programs you wrote for the previous loop exercises and split them up using functions. In particular create a function <code>isprime(n)</code> that returns whether or not an integer <code>n</code> is prime.</p>
+<p>Also make a function <code>polyeval(x, a, b, c, d)</code> that can evaluate the polynomial \[P(x) = ax^3 + bx^2 + cx + d.\] Then use that function to make a function <code>isroot(x, a, b, c, d)</code> that returns whether or not <code>x</code> is a root of \(P(x)\). Finally make a function <code>polyprint</code> that can print a polynomial to the terminal. Use all of these functions in your previous program to find the integer roots of a cubic. Think carefully about the output of the <code>polyprint</code> function. Does it print all polynomials the way you want it to?</p>
+    </div>
+  </body>
+</html>

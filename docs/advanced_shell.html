@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#advanced-shell-usage">Advanced shell usage</a><ul>
+<li><a href="#tab-completion">Tab completion</a></li>
+<li><a href="#rerunning-commands">Rerunning commands</a></li>
+</ul></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="advanced-shell-usage"><a href="#TOC">Advanced shell usage</a></h1>
+<p>At this point I'm assuming that you already know how to use the shell to a basic level. We're going to talk about a few tips and tricks to get better at it.</p>
+<h2 id="tab-completion"><a href="#TOC">Tab completion</a></h2>
+<p>One of the things that seems tedious about using the shell at first is needing to type out so many long commands. The shell actually provides many ways to make this quicker. The first thing we'll look at is tab completion. This uses the &quot;tab&quot; key on your keyboard. Suppose I open my terminal and I want to <code>cd</code> into a directory called <code>current/emat10006web/</code>. It's annoying to have to type out the full folder name and there's also a good chance I'll make a mistake when typing but there's an easier way. Type <code>cd cu</code> and then push tab. If there's only one possible file or directory name beginning with <code>cu</code> then it will complete to <code>cd current</code> i.e.</p>
+<pre><code>$ cd cu &lt;tab&gt;
+$ cd current/</code></pre>
+<p>Note that I haven't pushed the enter key yet as I'm still typing this command so I'm not ready to run it yet. Now if <code>emat10006web</code> is the only file or directory in <code>current</code> I can simply push tab again to get:</p>
+<pre><code>$ cd current/ &lt;tab&gt;
+$ cd current/emat10006web</code></pre>
+<p>As it happens there are several files in <code>current</code> and they don't all start wit the same letter so instead I see</p>
+<pre><code>$ cd current/ &lt;tab&gt;&lt;tab&gt;
+emat10006/    emat10006web/ primevenv/    tmp/</code></pre>
+<p>Note that the first time I push the tab key nothing happens. This is because it's ambiguous what filename should be used to complete the command. The second time I push tab the shell shows me a list of possible completions. I want one of the ones that begins with &quot;e&quot; so I'll type that and push tab again</p>
+<pre><code>$ cd current/e &lt;tab&gt;
+$ cd current/emat10006</code></pre>
+<p>Now because there were two possibilities beginning with &quot;e&quot; and each begins with &quot;emat10006&quot; it has completed that much for me. To get the full &quot;emat10006web&quot; I'll need to add a &quot;w&quot; and push tab again</p>
+<pre><code>$ cd current/emat10006w &lt;tab&gt;
+$ cd current/emat10006web/</code></pre>
+<p>At this point I've completed the command and can push enter to run it. The description above may sound overly complicated but if you get used to using tab completion it will start to seem natural: you just have to try it.</p>
+<h2 id="rerunning-commands"><a href="#TOC">Rerunning commands</a></h2>
+<p>Something else that helps is being able to locate previously run commands with the arrow keys. After running some commands in the shell see what happens when you push the up and down arrow keys. The shell allows you to navigate through all of the previously typed commands. You can find a previous command and either run it as it is or edit the command and run it. This is particularly useful if you make a mistake while typing a long command: just push &quot;up&quot; and then fix the mistake and push enter again. You can see a list of all previously typed commands by running the <code>history</code> command e.g.:</p>
+<pre><code>$ history
+...
+ 1986  mv sum.c array.c
+ 1987  make
+ 1988  vim Makefile
+ 1989  touch array.c
+ 1990  make
+ 1991  ./array.exe
+ 1992  touch array.c
+ 1993  cat $!
+ 1994  touch array.c
+ 1995  cat array.c
+ 1996  make
+ 1997  ./array.exe
+ 1998  PS1=&#39;$ &#39;
+ 1999  cd current/
+ 2000  cd ..
+ 2001  history</code></pre>
+<p>To see only those commands containing the string &quot;gcc&quot; you can filter the output using <code>grep</code> like so</p>
+<pre><code>$ history | grep gcc
+ 1707  gcc -Wall -std=c99 argcount.c -o argcount.exe
+ 1713  gcc -Wall -std=c99 getinput.c -o getinput.exe
+ 1716  gcc -Wall -std=c99 getinput.c -o getinput.exe
+ 1723  gcc -Wall -std=c99 getinput.c -o getinput.exe
+ 1727  gcc -Wall -std=c99 getinput.c -o getinput.exe
+ 1731  gcc -std=c99 -Wall outerr.c -o outerr.exe
+ 1737  gcc -std=c99 -Wall retcode.c -o retcode.exe
+ 1817  gcc conditional.c
+ 1819  gcc conditional.c
+ 2002  history | grep gcc</code></pre>
+<p>The numbers next to each command in the history output can be used to repeat any command. To repeat command 1817 simply type <code>!1817</code> and hit enter:</p>
+<pre><code>$ !1817
+gcc conditional.c
+gcc: error: conditional.c: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.</code></pre>
+<p>The previously typed command can always be referred to as <code>!!</code>. This is useful if you want to rerun that command but with an extra string before or after it. For example on Linux or OSX many administrative tasks need to be run with <code>sudo</code>. If you forget to put <code>sudo</code> at the beginning of a command you can then repeat it with <code>sudo</code> by typing <code>sudo !!</code>:</p>
+<pre><code>$ apt-get install gcc
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+$ sudo !!
+sudo apt-get install gcc
+[sudo] password for oscar:
+Reading package lists... Done
+...</code></pre>
+<p>You can also refer to the last word of the previously typed command as <code>!$</code>. This is useful when you want to run several commands on e.g. the same filename. A common example is to create a directory and then <code>cd</code> into it:</p>
+<pre><code>$ mkdir some_long_directory_name
+$ cd !$
+cd some_long_directory_name</code></pre>
+<p>There is also a way to search for a command and run it using Ctrl-R. Push the control key and then the R key. Now type some part of a previously typed command and it will suggest a command line to run. If the command line is correct you can simply push enter to run it. Try it!</p>
+<p>Another good way to reduce typing out long commands is to save those commands into files. This is covered in the next section about Makefiles.</p>
+<hr />
+<p>Next section: <a href="makefiles.html">makefiles</a></p>
+    </div>
+  </body>
+</html>

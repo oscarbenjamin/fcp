@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#loops-and-branching">Loops and branching</a></li>
+<li><a href="#if-statements">If statements</a></li>
+<li><a href="#else">Else</a></li>
+<li><a href="#relations-and-logical-operators">Relations and logical operators</a></li>
+<li><a href="#while-loops">While loops</a></li>
+<li><a href="#for-loops">For loops</a></li>
+</ul>
+    </div>
+    <div id="main">
+<h2 id="loops-and-branching"><a href="#TOC">Loops and branching</a></h2>
+<p>Having spent a little time talking about using the shell and make files we're now back to plain old C code. The topic here is loops and branching which are the two basic types of control flow in <em>imperative programming</em>.</p>
+<h2 id="if-statements"><a href="#TOC">If statements</a></h2>
+<p>Just like in Python in C we have <code>if</code> statements that can define when to conditionally execute different blocks of code e.g.:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
+  {
+    printf(<span class="st">&quot;x is greater than 5&quot;</span>);
+  }</code></pre>
+<p>The main differences from Python here are that the condition attached the <code>if</code> statement (<code>x &gt; 5</code>) needs to be in brackets and that the body of code which is executed is enclosed in curly brackets <code>{</code> and <code>}</code>. In Python the block of code is defined by the indentation level. In C the indentation is optional but is stylistically preferred. (For the purposes of this unit correct indentation is <em>not</em> optional.)</p>
+<p>If the block of code to execute is only one statement then we can shorten this to</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
+    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<p>However this form is often discouraged since it can lead to bugs like</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
+    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    printf(<span class="st">&quot;and x is greater than 4</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<p>In this last example only the first <code>printf</code> statement is part of the if-block. The second looks as if it is because it's indented but the rule is that the block of code is either enclosed in curly brackets or consists of only one statement. The same problem occurs if we put multiple statements on one line:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
+    printf(<span class="st">&quot;x &gt; 5</span><span class="ch">\n</span><span class="st">&quot;</span>); printf(<span class="st">&quot;x &gt; 4</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<p>Only the first <code>printf</code> statement is considered to be in the body of the if construct. The indentation and the line spacing are irrelevant.</p>
+<p>Because of this I prefer the long form with the curly brackets and I expect you to use this in your code.</p>
+<h2 id="else"><a href="#TOC">Else</a></h2>
+<p>We can also attach <code>else</code> and <code>else if</code> clauses to an <code>if</code> statement e.g.:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
+  {
+    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  }
+  <span class="kw">else</span> <span class="kw">if</span>(x &lt; <span class="dv">0</span>)
+  {
+    printf(<span class="st">&quot;x is negative</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  }
+  <span class="kw">else</span>
+  {
+    printf(<span class="st">&quot;0 &lt;= x &lt;= 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  }</code></pre>
+<p>Hopefully you can work out what that does already. Give it a try in a simple program.</p>
+<h2 id="relations-and-logical-operators"><a href="#TOC">Relations and logical operators</a></h2>
+<p>C defines the same binary relations as Python. Specifically <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>!=</code>. Hopefully you've already seen these. What is different between Python and C is that in Python an expression like <code>a &lt; b</code> results in an object of type <code>bool</code> having the value <code>True</code> or <code>False</code>. In C logical expressions have type <code>int</code> and result in the values <code>1</code> or <code>0</code>. So for example these two are equivalent:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(a == <span class="dv">0</span>)
+  {
+    <span class="co">// do stuff</span>
+  }
+  <span class="kw">if</span>(a)
+  {
+    <span class="co">// do stuff</span>
+  }</code></pre>
+<p>When we use a condition as part of an <code>if</code> statement the condition is considered true if it is non-zero and false if it is zero.</p>
+<p>The logical operators in C are <code>&amp;&amp;</code>, <code>||</code> and <code>!</code> which are analogous to the Python operators <code>and</code>, <code>or</code> and <code>not</code>. We can use these to build a more complex condition e.g.:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>((<span class="dv">0</span> &lt;= a) &amp;&amp; (a &lt; N))
+  {
+    printf(<span class="st">&quot;0 &lt;= a &lt; N</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  }</code></pre>
+<p>In Python we could simply write that as</p>
+<pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">if</span> <span class="dv">0</span> &lt;= a &lt; N:
+    <span class="kw">print</span>(<span class="st">&#39;0 &lt;= a &lt; N&#39;</span>)</code></pre>
+<p>However C does not allow &quot;relation chaining&quot; in this way.</p>
+<p>Another point to be aware of which is similar to Python is short-circuiting of logical operators. In an expression <code>a &amp;&amp; b</code> first the <code>a</code> part of the expression will be evaluated. If it is false (<code>0</code>) then there is no need to evaluate the <code>b</code> part of the expression since the expression is already known to have the value <code>0</code>. For example in the following code the function <code>f()</code> is never called:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>((<span class="dv">3</span> &lt; <span class="dv">2</span>) &amp;&amp; f())
+  {
+    <span class="co">// do stuff</span>
+  }</code></pre>
+<p>The expression <code>3 &lt; 2</code> is false so evaluates to <code>0</code>. The expression <code>0 &amp;&amp; f()</code> will always be false regardless of the value of <code>f()</code> so the there is no need to call <code>f</code>. Short-circuiting happens left-to-right so the left most expression is always evaluated first and then the expressions to the right are only evaluated if necessary. Short circuiting also happens with <code>||</code> so that in the expression <code>a || b</code> the expression <code>b</code> is only evaluated if the expression <code>a</code> evalutes to <code>0</code>.</p>
+<h2 id="while-loops"><a href="#TOC">While loops</a></h2>
+<p>Again <code>while</code> loops in C are similar to Python:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="dt">int</span> i=<span class="dv">0</span>;
+  <span class="kw">while</span>(i*i &lt; <span class="dv">10</span>)
+  {
+    printf(<span class="st">&quot;i = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i);
+    i++;
+  }
+  printf(<span class="st">&quot;%d^2 &gt;= 10</span><span class="ch">\n</span><span class="st">&quot;</span>, i);</code></pre>
+<p>The output from the above is</p>
+<pre class="sourceCode C"><code class="sourceCode c">i = <span class="dv">0</span>
+i = <span class="dv">1</span>
+i = <span class="dv">2</span>
+i = <span class="dv">3</span>
+<span class="dv">4</span>^<span class="dv">2</span> &gt;= <span class="dv">10</span></code></pre>
+<p>Again the differences are mostly superficial. In C the condition attached to a <code>while</code> loop must be enclosed in brackets and the body of the loop is enclosed in curly brackets. Otherwise it works the same as in Python. We can use all of the same logical relations and operators in a <code>while</code> loop condition as we can in an <code>if</code> statement.</p>
+<p>Pulling the above loop apart what happens is that execution begins with setting <code>i</code> to <code>0</code>. We then enter the loop. The condition is checked at the <em>start</em> of each loop iteration. Since <code>i</code> is initially <code>0</code> the condition <code>i*i &lt; 10</code> becomes <code>0 &lt; 10</code> which is true so evaluates to <code>1</code>. This means that the loop body will execute. The loop body has the statement <code>i++</code> which increases <code>i</code> from <code>0</code> to <code>1</code>. Execution then goes back to the top of the while loop and the condition is checked again, the body is executed again and so on until <code>i</code> becomes <code>4</code>. At that point <code>4*4 &lt; 16</code> is false so evaluates to <code>0</code> terminating the loop. Execution then resumes after the loop at the <code>printf</code> statement which prints <code>4^2 &gt;= 10</code> (4^2 is supposed to be read as &quot;4 squared&quot; although the caret operator <code>^</code> actually has a different meaning in C). Note that the line <code>i = 4</code> is not printed.</p>
+<h2 id="for-loops"><a href="#TOC">For loops</a></h2>
+<p>For loops in C are different to those in Python. In Python we loop over some <em>object</em> e.g. a <code>list</code> or a <code>range</code>. In C a <code>for</code> loop is just an alternate syntax for common forms of <code>while</code> loop. A <code>for</code> loop in C looks like:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* forloop.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">5</span>; i++)
+  {
+    printf(<span class="st">&quot;i = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i);
+  }
+  printf(<span class="st">&quot;finished</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>We can run this to see</p>
+<pre><code>$ make
+gcc -std=c99 -Wall forloop.c -o forloop.exe
+$ ./forloop.exe
+i = 0
+i = 1
+i = 2
+i = 3
+i = 4
+finished</code></pre>
+<p>The syntax for a for loop is</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(&lt;initialiser&gt;; &lt;condition&gt;; &lt;iterate&gt;)
+  {
+    &lt;body&gt;
+  }</code></pre>
+<p>The execution of a for loop begins by executing the <code>&lt;initialiser&gt;</code> statement. Then at the start of each iteration the <code>&lt;condition&gt;</code> expression is checked (just like for a <code>while</code> loop). Then the loop <code>&lt;body&gt;</code> is executed and after that the <code>&lt;iterate&gt;</code> statement is executed. At that point execution goes back to the top of the loop and <code>&lt;condition&gt;</code> is checked again. We can rewrite this general form as a while loop like so</p>
+<pre class="sourceCode C"><code class="sourceCode c">  &lt;initialiser&gt;
+  <span class="kw">while</span>(&lt;condition&gt;)
+  {
+    &lt;body&gt;
+    &lt;iterate&gt;
+  }</code></pre>
+<p>Any of the three statements in the <code>for()</code> line is optional. We can make an infinite loop simply by omitting all three:</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(;;)
+  {
+    <span class="co">// infinite loop</span>
+  }</code></pre>
+<p>Although I've just discussed <code>for</code> loops in their full generality, by far the most common type of for loop simply iterates over some integers from <code>0</code> to <code>N-1</code>. This is equivalent to looping over a <code>range</code> in Python e.g.:</p>
+<pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">for</span> n in <span class="dt">range</span>(N):
+    <span class="co"># do stuff with n</span></code></pre>
+<p>The equivalent in C is just</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;N; n++)
+  {
+    <span class="co">/* do stuff with n */</span>
+  }</code></pre>
+<p>Note that this loop takes <code>n</code> through the values <code>0</code>, <code>1</code>, <code>2</code>, ..., <code>N-1</code>. It does not include an iteration with <code>n=N</code>. This is the same as Python's range object. If we do want a loop that goes from <code>0</code> to <code>N</code> <em>inclusive</em> then we can use <code>&lt;=</code> instead of <code>&lt;</code> in the condition.</p>
+<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;=N; n++)
+  {
+    <span class="co">/* do stuff with n */</span>
+  }</code></pre>
+<hr />
+<p>Next section: <a href="functions.html">Functions</a></p>
+    </div>
+  </body>
+</html>
