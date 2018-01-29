@@ -8,7 +8,7 @@ OUT=docs
 PAGES=$SRC/*.md
 
 # Names of css and template files
-TITLE="This is the title"
+TITLE="EMAT10006 - Further Computer Programming"
 CSSFILE=style.css
 TEMPLATE=$SRC/template.html
 
