@@ -72,10 +72,10 @@ total 20
 <p>If you use spaces instead of tabs in your Makefile then you will see one of the following helpful error messages:</p>
 <pre><code>$ make stuff.exe
 Makefile:2: *** missing separator. Stop.</code></pre>
-<p>Perhaps on newer versions you wiull see something like:</p>
+<p>Perhaps on newer versions you will see something like:</p>
 <pre><code>$ make stuff.exe
 make: nothing to be done for `stuff.exe&#39;.</code></pre>
-<p>At least <code>make</code> has told us the line (2) in the Makefile on which the error occurs. A good way to tell the difference between tab characters and spaces is to print the file to the terminal with <code>cat -A</code>. The <code>-A</code> flag to <code>cat</code> makes non-displaying ASCII characters distinguishable:</p>
+<p>At least in the first case <code>make</code> has told us the line (2) in the Makefile on which the error occurs. A good way to tell the difference between tab characters and spaces is to print the file to the terminal with <code>cat -A</code> (or <code>cat -e</code> on OSX). The <code>-A</code> flag to <code>cat</code> makes non-displaying ASCII characters distinguishable:</p>
 <pre><code>$ cat -A Makefile
 stuff.exe: stuff.c$
     gcc stuff.c -o stuff.exe$</code></pre>
