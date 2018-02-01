@@ -20,7 +20,7 @@
 <li><a href="#make-files">Make files</a><ul>
 <li><a href="#why-make-files">Why make files?</a></li>
 <li><a href="#simple-make-file">Simple make file</a></li>
-<li><a href="#missing-separator">Missing separator</a></li>
+<li><a href="#missing-separator-or-nothing-to-be-done">Missing separator or Nothing to be done</a></li>
 <li><a href="#the-all-target">The <code>all</code> target</a></li>
 <li><a href="#multiple-programs">Multiple programs</a></li>
 <li><a href="#summary">Summary</a></li>
@@ -67,11 +67,14 @@ total 20
 -rw-rw-r-- 1 oscar oscar   68 Feb  3 22:50 Makefile
 -rwxrwxr-x 1 oscar oscar 8560 Feb  3 22:55 stuff.exe
 -rw-rw-r-- 1 oscar oscar   90 Feb  3 22:50 stuffmain.c</code></pre>
-<h2 id="missing-separator"><a href="#TOC">Missing separator</a></h2>
+<h2 id="missing-separator-or-nothing-to-be-done"><a href="#TOC">Missing separator or Nothing to be done</a></h2>
 <p>One thing to note here about a make file is that the command is indented. It must be indented with a proper tab character: you cannot use e.g. 4 spaces. If (as is common for Python programmers) you have your editor configured to insert tabs instead of spaces then you may need to disable that setting or copy-paste a tab character from somewhere else to get this to work. My own editor (<code>vim</code>) is clever enough to know that proper tabs are always needed in make files even if I prefer spaces in Python files but that's not true of all editors.</p>
-<p>If you use spaces instead of tabs in your Makefile then you will see the helpful error message:</p>
+<p>If you use spaces instead of tabs in your Makefile then you will see one of the following helpful error messages:</p>
 <pre><code>$ make stuff.exe
 Makefile:2: *** missing separator. Stop.</code></pre>
+<p>Perhaps on newer versions you wiull see something like:</p>
+<pre><code>$ make stuff.exe
+make: nothing to be done for `stuff.exe&#39;.</code></pre>
 <p>At least <code>make</code> has told us the line (2) in the Makefile on which the error occurs. A good way to tell the difference between tab characters and spaces is to print the file to the terminal with <code>cat -A</code>. The <code>-A</code> flag to <code>cat</code> makes non-displaying ASCII characters distinguishable:</p>
 <pre><code>$ cat -A Makefile
 stuff.exe: stuff.c$

@@ -122,8 +122,8 @@ total 20
 -rw-rw-r-- 1 oscar oscar   90 Feb  3 22:50 stuffmain.c
 ~~~~
 
-Missing separator
------------------
+Missing separator or Nothing to be done
+---------------------------------------
 
 One thing to note here about a make file is that the command is indented. It
 must be indented with a proper tab character: you cannot use e.g. 4 spaces. If
@@ -134,8 +134,8 @@ editor (`vim`) is clever enough to know that proper tabs are always needed in
 make files even if I prefer spaces in Python files but that's not true of all
 editors.
 
-If you use spaces instead of tabs in your Makefile then you will see the
-helpful error message:
+If you use spaces instead of tabs in your Makefile then you will see one of
+the following helpful error messages:
 
 ~~~~
 $ make stuff.exe
@@ -144,10 +144,18 @@ Makefile:2: *** missing separator. Stop.
 
 [//]: #**
 
-At least `make` has told us the line (2) in the Makefile on which the error
-occurs. A good way to tell the difference between tab characters and spaces is
-to print the file to the terminal with `cat -A`. The `-A` flag to `cat`
-makes non-displaying ASCII characters distinguishable:
+Perhaps on newer versions you will see something like:
+
+```
+$ make stuff.exe
+make: nothing to be done for `stuff.exe'.
+```
+
+At least in the first case `make` has told us the line (2) in the Makefile on
+which the error occurs. A good way to tell the difference between tab
+characters and spaces is to print the file to the terminal with `cat -A` (or
+`cat -e` on OSX). The `-A` flag to `cat` makes non-displaying ASCII characters
+distinguishable:
 
 ~~~~
 $ cat -A Makefile
