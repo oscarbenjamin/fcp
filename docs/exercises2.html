@@ -47,7 +47,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 id="exercises"><a href="#TOC">Exercises</a></h1>
 <h2 id="loops-and-branching"><a href="#TOC">Loops and branching</a></h2>
 <p>Write a program that can determine if a (positive) number is prime. Fill out this skeleton program:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* primetest.c */</span>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* primetest.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -66,9 +66,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 gcc -std=c99 -Wall primetest.c -o primetest.exe
 $ ./primetest.exe
 51 is not prime</code></pre>
-<p>You can test if a number \(N\) is prime by checking if it is divisuble by any number \(n\) where \(2 \leq n\) and \(n^2 \leq N\). Try changing the value of <code>number</code> to check that it works. Now write a program that can print out all the prime numbers less than 100.</p>
+<p>You can test if a number \(N\) is prime by checking if it is divisible by any number \(n\) where \(2 \leq n\) and \(n^2 \leq N\). Try changing the value of <code>number</code> to check that it works. Now write a program that can print out all the prime numbers less than 100.</p>
 <p>Write a program that can check if an integer \(x\) is a root of a cubic polynomial \[ax^3 + bx^2 + cx + d\] where \(a\), \(b\), \(c\) and \(d\) are integers. Fill out the skeleton</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* isroot.c */</span>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* isroot.c */</span>
 
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -93,7 +93,7 @@ gcc -std=c99 -Wall isroot.c -o isroot.exe
 $ ./isroot.exe
 5 is a root of 1x^3 + -4x^2 + -7x + 10</code></pre>
 <p>Try different values for <code>x</code>, <code>a</code>, etc. Feel free to try and make the output polynomial look better...</p>
-<p>The <a href="https://en.wikipedia.org/wiki/Rational_root_theorem">rational root theorem</a> states that any integer root of a cubic with integer coefficients divides \(c\). Hence any integer root \(x\) must satisfy \(-c \le x \le c\) (assuming that \(c\) is positive). Adapt the above program so that it prints out all integer roots of the given cubic. Test your program out with different cubics. Example output might be</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Rational_root_theorem">rational root theorem</a> states that any integer root of a cubic with integer coefficients divides \(d\). Hence any integer root \(x\) must satisfy \(-d \le x \le d\) (assuming that \(d\) is positive). Adapt the above program so that it prints out all integer roots of the given cubic. Test your program out with different cubics. Example output might be</p>
 <pre><code>$ ./findroots.exe
 Roots of 1x^3 + -4x^2 + -7x + 10:
 -2 1 5</code></pre>

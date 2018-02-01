@@ -7,7 +7,7 @@ Loops and branching
 Write a program that can determine if a (positive) number is prime. Fill out
 this skeleton program:
 
-~~~~ C
+``` c
 /* primetest.c */
 
 #include <stdio.h>
@@ -22,9 +22,7 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-~~~~
-
-[//]: #*
+```
 
 Your program should print out
 
@@ -35,7 +33,7 @@ $ ./primetest.exe
 51 is not prime
 ~~~~
 
-You can test if a number $N$ is prime by checking if it is divisuble by any
+You can test if a number $N$ is prime by checking if it is divisible by any
 number $n$ where $2 \leq n$ and $n^2 \leq N$. Try changing the value of
 `number` to check that it works. Now write a program that can print out all
 the prime numbers less than 100.
@@ -44,7 +42,7 @@ Write a program that can check if an integer $x$ is a root of a cubic
 polynomial $$ax^3 + bx^2 + cx + d$$ where $a$, $b$, $c$ and $d$ are integers.
 Fill out the skeleton
 
-~~~~ C
+``` c
 /* isroot.c */
 
 #include <stdio.h>
@@ -64,26 +62,24 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-~~~~
-
-[//]: #*
+```
 
 Your program should print out something like
 
-~~~~
+```
 $ make
 gcc -std=c99 -Wall isroot.c -o isroot.exe
 $ ./isroot.exe
 5 is a root of 1x^3 + -4x^2 + -7x + 10
-~~~~
+```
 
 Try different values for `x`, `a`, etc. Feel free to try and make the output
 polynomial look better...
 
 The [rational root
 theorem](https://en.wikipedia.org/wiki/Rational_root_theorem) states that any
-integer root of a cubic with integer coefficients divides $c$. Hence any
-integer root $x$ must satisfy $-c \le x \le c$ (assuming that $c$ is
+integer root of a cubic with integer coefficients divides $d$. Hence any
+integer root $x$ must satisfy $-d \le x \le d$ (assuming that $d$ is
 positive).  Adapt the above program so that it prints out all integer roots of
 the given cubic. Test your program out with different cubics. Example output
 might be
