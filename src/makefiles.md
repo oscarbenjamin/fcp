@@ -46,6 +46,35 @@ It will read that file and then know how to compile everything. This is the
 command that we run each time we want to re-compile e.g. if we've changed the
 C code.
 
+As an example of something that we would compile using a `Makefile` I will
+show how to compile the Python interpreter. Note that this will not work in
+MinGW and that it takes some time to compile Python...
+
+Download and extract:
+
+```
+$ wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+$ tar -xzf Python-3.5.1.tgz
+```
+
+Go into the directory and compile:
+
+````
+$ cd Python-3.5.1/
+$ ./configure
+$ make
+```
+
+Run:
+
+```
+$ ./python
+Python 3.5.1 (default, Jan 31 2016, 23:11:01)
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
 So that's the idea behind make files but how do we actually use them?
 
 Simple make file

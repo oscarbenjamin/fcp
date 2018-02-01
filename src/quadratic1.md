@@ -324,9 +324,9 @@ void print_quadratic(int a, int b, int c)
 
 Think about how we normally write a polynomial to understand what's happening
 in all the conditions above. For example if the coefficient of $x^2$ is just $1$
-then we wouldn't usually include it. Likewise if it $-1$ then we would usually
-just write $-x^2$ rather than $-1x^2$. There are other cases non handled by
-the code above e.g· what happens if `a` is zero?
+then we wouldn't usually display the $1$. Likewise if it is $-1$ then we would
+usually just write $-x^2$ rather than $-1x^2$. There are other cases non
+handled by the code above e.g· what happens if `a` is zero?
 
 In any case let's use the above function in our programme. We put that code at
 the bottom of `quadratic.c`. At the top we'll add a declaration for the
@@ -366,10 +366,8 @@ all cases of interest.
 
 What bothers me about the `print_quadratic` function though is that it's long
 and repetitive. It's good to think when you have long and repetitive code
-whether there's a way to simplify it by introducing new functions. Let's do
-exactly that:
-
-
+whether there's a way to simplify it by introducing new functions. For now
+though this will have to do.
 
 If we go back to our original coefficients for $x^2 + 5x + 6$ then the
 programme prints
@@ -428,7 +426,7 @@ And this is exactly what we want in this particular case. There are still
 many ways that this code can be improved but for now this will do. So the
 complete programme at this point looks like
 
-~~~~ C
+``` c
 /*
  * quadratic.c
  *
@@ -555,7 +553,7 @@ void print_quadratic(int a, int b, int c)
         }
     }
 }
-~~~~
+```
 
 Download the code
 -----------------

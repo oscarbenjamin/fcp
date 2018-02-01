@@ -43,6 +43,18 @@
 $ make</code></pre>
 <p>The <code>./configure</code> command runs a script that is provided with the code. This script will check properties of your system: what compilers you have, what libraries are installed etc. You only need to run this script once after downloading the code. Usually this script will accept arguments that can affect how the code will be compiled for example <code>./configure --debug</code> might build the program with debug settings enabled.</p>
 <p>The second command <code>make</code> is what actually compiles the code. This command expects there to be a file called <code>Makefile</code> in the current working directory. It will read that file and then know how to compile everything. This is the command that we run each time we want to re-compile e.g. if we've changed the C code.</p>
+<p>As an example of something that we would compile using a <code>Makefile</code> I will show how to compile the Python interpreter. Note that this will not work in MinGW and that it takes some time to compile Python...</p>
+<p>Download and extract:</p>
+<pre><code>$ wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+$ tar -xzf Python-3.5.1.tgz</code></pre>
+<p>Go into the directory and compile:</p>
+<p>`<code>$ cd Python-3.5.1/ $ ./configure $ make</code></p>
+<p>Run:</p>
+<pre><code>$ ./python
+Python 3.5.1 (default, Jan 31 2016, 23:11:01)
+[GCC 4.9.2] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
 <p>So that's the idea behind make files but how do we actually use them?</p>
 <h2 id="simple-make-file"><a href="#TOC">Simple make file</a></h2>
 <p>Create a small C program called e.g. <code>stuffmain.c</code>. This program will compile to produce an executable called <code>stuff.exe</code>. The command to compile is <code>gcc -std=c99 -Wall stuff.c -o stuff.exe</code>. So how do we make a make file for that.</p>

@@ -36,7 +36,7 @@ Notes
 * [Loops and branching](loopsbranching.html)
 * [Functions](functions.html)
 * [Quadratic Example](quadratic1.html)
+* [Floating point](floating_point.html)
+* [Command line programs](commandline.html)
 * [Exercises](exercises2.html)
 * [Slides](slides2.html)
-
-* [Floating point](floating_point.html)
