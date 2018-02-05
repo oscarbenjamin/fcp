@@ -1,8 +1,8 @@
 Exercises
 =========
 
-Exercise- reverse an array
---------------------------
+Exercise - reverse an array
+---------------------------
 
 Write a function that can reverse the elements of an array. In Python this is
 easily done with e.g. `reversed(mylist)` or `mylist[::-1]` but in C this is a
