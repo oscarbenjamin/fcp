@@ -40,3 +40,9 @@ Notes
 * [Command line programs](commandline.html)
 * [Exercises](exercises2.html)
 * [Slides](slides2.html)
+
+# Week 3
+* [Arrays](arrays.html)
+* [Strings](strings.html)
+* [Quadratic Revisited](quadratic2.html)
+* [Slides](week3.html)

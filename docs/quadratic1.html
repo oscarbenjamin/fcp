@@ -260,7 +260,7 @@ The roots of 1x^2 + 1x + -1 are:
         }
     }
 }</code></pre>
-<p>Think about how we normally write a polynomial to understand what's happening in all the conditions above. For example if the coefficient of \(x^2\) is just \(1\) then we wouldn't usually include it. Likewise if it \(-1\) then we would usually just write \(-x^2\) rather than \(-1x^2\). There are other cases non handled by the code above e.g· what happens if <code>a</code> is zero?</p>
+<p>Think about how we normally write a polynomial to understand what's happening in all the conditions above. For example if the coefficient of \(x^2\) is just \(1\) then we wouldn't usually display the \(1\). Likewise if it is \(-1\) then we would usually just write \(-x^2\) rather than \(-1x^2\). There are other cases non handled by the code above e.g· what happens if <code>a</code> is zero?</p>
 <p>In any case let's use the above function in our programme. We put that code at the bottom of <code>quadratic.c</code>. At the top we'll add a declaration for the function along with the declaration for <code>isqrt</code> so it looks like</p>
 <pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> isqrt(<span class="dt">int</span>);
 <span class="dt">void</span> print_quadratic(<span class="dt">int</span> a, <span class="dt">int</span> b, <span class="dt">int</span> c);</code></pre>
@@ -277,7 +277,7 @@ The roots of x^<span class="dv">2</span> + x - <span class="dv">1</span> are:
 (-<span class="dv">1</span> + sqrt(<span class="dv">5</span>)) / <span class="dv">2</span>
 (-<span class="dv">1</span> - sqrt(<span class="dv">5</span>)) / <span class="dv">2</span></code></pre>
 <p>Notice how the formatting of the polynomial looks the way that we wanted it to. As mentioned earlier though it still won't be correct in all cases. The advantage of having a function though is that if we need to fix that code there will be one obvious place to fix it. We should at this point try changing the coefficients to see that it prints out the way that we want to in all cases of interest.</p>
-<p>What bothers me about the <code>print_quadratic</code> function though is that it's long and repetitive. It's good to think when you have long and repetitive code whether there's a way to simplify it by introducing new functions. Let's do exactly that:</p>
+<p>What bothers me about the <code>print_quadratic</code> function though is that it's long and repetitive. It's good to think when you have long and repetitive code whether there's a way to simplify it by introducing new functions. For now though this will have to do.</p>
 <p>If we go back to our original coefficients for \(x^2 + 5x + 6\) then the programme prints</p>
 <pre class="sourceCode C"><code class="sourceCode c">$ make
 gcc -std=c99 -Wall quadratic.c -o quadratic.exe
@@ -310,7 +310,7 @@ The roots of x^2 + 5x + 6 are:
 -2
 -3</code></pre>
 <p>And this is exactly what we want in this particular case. There are still many ways that this code can be improved but for now this will do. So the complete programme at this point looks like</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/*</span>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/*</span>
 <span class="co"> * quadratic.c</span>
 <span class="co"> *</span>
 <span class="co"> * Author: Oscar Benjamin</span>

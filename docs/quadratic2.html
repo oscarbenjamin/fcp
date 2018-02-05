@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#quadratic-2.0">Quadratic 2.0</a><ul>
+<li><a href="#what-we-had-before">What we had before</a></li>
+<li><a href="#download-the-code">Download the code</a></li>
+</ul></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="quadratic-2.0"><a href="#TOC">Quadratic 2.0</a></h1>
+<p>Let's return to our quadratic solving programme now. If you haven't read the previous part then you can find that <a href="quadratic1.html">here</a>.</p>
+<p>Armed with our new ability to handle command line arguments, process strings and use arrays let's return to the quadratic programme and make it take its input coefficients on the command line.</p>
+<h2 id="what-we-had-before"><a href="#TOC">What we had before</a></h2>
+<p>Our <code>main</code> function previously began with something like this:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> a = <span class="dv">1</span>;
+    <span class="dt">int</span> b = <span class="dv">5</span>;
+    <span class="dt">int</span> c = <span class="dv">6</span>;
+
+    <span class="co">/* Show the quadratic we&#39;re showing for the user */</span>
+    printf(<span class="st">&quot;The roots of &quot;</span>);
+    print_quadratic(a, b, c);
+    printf(<span class="st">&quot; are:</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<p>The problem with this is that every time we want to change the coefficients (<code>a</code>, <code>b</code>, and <code>c</code>) we have to recompile the programme. This is because the values of the coefficients are <em>hard-coded</em> which means that we put them directly in our code.</p>
+<p>How can we solve this? We can make our programme take these numbers from the command line. Then someone can rerun our programme again and again typing different arguments in the terminal without having to edit the code and recompile it each time. So how do we change our programme to do that?</p>
+<p>We can change the first part of our <code>main</code> function to look like</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="co">/* The three coefficients */</span>
+    <span class="dt">int</span> a, b, c;
+
+    <span class="co">/* Parse command line arguments */</span>
+    <span class="kw">if</span>(argc != <span class="dv">4</span>)
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Usage:</span><span class="ch">\n</span><span class="st">./quadratic.exe A B C</span><span class="ch">\n</span><span class="st">&quot;</span>);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+    <span class="kw">else</span> <span class="kw">if</span>(!sscanf(argv[<span class="dv">1</span>], <span class="st">&quot;%d&quot;</span>, &amp;a))
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Invalid coefficient </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
+                argv[<span class="dv">1</span>]);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+    <span class="kw">else</span> <span class="kw">if</span>(!sscanf(argv[<span class="dv">2</span>], <span class="st">&quot;%d&quot;</span>, &amp;b))
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Invalid coefficient </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
+                argv[<span class="dv">2</span>]);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+    <span class="kw">else</span> <span class="kw">if</span>(!sscanf(argv[<span class="dv">3</span>], <span class="st">&quot;%d&quot;</span>, &amp;c))
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Invalid coefficient </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
+                argv[<span class="dv">3</span>]);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+
+    <span class="co">/* Show the quadratic we&#39;re solving */</span>
+    printf(<span class="st">&quot;The roots of &quot;</span>);
+    print_quadratic(a, b, c);
+    printf(<span class="st">&quot; are:</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<p>Now if we run it we can see that it checks for bad input:</p>
+<pre><code>$ ./quadratic.exe
+Usage:
+./quadratic.exe A B C
+$ ./quadratic.exe foo bar baz
+Invalid coefficient &quot;foo&quot;</code></pre>
+<p>But also we can give good input and it give us the roots based on what was passed on the command line:</p>
+<pre><code>$ ./quadratic.exe 1 2 3
+The roots of x^2 + 2x + 3 are:
+(-2 + sqrt(-8)) / 2
+(-2 - sqrt(-8)) / 2
+$ ./quadratic.exe 2 3 4
+The roots of 2x^2 + 3x + 4 are:
+(-3 + sqrt(-23)) / 4
+(-3 - sqrt(-23)) / 4</code></pre>
+<p>This is great. Now it's easier to test with different polynomials.</p>
+<p>The problems with the code above are that it's repetitive and also that it doesn't properly check for errors in the input. It detects if the first character of the string is not a digit but if the string starts with digits then it will accept the string and ignore the remaining digits:</p>
+<pre><code>$ ./quadratic.exe 1 2 s
+Invalid coefficient &quot;s&quot;
+$ ./quadratic.exe 1 2 4s
+The roots of x^2 + 2x + 4 are:
+(-2 + sqrt(-12)) / 2
+(-2 - sqrt(-12)) / 2</code></pre>
+<p>This is just down to the way that <code>sscanf</code> works. The solution is to make our own function that can validate the string. While we're at it we'll make a function that can parse the string so we can reuse it:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> is_decimal_string(<span class="dt">char</span> str[])
+{
+    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; str[i]!=&#39;\<span class="dv">0</span>&#39;; i++)
+    {
+        <span class="kw">if</span>(!isdigit(str[i]))
+        {
+            <span class="kw">return</span> <span class="dv">0</span>;
+        }
+    }
+    <span class="kw">return</span> <span class="dv">1</span>;
+}
+
+<span class="dt">int</span> parse_decimal_string(<span class="dt">char</span> str[])
+{
+    <span class="dt">int</span> num;
+    <span class="kw">if</span>(!sscanf(str, <span class="st">&quot;%d&quot;</span>, &amp;num))
+    {
+        fprintf(stderr, <span class="st">&quot;Parsing bad string...</span><span class="ch">\n</span><span class="st">&quot;</span>);
+        <span class="kw">return</span> -<span class="dv">1</span>;
+    }
+    <span class="kw">return</span> num;
+}</code></pre>
+<p>We can now use these to rewrite the top of our <code>main</code> function as</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="co">/* The three coefficients */</span>
+    <span class="dt">int</span> a, b, c;
+
+    <span class="co">/* Parse command line arguments */</span>
+    <span class="kw">if</span>(argc != <span class="dv">4</span>)
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Usage:</span><span class="ch">\n</span><span class="st">./quadratic.exe A B C</span><span class="ch">\n</span><span class="st">&quot;</span>);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">1</span>; i&lt;=<span class="dv">3</span>; i++)
+    {
+        <span class="kw">if</span>(!is_decimal_string(argv[i]))
+        {
+            fprintf(stderr,
+                    <span class="st">&quot;Invalid coefficient </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
+                    argv[i]);
+            <span class="kw">return</span> <span class="dv">1</span>;
+        }
+    }
+    <span class="co">/* At this point the arguments are validated</span>
+<span class="co">     * so no need for further error checking */</span>
+    a = parse_decimal_string(argv[<span class="dv">1</span>]);
+    b = parse_decimal_string(argv[<span class="dv">2</span>]);
+    c = parse_decimal_string(argv[<span class="dv">3</span>]);</code></pre>
+<p>Now we still parse valid strings the same but have improved error checking for invalid strings:</p>
+<pre><code>$ ./quadratic.exe 1 2 3
+The roots of x^2 + 2x + 3 are:
+(-2 + sqrt(-8)) / 2
+(-2 - sqrt(-8)) / 2
+$ ./quadratic.exe 1 2 3s
+Invalid coefficient &quot;3s&quot;</code></pre>
+<p>At this point you may be thinking that actually including these functions is just making our code longer. Sometimes using more functions does make the code longer. Really what's important though is that the code is neatly modularised: we want each individual function to be small and straight-forward so that our code is easy to understand. We want to eliminate repetition so that there's only one place we need to change the code when we want to change some aspect throughout.</p>
+<p>Really our <code>main</code> function is actually still too big. So we'll move all the output into a function called <code>print_roots</code> and now our <code>main</code> function looks like</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="co">/* The three coefficients */</span>
+    <span class="dt">int</span> a, b, c;
+
+    <span class="co">/* Parse command line arguments */</span>
+    <span class="kw">if</span>(argc != <span class="dv">4</span>)
+    {
+        fprintf(stderr,
+                <span class="st">&quot;Usage:</span><span class="ch">\n</span><span class="st">./quadratic.exe A B C</span><span class="ch">\n</span><span class="st">&quot;</span>);
+        <span class="kw">return</span> <span class="dv">1</span>;
+    }
+    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">1</span>; i&lt;=<span class="dv">3</span>; i++)
+    {
+        <span class="kw">if</span>(!is_decimal_string(argv[i]))
+        {
+            fprintf(stderr,
+                    <span class="st">&quot;Invalid coefficient </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
+                    argv[i]);
+            <span class="kw">return</span> <span class="dv">1</span>;
+        }
+    }
+    <span class="co">/* At this point the arguments are validated</span>
+<span class="co">     * so no need for further error checking */</span>
+    a = parse_decimal_string(argv[<span class="dv">1</span>]);
+    b = parse_decimal_string(argv[<span class="dv">2</span>]);
+    c = parse_decimal_string(argv[<span class="dv">3</span>]);
+    print_roots(a, b, c);
+
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>We can go further but this is a reasonable size. We can easily see what the main function does at a glance and it shows us a high-level view of what the programme does. It checks to see that it has 3 integers as command line arguments and prints an error message if not. Otherwise it parses the command line arguments as integers and prints the roots of the corresponding quadratic.</p>
+<h2 id="download-the-code"><a href="#TOC">Download the code</a></h2>
+<p>No doubt we can improve this programme further still and we will later. For now you can download the current version here:</p>
+<p><a href="quadratic-2.0.zip">Quadratic 2.0</a></p>
+    </div>
+  </body>
+</html>

@@ -76,6 +76,9 @@ $ ./isroot.exe
 Try different values for `x`, `a`, etc. Feel free to try and make the output
 polynomial look better...
 
+Cubic solver
+------------
+
 The [rational root
 theorem](https://en.wikipedia.org/wiki/Rational_root_theorem) states that any
 integer root of a cubic with integer coefficients divides $d$. Hence any
