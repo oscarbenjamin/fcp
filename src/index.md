@@ -45,4 +45,5 @@ Notes
 * [Arrays](arrays.html)
 * [Strings](strings.html)
 * [Quadratic Revisited](quadratic2.html)
+* [Exercises](exercises3.html)
 * [Slides](week3.html)

@@ -412,18 +412,3 @@ things depending on the arguments typed on the command line in the shell when
 running the program. This is exactly what we want our programs to be able to
 do so that we don't have to recompile them all the time just to change some
 numbers or something.
-
-Exercise
---------
-
-Extend the cubic integer root-finder program from [last
-week](exercises2.html#cubic-solver). Your program should now take its input
-from the command line e.g.:
-
-```
-$ ./findroots.exe 1 -4 -7 10
-Roots of x^3 - 4x^2 - 7x + 10:
--2 1 5
-```
-
-Bonus points: can you make this work for a polynomial of any order?

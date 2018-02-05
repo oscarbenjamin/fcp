@@ -45,7 +45,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#parsing-strings">Parsing strings</a></li>
 <li><a href="#exercise---sscanf">Exercise - sscanf</a></li>
 <li><a href="#command-line-arguments">Command line arguments</a></li>
-<li><a href="#exercise">Exercise</a></li>
 </ul></li>
 </ul>
     </div>
@@ -275,12 +274,6 @@ argv[1] is foo
 argv[2] is bar
 argv[3] is baz</code></pre>
 <p>Now look carefully at that. We can see that the program prints out different things depending on the arguments typed on the command line in the shell when running the program. This is exactly what we want our programs to be able to do so that we don't have to recompile them all the time just to change some numbers or something.</p>
-<h2 id="exercise"><a href="#TOC">Exercise</a></h2>
-<p>Extend the cubic integer root-finder program from <a href="exercises2.html#cubic-solver">last week</a>. Your program should now take its input from the command line e.g.:</p>
-<pre><code>$ ./findroots.exe 1 -4 -7 10
-Roots of x^3 - 4x^2 - 7x + 10:
--2 1 5</code></pre>
-<p>Bonus points: can you make this work for a polynomial of any order?</p>
     </div>
   </body>
 </html>
