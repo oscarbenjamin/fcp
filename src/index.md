@@ -47,3 +47,8 @@ Notes
 * [Quadratic Revisited](quadratic2.html)
 * [Exercises](exercises3.html)
 * [Slides](week3.html)
+
+# Week 4
+* [Pointers](pointers.html)
+* [Structs](structs.html)
+* [FileIO](fileio.html)

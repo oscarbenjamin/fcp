@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+  <body>
+    <div id="header">
+        EMAT10006 - Further Computer Programming
+    </div>
+    <div id="TOC">
+      <ul><li><a href="index.html">Site Index</a></li></ul>
+<ul>
+<li><a href="#file-io">File IO</a><ul>
+<li><a href="#character-by-character">Character by character</a></li>
+<li><a href="#line-by-line">Line by line</a></li>
+<li><a href="#chunk-by-chunk">Chunk by chunk</a></li>
+<li><a href="#exercises">Exercises</a></li>
+</ul></li>
+</ul>
+    </div>
+    <div id="main">
+<h1 id="file-io"><a href="#TOC">File IO</a></h1>
+<p>Most real programs need to do stuff with files. There are basically two things you can do with files: you can <em>read from</em> them or you can <em>write to</em> them. These are analogous to the load/save commands that you're probably used to using in graphical programs. Many programs don't have a graphical interface and in fact their sole purpose is to read one file and use it to write another. A good example of this is the compiler <code>gcc</code> which we have been using to compile our C programs. When we type</p>
+<pre><code>$ gcc hello.c -o hello.exe</code></pre>
+<p>we are running <code>gcc</code> and telling it that the input file is <code>hello.c</code> and the output (<code>-o</code> for output) should be a file called <code>hello.exe</code>. The <code>gcc</code> program will read the file <code>hello.c</code> line by line, compile the C code to machine code and write the output to the file <code>hello.exe</code>. Actually there's a few more stages than this in what <code>gcc</code> does but it doesn't matter much right now. This concept of input/output is so common and generic in computing that it is typically abbreviated to &quot;IO&quot;. This is why the header file we've been using all along is called <code>stdio.h</code> which is short for STandarD Input Output.</p>
+<h2 id="character-by-character"><a href="#TOC">Character by character</a></h2>
+<p>In some cases the simplest way to do IO is to read and write individual characters. C provides two functions for doing this: <code>fgetc</code> and <code>fputc</code>:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* chario.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="co">/*</span>
+<span class="co">   * Open both files checking for success.</span>
+<span class="co">   */</span>
+  <span class="dt">char</span> infilename[] = <span class="st">&quot;foo.txt&quot;</span>;
+  <span class="dt">char</span> outfilename[] = <span class="st">&quot;bar.txt&quot;</span>;
+
+  FILE* infile = fopen(infilename, <span class="st">&quot;r&quot;</span>); <span class="co">// read</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  FILE* outfile = fopen(outfilename, <span class="st">&quot;w&quot;</span>); <span class="co">// write</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, outfilename);
+    fclose(infile);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="co">/*</span>
+<span class="co">   * read each character of infile and write to outfile</span>
+<span class="co">   */</span>
+  <span class="dt">char</span> character;
+  <span class="kw">for</span>(;;) <span class="co">// &lt;-- infinite loop</span>
+  {
+    <span class="co">/*</span>
+<span class="co">     * Read character and check for End Of File</span>
+<span class="co">     */</span>
+    character = fgetc(infile);
+    <span class="kw">if</span>(character == EOF)
+    {
+      <span class="kw">break</span>; <span class="co">// exit loop</span>
+    }
+
+    <span class="co">/* convert to lower case */</span>
+    <span class="kw">if</span>(&#39;a&#39; &lt;= character &amp;&amp; character &lt;= &#39;z&#39;)
+    {
+      character -= &#39;a&#39; - &#39;A&#39;;
+    }
+
+    <span class="co">/* Write to hte output file */</span>
+    fputc(character, outfile);
+  }
+
+  fclose(infile);
+  fclose(outfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>(For the above program to work you first need to create a file called &quot;foo.txt&quot; and put some text in it.)</p>
+<p>Note that there's a few stages to using files here. First before we can read/write we need to <em>open</em> the files with <code>fopen</code>. When calling <code>fopen</code> we ask for either read <code>&quot;r&quot;</code> or write <code>&quot;w&quot;</code> permissions. We need to check the success of the <code>fopen</code> function. Like many functions which return a pointer the <code>fopen</code> function returns <code>NULL</code> on failure. We must not attempt to read/write the files in this case so we print a message and exit the program. When we're done reading/writing the files we need to close them with <code>fclose</code>.</p>
+<p>Between <code>fopen</code> and <code>fclose</code> we can call read/write functions on the file objects. In this case we're using <code>fgetc</code> to read one character at a time from the file. We can also use <code>fputc</code> to write one character to the output at a time. This program reads the input character, converts it to upper case and then writes it to the output file. It does this in a loop until <code>fgetc</code> returns <code>EOF</code> which is a special value indicating that all the characters have been read from the file and we are now at the End Of the File.</p>
+<h2 id="line-by-line"><a href="#TOC">Line by line</a></h2>
+<p>Reading a file character-by-character is tedious for many applications and can also be inefficient. It's more common to read in larger chunks and there are two main ways to do this depending on whether the file is a <em>text file</em> or a <em>binary file</em>. Text files contain bytes representing ASCII characters and are typically separated into <em>lines</em>. A line is a sequence of characters that ends with a newline character. Binary files are not usually organised in lines and can have any structure for the bytes inside. When reading text files the lines have some logical meaning so it is common to write a program that reads such a file line by line. For that C provides the functions <code>fgets</code> and <code>fputs</code>:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* fgets.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">char</span> line[<span class="dv">256</span>];
+  <span class="dt">int</span> line_number = <span class="dv">1</span>;
+
+  FILE* inputfile = fopen(<span class="st">&quot;fgets.c&quot;</span>, <span class="st">&quot;r&quot;</span>);
+  <span class="kw">if</span>(inputfile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open file</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="kw">while</span>(fgets(line, <span class="dv">256</span>, inputfile) != NULL)
+  {
+    printf(<span class="st">&quot;%d: %s&quot;</span>, line_number, line);
+    line_number++;
+  }
+  fclose(inputfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>Note that when calling <code>fgets</code> we pass it an array (called <code>line</code> in this example). The function will read bytes from the file and copy them into the array. It stops wen it finds a newline character in the file (or EOF or an error). <code>fgets</code> will return <code>NULL</code> when it gets to the EOF so we can use that as a condition to terminate our loop that reads lines. We also need to tell <code>fgets</code> how big our array is (256 in this example) so that it doesn't overfill the array. We choose the size of the array to be big enough that we will usually be able to fit a whole line in. Note that the loop above replaces the contents of <code>line</code> on each iteration: at the end of the program <code>line</code> will only store the last line that was read from the file.</p>
+<h2 id="chunk-by-chunk"><a href="#TOC">Chunk by chunk</a></h2>
+<p>The other way to read files is in fixed size chunks. This is the most common way to read a binary file and often the contents of a binary file are arranged in chunks of some known size. For this C provides the functions <code>fread</code> and <code>fwrite</code> which will read/write fixed size chunks. Let's say for example that we wanted to copy a file (just like the <code>cp</code> command). The standard way would be to read in chunks that are not too large or too small (4096 bytes is a reasonable size) and write each chunk to the output file. We can do that like so:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* chunks.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="co">/* input args should be source and destination */</span>
+  <span class="kw">if</span>(argc != <span class="dv">3</span>)
+  {
+    fprintf(stderr, <span class="st">&quot;Usage: ./chunks.exe INPUTFILE OUTPUTFILE</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+  <span class="dt">char</span>* infilename = argv[<span class="dv">1</span>];
+  <span class="dt">char</span>* outfilename = argv[<span class="dv">2</span>];
+
+  FILE* infile = fopen(infilename, <span class="st">&quot;rb&quot;</span>); <span class="co">// read</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  FILE* outfile = fopen(outfilename, <span class="st">&quot;wb&quot;</span>); <span class="co">// write</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    fclose(infile);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="co">/*</span>
+<span class="co">   * Loop until read less than 4096 bytes.</span>
+<span class="co">   */</span>
+  <span class="dt">int</span> bytes_read;
+  <span class="dt">char</span> chunk[<span class="dv">4096</span>];
+  <span class="kw">for</span>(;;)
+  {
+    bytes_read = fread(chunk, <span class="dv">1</span>, <span class="dv">4096</span>, infile);
+    fwrite(chunk, <span class="dv">1</span>, bytes_read, outfile);
+    <span class="kw">if</span>(bytes_read &lt; <span class="dv">4096</span>)
+    {
+      <span class="kw">break</span>;
+    }
+  }
+
+  fclose(infile);
+  fclose(outfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>So in the example above we see that we call <code>fread</code> with 4 arguments which are: the array we want to read into (<code>chunk</code>), the size of the elementary type that we're trying to read (e.g. 1 byte for <code>char</code>), the number of elements we want to read (4096) and the file object we want to read from. <code>fread</code> will then read \(1\times 4096\) bytes from the file referred to by <code>infile</code> and store them in the array <code>chunk</code>.</p>
+<p><code>fread</code> returns the number of bytes actually read from the file which may be less than we requested if e.g. we've reached the end of the file. <code>fwrite</code> takes all the same arguments but writes the bytes currently in the array <code>chunk</code> out to the file referred to by <code>outfile</code>. We tell <code>fwrite</code> to write the number of bytes that <code>fread</code> said it read. <code>bytes_read</code> will be 4096 after reading each chunk except for the last iteration when we've reached the end of the file.</p>
+<h2 id="exercises"><a href="#TOC">Exercises</a></h2>
+<p>Test out the programs above. Compile them, try them with different input files and make sure that you understand what they do.</p>
+    </div>
+  </body>
+</html>
