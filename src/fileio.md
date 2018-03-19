@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
   }
 
   FILE* outfile = fopen(outfilename, "w"); // write
-  if(infile == NULL)
+  if(outfile == NULL)
   {
     fprintf(stderr, "Unable to open \"%s\"\n", outfilename);
     fclose(infile);

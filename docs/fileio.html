@@ -72,7 +72,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   }
 
   FILE* outfile = fopen(outfilename, <span class="st">&quot;w&quot;</span>); <span class="co">// write</span>
-  <span class="kw">if</span>(infile == NULL)
+  <span class="kw">if</span>(outfile == NULL)
   {
     fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, outfilename);
     fclose(infile);
