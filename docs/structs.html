@@ -4,27 +4,73 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - </title>
+  <title>EMAT10006 - Further Computer Programming - structs</title>
   <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -44,103 +90,105 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul>
     </div>
     <div id="main">
-<h1 id="structs"><a href="#TOC">Structs</a></h1>
+<h1 id="structs">Structs</h1>
 <p>Structs in C are a way to create a composite data type out of elementary data types. This is similar to creating a <em>class</em> in languages such as Python but works in a lower-level way.</p>
 <p>A simple example:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* struct.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="kw">struct</span> Vector3D
-{
-  <span class="dt">int</span> x;
-  <span class="dt">int</span> y;
-  <span class="dt">int</span> z;
-} <span class="kw">typedef</span> Vec3D; <span class="co">// &lt;-- this is the name</span>
-
-<span class="dt">int</span> norm2(Vec3D vector);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  Vec3D some_vector = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};
-  printf(<span class="st">&quot;some_vector has norm %d</span><span class="ch">\n</span><span class="st">&quot;</span>, norm2(some_vector));
-  <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">int</span> norm2(Vec3D vector)
-{
-  <span class="kw">return</span> vector.x * vector.x
-       + vector.y * vector.y
-       + vector.z * vector.z;
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/* struct.c */</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">struct</span> Vector3D</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="dt">int</span> x;</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="dt">int</span> y;</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">  <span class="dt">int</span> z;</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">} <span class="kw">typedef</span> Vec3D; <span class="co">// &lt;-- this is the name</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="dt">int</span> norm2(Vec3D vector);</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">{</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">  Vec3D some_vector = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">  printf(<span class="st">&quot;some_vector has norm %d</span><span class="sc">\n</span><span class="st">&quot;</span>, norm2(some_vector));</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="dt">int</span> norm2(Vec3D vector)</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">{</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">  <span class="cf">return</span> vector.x * vector.x</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">       + vector.y * vector.y</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">       + vector.z * vector.z;</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">}</a></code></pre></div>
 <p>the output from this is</p>
 <pre><code>$ ./struct.exe
 some_vector has norm 26</code></pre>
 <p>So what happened there? We use the <code>struct</code> statement to define a struct. Our struct represents a 3D vector and has two names <code>Vector3D</code> and <code>Vec3D</code>. The reason that it has two names is just a strange historical artefact of the way that C has evolved over the years. The first name can be anything for our purposes as we will only use the second name <code>Vec3D</code>.</p>
 <p>In the body of the struct we list variables each having a type e.g. <code>int</code> and a name e.g. <code>x</code>. In this particular case our struct defines a 3D vector with 3 integer coordinates called <code>x</code>, <code>y</code>, and <code>z</code>. These are the members of the struct.</p>
-<p>Having defined a struct <code>Vec3D</code> we can use this name just like <code>int</code> or <code>char</code> or any other data type. So we can declare a function called <code>norm2</code> which has an argument of type <code>Vec3D</code>. A variable of type <code>Vec3D</code> has members called <code>x</code>, <code>y</code> and <code>z</code>. In the definition of the function <code>norm2</code> the argument of type <code>Vec3D</code> is called <code>vector</code>. We can access e.g. the <code>x</code> member of the struct with the expression <code>vector.x</code>.</p>
-<p>We can declare a variable of type <code>Vec3D</code> e.g. <code>Vec3D some_vector</code>. Since the struct has 3 members and each of those needs 4 bytes of storage space the total space needed for <code>some_vector</code> is 12 bytes (on some systems it may end up using more space because of <em>alignment</em> but I don't want to explain that here).</p>
-<h2 id="multiple-struct-variables"><a href="#TOC">Multiple struct variables</a></h2>
-<p>In the example above the struct doesn't seem like much of an improvement over just using 3 separate variables. One way in which structs start to become more useful is if we have many struct variables of the same type. In our example each can group together its 3 coordinates keeping them as a single object. Let's extend the above example to have two vectors and a dot product function:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* dot.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="kw">struct</span> Vector3D
-{
-  <span class="dt">int</span> x;
-  <span class="dt">int</span> y;
-  <span class="dt">int</span> z;
-} <span class="kw">typedef</span> Vec3D; <span class="co">// &lt;-- this is the name</span>
-
-<span class="dt">int</span> dot(Vec3D a, Vec3D b);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  Vec3D vec1 = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};
-  Vec3D vec2 = {-<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>};
-  printf(<span class="st">&quot;vec1 dot vecb = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, dot(vec1, vec2));
-  <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">int</span> dot(Vec3D a, Vec3D b)
-{
-  <span class="kw">return</span> a.x * b.x + a.y * b.y + a.z * b.z;
-}</code></pre>
+<p>Having defined a struct <code>Vec3D</code> we can use this name just like <code>int</code> or <code>char</code> or any other data type. So we can declare a function called <code>norm2</code> which has an argument of type <code>Vec3D</code>. A variable of type <code>Vec3D</code> has members called <code>x</code>, <code>y</code> and <code>z</code>. In the definition of the function <code>norm2</code> the argument of type <code>Vec3D</code> is called <code>vector</code>. We can access e.g. the <code>x</code> member of the struct with the expression <code>vector.x</code>.</p>
+<p>We can declare a variable of type <code>Vec3D</code> e.g. <code>Vec3D some_vector</code>. Since the struct has 3 members and each of those needs 4 bytes of storage space the total space needed for <code>some_vector</code> is 12 bytes (on some systems it may end up using more space because of <em>alignment</em> but I don’t want to explain that here).</p>
+<h2 id="multiple-struct-variables">Multiple struct variables</h2>
+<p>In the example above the struct doesn’t seem like much of an improvement over just using 3 separate variables. One way in which structs start to become more useful is if we have many struct variables of the same type. In our example each can group together its 3 coordinates keeping them as a single object. Let’s extend the above example to have two vectors and a dot product function:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* dot.c */</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">struct</span> Vector3D</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">int</span> x;</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">int</span> y;</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="dt">int</span> z;</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">} <span class="kw">typedef</span> Vec3D; <span class="co">// &lt;-- this is the name</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="dt">int</span> dot(Vec3D a, Vec3D b);</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">{</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">  Vec3D vec1 = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">  Vec3D vec2 = {-<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>};</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">  printf(<span class="st">&quot;vec1 dot vecb = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, dot(vec1, vec2));</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">}</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="dt">int</span> dot(Vec3D a, Vec3D b)</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">{</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">  <span class="cf">return</span> a.x * b.x + a.y * b.y + a.z * b.z;</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">}</a></code></pre></div>
 <p>We can even have an array of structs e.g. <code>Vec3D vectors[10]</code> and we can initialise this by combining struct initialisation syntax with array initialisation syntax:</p>
-<pre class="sourceCode c"><code class="sourceCode c">   Vec3D vectors[<span class="dv">3</span>] = {{<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}, {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}, {<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>}};</code></pre>
-<h2 id="exercise"><a href="#TOC">Exercise</a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" data-line-number="1">   Vec3D vectors[<span class="dv">3</span>] = {{<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}, {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}, {<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>}};</a></code></pre></div>
+<h2 id="exercise">Exercise</h2>
 <p>Extend the above by adding a cross product function and a function to print a vector displaying it as e.g. <code>(1, 2, 3)</code>.</p>
-<h2 id="pointers-to-structs"><a href="#TOC">Pointers to structs</a></h2>
+<h2 id="pointers-to-structs">Pointers to structs</h2>
 <p>Just as we can have pointers to other variables we can also have pointers to structs. We declare them in much the same way but a pointer to a struct gives us a special syntax for accessing the members of the struct. A short example is</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* pstruct.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="kw">struct</span> Vector3D
-{
-  <span class="dt">int</span> x;
-  <span class="dt">int</span> y;
-  <span class="dt">int</span> z;
-} <span class="kw">typedef</span> Vec3D;
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  Vec3D vec = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};
-
-  Vec3D *pvec = &amp;vec;
-
-  <span class="co">// These two are equivalent</span>
-  printf(<span class="st">&quot;(*pvec).x = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, (*pvec).x);
-  printf(<span class="st">&quot;pvec-&gt;x   = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, pvec-&gt;x);
-
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
-<p>When we run this we get <code>(*pvec).x = 3 pvec-&gt;x   = 3</code></p>
-<p>This shows the two equivalent ways to access the member of a struct through a pointer to the struct. After <code>pvec = &amp;vec</code> we can think of <code>*pvec</code> and <code>vec</code> as equivalent. So naturally <code>vec.x</code> and <code>(*pvec).x</code> are equivalent. The brackets don't mean anything special here - they just clarify the order of the operations: we want to dereference the pointer and <em>then</em> access the <code>x</code> member of the result, rather than the other way round.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">/* pstruct.c */</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">struct</span> Vector3D</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">int</span> x;</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  <span class="dt">int</span> y;</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="dt">int</span> z;</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">} <span class="kw">typedef</span> Vec3D;</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">{</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">  Vec3D vec = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>};</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">  Vec3D *pvec = &amp;vec;</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">  <span class="co">// These two are equivalent</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">  printf(<span class="st">&quot;(*pvec).x = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, (*pvec).x);</a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">  printf(<span class="st">&quot;pvec-&gt;x   = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, pvec-&gt;x);</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">}</a></code></pre></div>
+<p>When we run this we get</p>
+<pre><code>(*pvec).x = 3
+pvec-&gt;x   = 3</code></pre>
+<p>This shows the two equivalent ways to access the member of a struct through a pointer to the struct. After <code>pvec = &amp;vec</code> we can think of <code>*pvec</code> and <code>vec</code> as equivalent. So naturally <code>vec.x</code> and <code>(*pvec).x</code> are equivalent. The brackets don’t mean anything special here - they just clarify the order of the operations: we want to dereference the pointer and <em>then</em> access the <code>x</code> member of the result, rather than the other way round.</p>
 <p>Since structs and pointers to structs are so common in C there is a shorthand notation for this. The two expressions <code>(*pvec).x</code> and <code>pvec-&gt;x</code> are equivalent. The arrow <code>-&gt;</code> notation is preferred though. It is not uncommon to have a struct with a member that is a pointer to another struct (and so on). In that case the reason for preferring one notation over the other is clearer:</p>
-<pre class="sourceCode c"><code class="sourceCode c">pstruct1-&gt;pstruct2-&gt;x = <span class="dv">1</span>;  <span class="co">// &lt;--- preferred</span>
-(*(*pstruct1).pstruct2).x = <span class="dv">1</span>;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1">pstruct1-&gt;pstruct2-&gt;x = <span class="dv">1</span>;  <span class="co">// &lt;--- preferred</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">(*(*pstruct1).pstruct2).x = <span class="dv">1</span>;</a></code></pre></div>
 <hr />
 <p>Next section: <a href="fileio.html">fileio</a></p>
     </div>

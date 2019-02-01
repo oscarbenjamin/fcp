@@ -4,28 +4,74 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - </title>
+  <title>EMAT10006 - Further Computer Programming - week3</title>
   <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
-  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -67,101 +113,93 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#parsing-decimal-strings">Parsing decimal strings</a></li>
 <li><a href="#parsing-command-line-arguments">Parsing command line arguments</a></li>
 </ul></li>
-<li><a href="#thats-all-folks...">That's all folks...</a></li>
+<li><a href="#thats-all-folks">That’s all folks…</a></li>
 </ul>
     </div>
     <div id="main">
-<h1 id="slides-week-3"><a href="#TOC">Slides week 3</a></h1>
-<h2 id="outline"><a href="#TOC">Outline</a></h2>
+<h1 id="slides-week-3">Slides week 3</h1>
+<h2 id="outline">Outline</h2>
 <p>The topics for this week are arrays and strings. These are essential foundational concepts that you will need to get your heads around to be able to program in C. Please take the time to ensure that you understand them.</p>
-<h2 id="lists-in-python"><a href="#TOC">Lists in Python</a></h2>
-<p>Arrays in C are analogous to lists in Python. So let's demonstrate some properties of lists:</p>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; stuff = [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]   <span class="co"># Create a new list</span>
-&gt;&gt;&gt; stuff
-[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; stuff[<span class="dv">1</span>] = -<span class="dv">1</span>       <span class="co"># set list item</span>
-&gt;&gt;&gt; stuff
-[<span class="dv">1</span>, -<span class="dv">1</span>, <span class="dv">3</span>]
-&gt;&gt;&gt; stuff[<span class="dv">0</span>]            <span class="co"># get list item</span>
-<span class="dv">1</span></code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; stuff.append(<span class="dv">5</span>)     <span class="co"># change list size</span>
-&gt;&gt;&gt; stuff
-[<span class="dv">1</span>, -<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]</code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; stuff[<span class="dv">2</span>] = <span class="st">&#39;Hello!&#39;</span> <span class="co"># Store different type of object</span>
-&gt;&gt;&gt; stuff
-[<span class="dv">1</span>, -<span class="dv">1</span>, <span class="st">&#39;Hello!&#39;</span>, <span class="dv">5</span>]</code></pre>
-<h2 id="arrays-in-c"><a href="#TOC">Arrays in C</a></h2>
+<h2 id="lists-in-python">Lists in Python</h2>
+<p>Arrays in C are analogous to lists in Python. So let’s demonstrate some properties of lists:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> stuff <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]   <span class="co"># Create a new list</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> stuff</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> stuff[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">-1</span>       <span class="co"># set list item</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> stuff</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">[<span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> stuff[<span class="dv">0</span>]            <span class="co"># get list item</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> stuff.append(<span class="dv">5</span>)     <span class="co"># change list size</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> stuff</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">[<span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> stuff[<span class="dv">2</span>] <span class="op">=</span> <span class="st">&#39;Hello!&#39;</span> <span class="co"># Store different type of object</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> stuff</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">[<span class="dv">1</span>, <span class="dv">-1</span>, <span class="st">&#39;Hello!&#39;</span>, <span class="dv">5</span>]</a></code></pre></div>
+<h2 id="arrays-in-c">Arrays in C</h2>
 <p>In C an array collects together similar objects. However in C arrays are <em>homogeneous</em>. That means that each object in the array must be of the same <em>type</em> (e.g. <code>int</code> or <code>double</code> etc).</p>
 <p>Also an array in C cannot be resized. Its size is specified when it is created and can not be changed later.</p>
-<h2 id="array-example"><a href="#TOC">Array example</a></h2>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* array.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="co">/* Declare and initialise array */</span>
-  <span class="dt">int</span> numbers[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">1024</span>, -<span class="dv">1</span>};
-
-  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)
-  {
-    printf(<span class="st">&quot;numbers[%d] = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i, numbers[i]);
-  }
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<h2 id="array-example">Array example</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">/* array.c */</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="co">/* Declare and initialise array */</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  <span class="dt">int</span> numbers[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">1024</span>, <span class="dv">-1</span>};</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">  {</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">    printf(<span class="st">&quot;numbers[%d] = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, i, numbers[i]);</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">}</a></code></pre></div>
 <p>Compile and run:</p>
-<pre class="sourceCode c"><code class="sourceCode c">$ make
-gcc -std=c99 -Wall array.c -o array.exe
-$ ./array.exe
-numbers[<span class="dv">0</span>] = <span class="dv">3</span>
-numbers[<span class="dv">1</span>] = <span class="dv">10</span>
-numbers[<span class="dv">2</span>] = <span class="dv">1024</span>
-numbers[<span class="dv">3</span>] = -<span class="dv">1</span></code></pre>
-<h2 id="computer-memory"><a href="#TOC">Computer memory</a></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1">$ make</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">gcc -std=c99 -Wall array.c -o array.exe</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">$ ./array.exe</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">numbers[<span class="dv">0</span>] = <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">numbers[<span class="dv">1</span>] = <span class="dv">10</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">numbers[<span class="dv">2</span>] = <span class="dv">1024</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">numbers[<span class="dv">3</span>] = <span class="dv">-1</span></a></code></pre></div>
+<h2 id="computer-memory">Computer memory</h2>
 <p>Breakdown of memory/CPU usage on a Windows computer (push Ctrl-Shift Escape) so see this):</p>
-<div class="figure">
-<img src="task-manager.png" /><p class="caption"></p>
-</div>
-<h2 id="computer-memory-1"><a href="#TOC">Computer memory</a></h2>
-<p>Representation of memory as a line of byte slots. If your computer has 8GiB of memory then there will be \(8\times 1024^3\) byte slots each of which can store one byte.</p>
-<p>Bytes are organised into kernel and processes in memory. Bytes are organised into files in persistent storage (e.g. the hard drive).</p>
-<div class="figure">
-<img src="processes.svg" /><p class="caption"></p>
-</div>
-<h2 id="process-memory"><a href="#TOC">Process memory</a></h2>
+<p><img src="task-manager.png" /></p>
+<h2 id="computer-memory-1">Computer memory</h2>
+<p>Representation of memory as a line of byte slots. If your computer has 8GiB of memory then there will be <span class="math inline">\(8\times 1024^3\)</span> byte slots each of which can store one byte.</p>
+<p>Bytes are organised into kernel and processes in memory. Bytes are organised into files in persistent storage (e.g. the hard drive).</p>
+<p><img src="processes.svg" /></p>
+<h2 id="process-memory">Process memory</h2>
 <p>Breakdown of memory <em>within</em> a process:</p>
-<div class="figure">
-<img src="process_memory.svg" /><p class="caption"></p>
-</div>
-<p>The executable machine code goes at the beginning. The constant data goes right after. The <em>stack</em> stores the variables for each function that is currently executing. The stack grows and shrinks at the end of the process' memory space. If you call too many functions the stack will fill the unused space (stack overflow).</p>
-<h2 id="array-in-memory"><a href="#TOC">Array in memory</a></h2>
+<p><img src="process_memory.svg" /></p>
+<p>The executable machine code goes at the beginning. The constant data goes right after. The <em>stack</em> stores the variables for each function that is currently executing. The stack grows and shrinks at the end of the process’ memory space. If you call too many functions the stack will fill the unused space (stack overflow).</p>
+<h2 id="array-in-memory">Array in memory</h2>
 <p>The organisation of an array in memory:</p>
-<div class="figure">
-<img src="array.svg" /><p class="caption"></p>
-</div>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">/* Declare and initialise array */</span>
-  <span class="dt">int</span> vals[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">1024</span>, -<span class="dv">1</span>};
-
-  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)
-  {
-    printf(<span class="st">&quot;vals[%d] = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i, vals[i]);
-  }</code></pre>
-<h2 id="arrays-as-memory-blocks"><a href="#TOC">Arrays as memory blocks</a></h2>
+<p><img src="array.svg" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1">  <span class="co">/* Declare and initialise array */</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="dt">int</span> vals[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">1024</span>, <span class="dv">-1</span>};</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    printf(<span class="st">&quot;vals[%d] = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, i, vals[i]);</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  }</a></code></pre></div>
+<h2 id="arrays-as-memory-blocks">Arrays as memory blocks</h2>
 <p>The compiler always needs to know the size (number of bytes) of any data type.</p>
 <p>For example an array of type <code>int[N]</code> uses <code>N*sizeof(int)</code> bytes (i.e. <code>N*4</code> bytes).</p>
 <p>An array uses a <em>contiguous</em> block of memory.</p>
-<h2 id="resizing-arrays"><a href="#TOC">Resizing arrays</a></h2>
-<p>You can't resize arrays: the size must be fixed in the declaration.</p>
-<p>If you don't know how many things you want to put in the array consider whether there is a maximum possible number of things to put in. Then you can just make your array that size and not necessarily use all of it.</p>
-<p>Strange things happen if you go over the end of your array...</p>
-<h2 id="out-of-bounds-access"><a href="#TOC">Out of bounds access</a></h2>
-<p>Let's deliberately print out values from beyond the end of the array</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">int</span> vals[] = {<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>}; <span class="co">// implicitly size 3</span>
-
-  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">10</span>; i++) <span class="co">// Loops to 10th element</span>
-  {
-    printf(<span class="st">&quot;vals[%d] = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i, vals[i]);
-  }</code></pre>
+<h2 id="resizing-arrays">Resizing arrays</h2>
+<p>You can’t resize arrays: the size must be fixed in the declaration.</p>
+<p>If you don’t know how many things you want to put in the array consider whether there is a maximum possible number of things to put in. Then you can just make your array that size and not necessarily use all of it.</p>
+<p>Strange things happen if you go over the end of your array…</p>
+<h2 id="out-of-bounds-access">Out of bounds access</h2>
+<p>Let’s deliberately print out values from beyond the end of the array</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1">  <span class="dt">int</span> vals[] = {<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>}; <span class="co">// implicitly size 3</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">10</span>; i++) <span class="co">// Loops to 10th element</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  {</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">    printf(<span class="st">&quot;vals[%d] = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, i, vals[i]);</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  }</a></code></pre></div>
 <p>Compile and run to see gibberish:</p>
 <pre><code>vals[0] = 10
 vals[1] = 11
@@ -173,140 +211,136 @@ vals[6] = 675862381
 vals[7] = 32655
 vals[8] = 0
 vals[9] = 0</code></pre>
-<h2 id="out-of-bounds-access-1"><a href="#TOC">Out of bounds access</a></h2>
-<p>In this example we see that <code>i</code> happens to be stored immediately after the array (that's not guaranteed to happen though):</p>
-<div class="figure">
-<img src="array2.svg" /><p class="caption"></p>
-</div>
-<pre class="sourceCode c"><code class="sourceCode c">vals[<span class="dv">0</span>] = <span class="dv">10</span>
-vals[<span class="dv">1</span>] = <span class="dv">11</span>
-vals[<span class="dv">2</span>] = <span class="dv">12</span>
-vals[<span class="dv">3</span>] = <span class="dv">3</span>     &lt;--- i
-vals[<span class="dv">4</span>] = <span class="dv">0</span>     &lt;--- other stuff
-vals[<span class="dv">5</span>] = <span class="dv">0</span>
-vals[<span class="dv">6</span>] = <span class="dv">675862381</span>
-vals[<span class="dv">7</span>] = <span class="dv">32655</span>
-vals[<span class="dv">8</span>] = <span class="dv">0</span>
-vals[<span class="dv">9</span>] = <span class="dv">0</span></code></pre>
-<h2 id="array-indices"><a href="#TOC">Array indices</a></h2>
-<p>If <code>a</code> is an array of size <code>N</code> e.g. <code>int a[N]</code> then valid indices are <code>0</code>, <code>1</code>, <code>2</code>, ..., <code>N-1</code>.</p>
+<h2 id="out-of-bounds-access-1">Out of bounds access</h2>
+<p>In this example we see that <code>i</code> happens to be stored immediately after the array (that’s not guaranteed to happen though):</p>
+<p><img src="array2.svg" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" data-line-number="1">vals[<span class="dv">0</span>] = <span class="dv">10</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">vals[<span class="dv">1</span>] = <span class="dv">11</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">vals[<span class="dv">2</span>] = <span class="dv">12</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">vals[<span class="dv">3</span>] = <span class="dv">3</span>     &lt;--- i</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">vals[<span class="dv">4</span>] = <span class="dv">0</span>     &lt;--- other stuff</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">vals[<span class="dv">5</span>] = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">vals[<span class="dv">6</span>] = <span class="dv">675862381</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">vals[<span class="dv">7</span>] = <span class="dv">32655</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">vals[<span class="dv">8</span>] = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">vals[<span class="dv">9</span>] = <span class="dv">0</span></a></code></pre></div>
+<h2 id="array-indices">Array indices</h2>
+<p>If <code>a</code> is an array of size <code>N</code> e.g. <code>int a[N]</code> then valid indices are <code>0</code>, <code>1</code>, <code>2</code>, …, <code>N-1</code>.</p>
 <p>Negative indices are <em>always</em> invalid.</p>
 <p>The compiler cannot check that you are using valid indices: you need to do it.</p>
 <p>Common source of beginner problems.</p>
-<h2 id="comparing-arrays"><a href="#TOC">Comparing arrays</a></h2>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">int</span> numbers1[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};
-  <span class="dt">int</span> numbers2[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};
-
-  <span class="kw">if</span>(numbers1 == numbers2)
-  {
-    puts(<span class="st">&quot;numbers1 and numbers2 are equal.&quot;</span>);
-  }
-  <span class="kw">else</span>
-  {
-    puts(<span class="st">&quot;numbers1 and numbers2 are NOT equal!&quot;</span>);
-  }</code></pre>
+<h2 id="comparing-arrays">Comparing arrays</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1">  <span class="dt">int</span> numbers1[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">  <span class="dt">int</span> numbers2[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="cf">if</span>(numbers1 == numbers2)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">    puts(<span class="st">&quot;numbers1 and numbers2 are equal.&quot;</span>);</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">  <span class="cf">else</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">  {</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">    puts(<span class="st">&quot;numbers1 and numbers2 are NOT equal!&quot;</span>);</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">  }</a></code></pre></div>
 <p>Compile and run:</p>
-<pre class="sourceCode c"><code class="sourceCode c">$ make
-gcc -std=c99 -Wall compare.c -o compare.exe
-$ ./compare.exe
-numbers1 and numbers2 are NOT equal!</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1">$ make</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">gcc -std=c99 -Wall compare.c -o compare.exe</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">$ ./compare.exe</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">numbers1 and numbers2 are NOT equal!</a></code></pre></div>
 <p>What went wrong?</p>
-<h2 id="array-equality"><a href="#TOC">Array equality</a></h2>
-<p>Comparing arrays with <code>==</code> doesn't work.</p>
-<p>An array is only ever &quot;equal&quot; to itself when compared this way.</p>
+<h2 id="array-equality">Array equality</h2>
+<p>Comparing arrays with <code>==</code> doesn’t work.</p>
+<p>An array is only ever “equal” to itself when compared this way.</p>
 <p>You probably want to check that both arrays have equal <em>elements</em>.</p>
-<h2 id="compare-array-elements"><a href="#TOC">Compare array elements</a></h2>
+<h2 id="compare-array-elements">Compare array elements</h2>
 <p>The code to compare the elements of two arrays:</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">int</span> numbers1[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};
-  <span class="dt">int</span> numbers2[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};
-
-  <span class="dt">int</span> equal = <span class="dv">1</span>;
-  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)
-  {
-    <span class="kw">if</span>(numbers1[i] != numbers2[i])
-    {
-      equal = <span class="dv">0</span>;
-      <span class="kw">break</span>;
-    }
-  }</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" data-line-number="1">  <span class="dt">int</span> numbers1[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">  <span class="dt">int</span> numbers2[<span class="dv">4</span>] = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>};</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">  <span class="dt">int</span> equal = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">4</span>; i++)</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">  {</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">    <span class="cf">if</span>(numbers1[i] != numbers2[i])</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">    {</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">      equal = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">      <span class="cf">break</span>;</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">    }</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">  }</a></code></pre></div>
 <p>Compile and run:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall compare2.c -o compare2.exe
 $ ./compare2.exe
 numbers1 and numbers2 are equal.</code></pre>
-<h1 id="section"><a href="#TOC"></a></h1>
-<h2 id="strings-in-c."><a href="#TOC">Strings in C.</a></h2>
+<h1 id="section"></h1>
+<h2 id="strings-in-c.">Strings in C.</h2>
 <ul>
 <li><p>In C a string is just an array of type <code>char</code>.</p></li>
 <li><p><code>char</code> is short for <em>character</em></p></li>
-<li><p>But <code>char</code> is an integer type...</p></li>
+<li><p>But <code>char</code> is an integer type…</p></li>
 </ul>
-<h2 id="ascii-code"><a href="#TOC">ASCII code</a></h2>
-<div class="figure">
-<img src="asciifull.gif" /><p class="caption"></p>
-</div>
-<h2 id="hello-world-in-ascii"><a href="#TOC">Hello world in ASCII</a></h2>
+<h2 id="ascii-code">ASCII code</h2>
+<p><img src="asciifull.gif" /></p>
+<h2 id="hello-world-in-ascii">Hello world in ASCII</h2>
 <p>ASCII codes represent the standard (English) character set with integers:</p>
-<p><code>'H'</code>(72), <code>'e'</code>(101), <code>'l'</code>(108), <code>'o'</code>(111), <code>' '</code>(20), ... <code>'W'</code>(87), <code>'r'</code>(114), <code>'d'</code>(100), <code>'!'</code>(21), <code>'\n'</code>(10), ...</p>
+<p><code>'H'</code>(72), <code>'e'</code>(101), <code>'l'</code>(108), <code>'o'</code>(111), <code>' '</code>(20), … <code>'W'</code>(87), <code>'r'</code>(114), <code>'d'</code>(100), <code>'!'</code>(21), <code>'\n'</code>(10), …</p>
 <p>Can use these in Python:</p>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; <span class="dt">ord</span>(<span class="st">&#39;a&#39;</span>)
-<span class="dv">97</span>
-&gt;&gt;&gt; <span class="dt">chr</span>(<span class="dv">97</span>)
-<span class="st">&#39;a&#39;</span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">ord</span>(<span class="st">&#39;a&#39;</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="dv">97</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="op">&gt;&gt;&gt;</span> <span class="bu">chr</span>(<span class="dv">97</span>)</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">&#39;a&#39;</span></a></code></pre></div>
 <p>Making a string as a list of characters:</p>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; nums = [<span class="dt">ord</span>(c) <span class="kw">for</span> c in <span class="st">&quot;Hello World!</span><span class="ch">\n</span><span class="st">&quot;</span>]
-&gt;&gt;&gt; nums
-[<span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>, <span class="dv">32</span>, <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="dv">10</span>]
-&gt;&gt;&gt; chars = [<span class="dt">chr</span>(n) <span class="kw">for</span> n in nums]
-&gt;&gt;&gt; chars
-[<span class="st">&#39;H&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;o&#39;</span>, <span class="st">&#39; &#39;</span>, <span class="st">&#39;W&#39;</span>, <span class="st">&#39;o&#39;</span>, <span class="st">&#39;r&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;!&#39;</span>, <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>]</code></pre>
-<h2 id="hello-world-in-ascii-1"><a href="#TOC">Hello world in ASCII</a></h2>
-<p>Let's do the same in C:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* asciihello.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">char</span> message[] = {
-    <span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>,     <span class="co">/* &quot;Hello&quot; */</span>
-    <span class="dv">32</span>,                         <span class="co">/* &quot; &quot;     */</span>
-    <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="co">/* &quot;World&quot; */</span>
-    <span class="dv">10</span>,                         <span class="co">/* &quot;!&quot;     */</span>
-    <span class="dv">0</span>                           <span class="co">/* &quot;\0&quot;    */</span>
-  };
-
-  puts(message);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> nums <span class="op">=</span> [<span class="bu">ord</span>(c) <span class="cf">for</span> c <span class="kw">in</span> <span class="st">&quot;Hello World!</span><span class="ch">\n</span><span class="st">&quot;</span>]</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> nums</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">[<span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>, <span class="dv">32</span>, <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> chars <span class="op">=</span> [<span class="bu">chr</span>(n) <span class="cf">for</span> n <span class="kw">in</span> nums]</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="op">&gt;&gt;&gt;</span> chars</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">[<span class="st">&#39;H&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;o&#39;</span>, <span class="st">&#39; &#39;</span>, <span class="st">&#39;W&#39;</span>, <span class="st">&#39;o&#39;</span>, <span class="st">&#39;r&#39;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;!&#39;</span>, <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>]</a></code></pre></div>
+<h2 id="hello-world-in-ascii-1">Hello world in ASCII</h2>
+<p>Let’s do the same in C:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">/* asciihello.c */</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">  <span class="dt">char</span> message[] = {</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">    <span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>,     <span class="co">/* &quot;Hello&quot; */</span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">    <span class="dv">32</span>,                         <span class="co">/* &quot; &quot;     */</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10">    <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="co">/* &quot;World&quot; */</span></a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">    <span class="dv">10</span>,                         <span class="co">/* &quot;!&quot;     */</span></a>
+<a class="sourceLine" id="cb17-12" data-line-number="12">    <span class="dv">0</span>                           <span class="co">/* &quot;\0&quot;    */</span></a>
+<a class="sourceLine" id="cb17-13" data-line-number="13">  };</a>
+<a class="sourceLine" id="cb17-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb17-15" data-line-number="15">  puts(message);</a>
+<a class="sourceLine" id="cb17-16" data-line-number="16">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb17-17" data-line-number="17">}</a></code></pre></div>
 <p>Compile and run:</p>
-<pre class="sourceCode c"><code class="sourceCode c">$ make
-gcc -std=c99 -Wall asciihello.c -o asciihello.exe
-$ ./asciihello.exe
-Hello World!</code></pre>
-<h2 id="initialising-strings"><a href="#TOC">Initialising strings</a></h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" data-line-number="1">$ make</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">gcc -std=c99 -Wall asciihello.c -o asciihello.exe</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">$ ./asciihello.exe</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">Hello World!</a></code></pre></div>
+<h2 id="initialising-strings">Initialising strings</h2>
 <p>These are equivalent:</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">char</span> message1[] = {<span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>, <span class="dv">32</span>,
-                <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="dv">10</span>, <span class="dv">0</span>};
-
-  <span class="dt">char</span> message2[] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;,
-                &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;, <span class="ch">&#39;\n&#39;</span>, &#39;\<span class="dv">0</span>&#39;};
-
-  <span class="dt">char</span> message3[] = <span class="st">&quot;Hello World!</span><span class="ch">\n</span><span class="st">&quot;</span>;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" data-line-number="1">  <span class="dt">char</span> message1[] = {<span class="dv">72</span>, <span class="dv">101</span>, <span class="dv">108</span>, <span class="dv">108</span>, <span class="dv">111</span>, <span class="dv">32</span>,</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">                <span class="dv">87</span>, <span class="dv">111</span>, <span class="dv">114</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">33</span>, <span class="dv">10</span>, <span class="dv">0</span>};</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">  <span class="dt">char</span> message2[] = {<span class="ch">&#39;H&#39;</span>, <span class="ch">&#39;e&#39;</span>, <span class="ch">&#39;l&#39;</span>, <span class="ch">&#39;l&#39;</span>, <span class="ch">&#39;o&#39;</span>, <span class="ch">&#39; &#39;</span>,</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">                <span class="ch">&#39;W&#39;</span>, <span class="ch">&#39;o&#39;</span>, <span class="ch">&#39;r&#39;</span>, <span class="ch">&#39;l&#39;</span>, <span class="ch">&#39;d&#39;</span>, <span class="ch">&#39;!&#39;</span>, <span class="ch">&#39;\n&#39;</span>, &#39;\<span class="dv">0</span>&#39;};</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">  <span class="dt">char</span> message3[] = <span class="st">&quot;Hello World!</span><span class="sc">\n</span><span class="st">&quot;</span>;</a></code></pre></div>
 <p><code>'H'</code> is an integer expression equivalent to <code>72</code> or <code>0x48</code>. <code>'H'</code> is easier to understand though: readability counts!</p>
-<h2 id="strings-in-c"><a href="#TOC">Strings in C</a></h2>
+<h2 id="strings-in-c">Strings in C</h2>
 <ul>
 <li>A string is a <em>null-terminated</em> <code>char</code> array.</li>
 </ul>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">char</span> message[] = <span class="st">&quot;Hello World!</span><span class="ch">\n</span><span class="st">&quot;</span>;
-
-  <span class="dt">int</span> i = <span class="dv">0</span>;
-  <span class="kw">while</span>(message[i] != &#39;\<span class="dv">0</span>&#39;) <span class="co">/* Check for null zero */</span>
-  {
-    i++;
-  }
-  printf(<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;</span><span class="st"> has %d characters...</span><span class="ch">\n</span><span class="st">&quot;</span>, message, i);
-  printf(<span class="st">&quot;Plus one null-byte.</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" data-line-number="1">  <span class="dt">char</span> message[] = <span class="st">&quot;Hello World!</span><span class="sc">\n</span><span class="st">&quot;</span>;</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  <span class="dt">int</span> i = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">  <span class="cf">while</span>(message[i] != &#39;\<span class="dv">0</span>&#39;) <span class="co">/* Check for null zero */</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">    i++;</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">  printf(<span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;</span><span class="st"> has %d characters...</span><span class="sc">\n</span><span class="st">&quot;</span>, message, i);</a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">  printf(<span class="st">&quot;Plus one null-byte.</span><span class="sc">\n</span><span class="st">&quot;</span>);</a></code></pre></div>
 <p>Compile and run:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall string_length.c -o string_length.exe
@@ -314,81 +348,81 @@ $ ./string_length.exe
 &quot;Hello World!
 &quot; has 13 characters...
 Plus one null-byte.</code></pre>
-<h2 id="the-string.h-header"><a href="#TOC">The <code>&lt;string.h&gt;</code> header</a></h2>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* strlen.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-<span class="ot">#include &lt;string.h&gt;  </span><span class="co">/* String functions */</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">char</span> string[] = <span class="st">&quot;A moderately long string&quot;</span>;
-
-  <span class="dt">int</span> length = strlen(string);
-
-  printf(<span class="st">&quot;Length: %d</span><span class="ch">\n</span><span class="st">&quot;</span>, length);
-
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<h2 id="the-string.h-header">The <code>&lt;string.h&gt;</code> header</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co">/* strlen.c */</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span><span class="pp">  </span><span class="co">/* String functions */</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">{</a>
+<a class="sourceLine" id="cb22-8" data-line-number="8">  <span class="dt">char</span> string[] = <span class="st">&quot;A moderately long string&quot;</span>;</a>
+<a class="sourceLine" id="cb22-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">  <span class="dt">int</span> length = strlen(string);</a>
+<a class="sourceLine" id="cb22-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb22-12" data-line-number="12">  printf(<span class="st">&quot;Length: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, length);</a>
+<a class="sourceLine" id="cb22-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb22-14" data-line-number="14">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb22-15" data-line-number="15">}</a></code></pre></div>
 <p>Compile and run:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall strlen.c -o strlen.exe
 $ ./strlen.exe
 Length: 24</code></pre>
-<h2 id="comparing-strings."><a href="#TOC">Comparing strings.</a></h2>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">char</span> string1[] = <span class="st">&quot;foo&quot;</span>;
-  <span class="dt">char</span> string2[] = <span class="st">&quot;bar&quot;</span>;
-
-  <span class="kw">if</span>(!strcmp(string1, string2))
-  {
-    printf(<span class="st">&quot;string1 and string2 are the same</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }
-  <span class="kw">else</span>
-  {
-    printf(<span class="st">&quot;string1 and string2 are different</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }</code></pre>
+<h2 id="comparing-strings.">Comparing strings.</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" data-line-number="1">  <span class="dt">char</span> string1[] = <span class="st">&quot;foo&quot;</span>;</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">  <span class="dt">char</span> string2[] = <span class="st">&quot;bar&quot;</span>;</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">  <span class="cf">if</span>(!strcmp(string1, string2))</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">    printf(<span class="st">&quot;string1 and string2 are the same</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">  <span class="cf">else</span></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">  {</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10">    printf(<span class="st">&quot;string1 and string2 are different</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb24-11" data-line-number="11">  }</a></code></pre></div>
 <pre><code>$ make
 gcc -std=c99 -Wall strcmp.c -o strcmp.exe
 $ ./strcmp.exe
 string1 and string2 are different</code></pre>
 <p><code>strcmp</code> returns <code>0</code> (false) if the strings are equal and <em>non-zero</em> otherwise!</p>
-<h2 id="parsing-decimal-strings"><a href="#TOC">Parsing decimal strings</a></h2>
+<h2 id="parsing-decimal-strings">Parsing decimal strings</h2>
 <p>Very useful:</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="dt">char</span> string[] = <span class="st">&quot;123&quot;</span>;
-
-  <span class="dt">int</span> a;
-  <span class="kw">if</span>(!sscanf(string, <span class="st">&quot;%d&quot;</span>, &amp;a))
-  {
-    fprintf(stderr, <span class="st">&quot;Could not parse the string...&quot;</span>);
-    <span class="kw">return</span> <span class="dv">1</span>; <span class="co">// Indicate error somehow...</span>
-  }
-
-  printf(<span class="st">&quot;a = %d    2 * a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a, <span class="dv">2</span> * a);</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" data-line-number="1">  <span class="dt">char</span> string[] = <span class="st">&quot;123&quot;</span>;</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">  <span class="dt">int</span> a;</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">  <span class="cf">if</span>(!sscanf(string, <span class="st">&quot;%d&quot;</span>, &amp;a))</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">    fprintf(stderr, <span class="st">&quot;Could not parse the string...&quot;</span>);</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">    <span class="cf">return</span> <span class="dv">1</span>; <span class="co">// Indicate error somehow...</span></a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">  printf(<span class="st">&quot;a = %d    2 * a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a, <span class="dv">2</span> * a);</a></code></pre></div>
 <p>Compile and run:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall parse.c -o parse.exe
 $ ./parse.exe
 a = 123    2 * a = 246</code></pre>
-<h2 id="parsing-command-line-arguments"><a href="#TOC">Parsing command line arguments</a></h2>
+<h2 id="parsing-command-line-arguments">Parsing command line arguments</h2>
 <p>How to use numbers given as command line arguments:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* argparse.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="co">/* Parse the command line */</span>
-  <span class="dt">int</span> num;
-  <span class="kw">if</span>(argc != <span class="dv">2</span> || !sscanf(argv[<span class="dv">1</span>], <span class="st">&quot;%d&quot;</span>, &amp;num))
-  {
-    fprintf(stderr, <span class="st">&quot;Please give a valid number</span><span class="ch">\n</span><span class="st">&quot;</span>);
-    <span class="kw">return</span> <span class="dv">1</span>;
-  }
-
-  printf(<span class="st">&quot;You entered %d and %d^2 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, num, num, num*num);
-
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co">/* argparse.c */</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">  <span class="co">/* Parse the command line */</span></a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">  <span class="dt">int</span> num;</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9">  <span class="cf">if</span>(argc != <span class="dv">2</span> || !sscanf(argv[<span class="dv">1</span>], <span class="st">&quot;%d&quot;</span>, &amp;num))</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">  {</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">    fprintf(stderr, <span class="st">&quot;Please give a valid number</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb28-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb28-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb28-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb28-15" data-line-number="15">  printf(<span class="st">&quot;You entered %d and %d^2 = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, num, num, num*num);</a>
+<a class="sourceLine" id="cb28-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb28-17" data-line-number="17">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb28-18" data-line-number="18">}</a></code></pre></div>
 <p>Compile and run:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall argparse.c -o argparse.exe
@@ -396,7 +430,7 @@ $ ./argparse.exe
 Please give a valid number
 $ ./argparse.exe 12
 You entered 12 and 12^2 = 144</code></pre>
-<h1 id="thats-all-folks..."><a href="#TOC">That's all folks...</a></h1>
+<h1 id="thats-all-folks">That’s all folks…</h1>
     </div>
   </body>
 </html>

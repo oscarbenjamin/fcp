@@ -6,7 +6,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Oscar Benjamin" />
   <title>EMAT10006 - Further Computer Programming - EMAT10006 - Further programming</title>
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -35,7 +35,7 @@
 <li><a href="#when-c-is-good">When C is good</a></li>
 <li><a href="#when-c-is-bad">When C is bad</a></li>
 </ul></li>
-<li><a href="#demo-pythonc...">Demo Python/C...</a></li>
+<li><a href="#demo-pythonc">Demo Python/C…</a></li>
 <li><a href="#section-2"></a><ul>
 <li><a href="#compilers-and-interpreters">Compilers and interpreters</a></li>
 <li><a href="#compilation">Compilation</a></li>
@@ -46,125 +46,131 @@
 </ul>
     </div>
     <div id="main">
-<h1 id="section"><a href="#TOC"></a></h1>
-<h2 id="outline"><a href="#TOC">Outline</a></h2>
+<h1 id="section"></h1>
+<h2 id="outline">Outline</h2>
 <ul>
 <li>Build on the basics from EMAT10007</li>
 <li>Explore two new programming languages</li>
 <li>Learn additional computing skills/knowledge</li>
 </ul>
-<h2 id="lectures-and-times"><a href="#TOC">Lectures and times</a></h2>
+<h2 id="lectures-and-times">Lectures and times</h2>
 <ul>
-<li>Labs 1700-1800 Mondays and 1100-1300 Fridays in QB F.101</li>
+<li>Labs 1100-1400 Fridays in QB F.101</li>
+<li>Dropin session 1600-1700 Tuesdays in MVB 1.07</li>
 <li>You are expected to also work outside of those times!</li>
-<li>9 weeks of C with (until Easter)</li>
-<li>3 weeks of Java (after Easter)</li>
+<li>9 weeks of C (three coursework deadlines)</li>
+<li>3 weeks of Java (class test at the end)</li>
 </ul>
-<h2 id="assessments"><a href="#TOC">Assessments</a></h2>
+<h2 id="assessments">Assessments</h2>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Assessment</th>
-<th align="left">Deadline</th>
-<th align="left">Weight</th>
+<th>Assessment</th>
+<th>Deadline</th>
+<th>Weight</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Basic C test</td>
-<td align="left">week 14</td>
-<td align="left">5%</td>
+<td>Basic C test</td>
+<td>week 14</td>
+<td>5%</td>
 </tr>
 <tr class="even">
-<td align="left">C final</td>
-<td align="left">week 19</td>
-<td align="left">70%</td>
+<td>Cpair</td>
+<td>week 18</td>
+<td>35%</td>
 </tr>
 <tr class="odd">
-<td align="left">Java final</td>
-<td align="left">week 24</td>
-<td align="left">25%</td>
+<td>Cind</td>
+<td>week 21</td>
+<td>35%</td>
+</tr>
+<tr class="even">
+<td>Java final</td>
+<td>week 24</td>
+<td>25%</td>
 </tr>
 </tbody>
 </table>
-<h2 id="c-deadlines"><a href="#TOC">C deadlines</a></h2>
+<h2 id="c-deadlines">C deadlines</h2>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Assessment</th>
-<th align="left">Deadline</th>
-<th align="left">Weight</th>
+<th>Assessment</th>
+<th>Deadline</th>
+<th>Weight</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">week 13</td>
-<td align="left"></td>
+<td></td>
+<td>week 13</td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left">Basic C test</td>
-<td align="left">week 14</td>
-<td align="left">5%</td>
+<td>Basic C test</td>
+<td>week 14</td>
+<td>5%</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">week 15</td>
-<td align="left"></td>
+<td></td>
+<td>week 15</td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">week 16</td>
-<td align="left"></td>
+<td></td>
+<td>week 16</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">week 17</td>
-<td align="left"></td>
+<td></td>
+<td>week 17</td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">reading week</td>
-<td align="left"></td>
+<td>Cpair</td>
+<td>reading week</td>
+<td>35%</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">week 19</td>
-<td align="left"></td>
+<td></td>
+<td>week 19</td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left">C final</td>
-<td align="left">week 20</td>
-<td align="left">70%</td>
+<td></td>
+<td>week 20</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td align="left">Vivas</td>
-<td align="left">week 21</td>
-<td align="left"></td>
+<td>Cind</td>
+<td>week 21</td>
+<td>35%</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">Easter x3</td>
-<td align="left"></td>
+<td></td>
+<td>week 22</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">week 22</td>
-<td align="left"></td>
+<td></td>
+<td>Easter x3</td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">week 23</td>
-<td align="left"></td>
+<td></td>
+<td>week 23</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td align="left">Java final</td>
-<td align="left">week 24</td>
-<td align="left"></td>
+<td>Java test</td>
+<td>week 24</td>
+<td>25%</td>
 </tr>
 </tbody>
 </table>
-<h2 id="c-content"><a href="#TOC">C content</a></h2>
+<h2 id="c-content">C content</h2>
 <ul>
 <li>Using the shell/compiler</li>
 <li>Elementary types</li>
@@ -173,15 +179,15 @@
 <li>Makefiles</li>
 <li>Command line programs</li>
 <li>Arrays and strings</li>
-<li>Reading and writing files</li>
 <li>Structs</li>
+<li>Multifile programs</li>
 </ul>
-<h2 id="c-assignment"><a href="#TOC">C assignment</a></h2>
+<h2 id="c-assignment">C assignment</h2>
 <p>You will complete the C assignment working in pairs.</p>
-<p>I will randomly assign the pairs (within cohort) once you have submited the basic C test. If you don't submit I won't pair you up with anyone.</p>
+<p>I will randomly assign the pairs (within cohort) once you have submited the basic C test. If you don’t submit I won’t pair you up with anyone.</p>
 <p>The assignment will then be assessed by viva (interview) in week 21.</p>
 <p>You will submit the same code jointly but are expected to separately write a short report explaining what you have done.</p>
-<h2 id="plagiarism"><a href="#TOC">Plagiarism</a></h2>
+<h2 id="plagiarism">Plagiarism</h2>
 <p>We had problems with plagiarism the year before last:</p>
 <ul>
 <li>Fine to work together when not doing assignments</li>
@@ -190,20 +196,20 @@
 <li>Do not share your code with anyone.</li>
 <li>(We will check for plagiarism)</li>
 </ul>
-<p>More on this later...</p>
-<h1 id="section-1"><a href="#TOC"></a></h1>
-<h2 id="popular-programming-languages"><a href="#TOC">Popular programming languages</a></h2>
-<p><img src="images/top10.png" />{width=100%}</p>
+<p>More on this later…</p>
+<h1 id="section-1"></h1>
+<h2 id="popular-programming-languages">Popular programming languages</h2>
+<p><img src="images/top10.png" style="width:100.0%" /></p>
 <p>(From tiobe.com)</p>
-<h2 id="family-tree"><a href="#TOC">Family tree</a></h2>
-<p><img src="images/evo-prog-lang.png" />{width=100%}</p>
-<h2 id="c"><a href="#TOC">C</a></h2>
+<h2 id="family-tree">Family tree</h2>
+<p><img src="images/evo-prog-lang.png" style="width:100.0%" /></p>
+<h2 id="c">C</h2>
 <ul>
 <li>Old but still widely used.</li>
 <li>Standard for working on <em>any</em> hardware.</li>
 <li>Core components in your computer</li>
 </ul>
-<h2 id="things-written-in-cc"><a href="#TOC">Things written in C/C++</a></h2>
+<h2 id="things-written-in-cc">Things written in C/C++</h2>
 <ul>
 <li>Windows/OSX/Linux (most operating systems)</li>
 <li>Browsers: Chrome, Firefox etc.</li>
@@ -211,7 +217,7 @@
 <li>Python</li>
 </ul>
 <p>Python is actually a C program!</p>
-<h2 id="when-c-is-good"><a href="#TOC">When C is good</a></h2>
+<h2 id="when-c-is-good">When C is good</h2>
 <ul>
 <li>Fast programs</li>
 <li>Embedded systems</li>
@@ -220,22 +226,22 @@
 <li>Program basic hardware (arduino etc)</li>
 <li>Need to run on specific hardware/OS</li>
 </ul>
-<h2 id="when-c-is-bad"><a href="#TOC">When C is bad</a></h2>
+<h2 id="when-c-is-bad">When C is bad</h2>
 <ul>
 <li>Need to quickly make a program</li>
 <li>Speed (of program) is unimportant</li>
 <li>Simple high-level applications</li>
 <li>Need to run on wide range of hardware/OS</li>
 </ul>
-<h1 id="demo-pythonc..."><a href="#TOC">Demo Python/C...</a></h1>
-<h1 id="section-2"><a href="#TOC"></a></h1>
-<h2 id="compilers-and-interpreters"><a href="#TOC">Compilers and interpreters</a></h2>
+<h1 id="demo-pythonc">Demo Python/C…</h1>
+<h1 id="section-2"></h1>
+<h2 id="compilers-and-interpreters">Compilers and interpreters</h2>
 <p>Python is <em>interpreted</em> and C is <em>compiled</em> but what does that mean?</p>
 <ul>
 <li>Human readable code. This is the stuff that humans write and look at.</li>
 <li>Machine code. This is what the computer can actually execute.</li>
 </ul>
-<h2 id="compilation"><a href="#TOC">Compilation</a></h2>
+<h2 id="compilation">Compilation</h2>
 <p>A compiler converts human code to machine code e.g.:</p>
 <p>Human code:</p>
 <pre><code>int multiply(int a, int b)
@@ -254,20 +260,20 @@
   14: 8b 45 fc              mov    -0x4(%rbp),%eax
   17: 5d                    pop    %rbp
   18: c3                    retq</code></pre>
-<h2 id="compilation-in-c"><a href="#TOC">Compilation in C</a></h2>
+<h2 id="compilation-in-c">Compilation in C</h2>
 <p>Running C code is a two-step process:</p>
 <ul>
 <li>Compile the C code to machine code</li>
 <li>Run the compiled code</li>
 </ul>
 <p>The computer can execute machine code directly (fast)</p>
-<h2 id="python-is-interpreted"><a href="#TOC">Python is interpreted</a></h2>
+<h2 id="python-is-interpreted">Python is interpreted</h2>
 <p>When you run your Python program it is not compiled to machine code. The interpreter reads the code and simulates executing it.</p>
 <p>The interpreter itself is a C program that was compiled to machine code (by someone else).</p>
-<h2 id="how-to-learn-c"><a href="#TOC">How to learn C</a></h2>
+<h2 id="how-to-learn-c">How to learn C</h2>
 <p>Read the notes, and try out the examples. Do hte exercises and make sure that you know the answers to the questions.</p>
 <p>Very important: you must actually <em>try</em> things. You can not learn to program simply by reading.</p>
-<p>So go do it now...</p>
+<p>So go do it now…</p>
     </div>
   </body>
 </html>

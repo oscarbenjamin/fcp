@@ -12,17 +12,19 @@
 
 ## Lectures and times
 
-- Labs 1700-1800 Mondays and 1100-1300 Fridays in QB F.101
+- Labs 1100-1400 Fridays in QB F.101
+- Dropin session 1600-1700 Tuesdays in MVB 1.07
 - You are expected to also work outside of those times!
-- 9 weeks of C with (until Easter)
-- 3 weeks of Java (after Easter)
+- 9 weeks of C (three coursework deadlines)
+- 3 weeks of Java (class test at the end)
 
 ## Assessments
 
 Assessment    Deadline    Weight
 ----------    --------    ------
 Basic C test  week 14     5%
-C final       week 19     70%
+Cpair         week 18     35%
+Cind          week 21     35%
 Java final    week 24     25%
 
 ## C deadlines
@@ -34,14 +36,14 @@ Basic C test week 14      5%
              week 15
              week 16
              week 17
-             reading week
+Cpair        reading week 35%
              week 19
-C final      week 20      70%
-Vivas        week 21
-             Easter x3
+             week 20
+Cind         week 21      35%
              week 22
+             Easter x3
              week 23
-Java final   week 24
+Java test    week 24      25%
 
 ## C content
 
@@ -52,8 +54,8 @@ Java final   week 24
 * Makefiles
 * Command line programs
 * Arrays and strings
-* Reading and writing files
 * Structs
+* Multifile programs
 
 ## C assignment
 

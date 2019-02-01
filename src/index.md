@@ -28,27 +28,3 @@ Notes
 * [Installing the compiler](installing.html)
 * [Slides](slides1.html)
 
-# Week 2
-
-* [Week 2 overview](week2overview.html)
-* [Advanced shell usage](advanced_shell.html)
-* [Make files](makefiles.html)
-* [Loops and branching](loopsbranching.html)
-* [Functions](functions.html)
-* [Quadratic Example](quadratic1.html)
-* [Floating point](floating_point.html)
-* [Command line programs](commandline.html)
-* [Exercises](exercises2.html)
-* [Slides](slides2.html)
-
-# Week 3
-* [Arrays](arrays.html)
-* [Strings](strings.html)
-* [Quadratic Revisited](quadratic2.html)
-* [Exercises](exercises3.html)
-* [Slides](week3.html)
-
-# Week 4
-* [Pointers](pointers.html)
-* [Structs](structs.html)
-* [FileIO](fileio.html)

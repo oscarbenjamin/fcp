@@ -4,28 +4,74 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - </title>
+  <title>EMAT10006 - Further Computer Programming - pointers</title>
   <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
-  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -47,35 +93,35 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul>
     </div>
     <div id="main">
-<h1 id="pointers"><a href="#TOC">Pointers</a></h1>
-<p>Pointers are a fundamental concept in C and are one of the things that don't appear in higher level languages. They are also difficult to get right and a common source of frustration for new programmers.</p>
-<p>So what is a pointer? The memory (RAM) in your computer consists of a number of byte slots each of which can store one byte. My computer has 8GiB of memory which means that the number of byte slots is \(8\times 1024\times 1024\times 1024 = 8589934592\). Each byte slot has an integer number starting from 0.</p>
-<p>Suppose we have a variable <code>x</code> of type <code>int</code> which needs 4 bytes. If the variable is stored at memory location 256 then it uses the byte slots numbered 256, 257, 258, and 259. We say that the <em>address</em> of <code>x</code> is 256. The terms &quot;memory location&quot; and &quot;address&quot; are equivalent and simply refer to the integer number of the first byte slot used to store a variable.</p>
-<p>A pointer in C is an integer variable that stores the address of another variable. We say that the pointer &quot;points to&quot; the variable whose address is stores. If a pointer <code>px</code> points to a variable <code>x</code> then we can use <code>px</code> as a way to access <code>x</code> indirectly. This means that we can read or modify the value of the variable <code>x</code> through <code>px</code>. Since <code>px</code> itself is a variable we can change its value by making it point to another variable. We do this by storing the address of a different variable in <code>px</code>.</p>
-<p>Here's an example from the slides:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* pointers.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">int</span> a = <span class="dv">1</span>;
-  <span class="dt">int</span> b = <span class="dv">2</span>;
-  <span class="dt">int</span> *pointer;
-  printf(<span class="st">&quot;1: a = %d   b = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a, b);
-  pointer = &amp;a;
-  printf(<span class="st">&quot;2: *pointer = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *pointer);
-  a = <span class="dv">3</span>;
-  printf(<span class="st">&quot;3: *pointer = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *pointer);
-  *pointer = <span class="dv">123</span>;
-  printf(<span class="st">&quot;4: a = %d   b = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a, b);
-  pointer = &amp;b;
-  printf(<span class="st">&quot;5: *pointer = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *pointer);
-  *pointer = -<span class="dv">1</span>;
-  printf(<span class="st">&quot;6: a = %d   b = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a, b);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
-<p>And here's the output:</p>
+<h1 id="pointers">Pointers</h1>
+<p>Pointers are a fundamental concept in C and are one of the things that don’t appear in higher level languages. They are also difficult to get right and a common source of frustration for new programmers.</p>
+<p>So what is a pointer? The memory (RAM) in your computer consists of a number of byte slots each of which can store one byte. My computer has 8GiB of memory which means that the number of byte slots is <span class="math inline">\(8\times 1024\times 1024\times 1024 = 8589934592\)</span>. Each byte slot has an integer number starting from 0.</p>
+<p>Suppose we have a variable <code>x</code> of type <code>int</code> which needs 4 bytes. If the variable is stored at memory location 256 then it uses the byte slots numbered 256, 257, 258, and 259. We say that the <em>address</em> of <code>x</code> is 256. The terms “memory location” and “address” are equivalent and simply refer to the integer number of the first byte slot used to store a variable.</p>
+<p>A pointer in C is an integer variable that stores the address of another variable. We say that the pointer “points to” the variable whose address is stores. If a pointer <code>px</code> points to a variable <code>x</code> then we can use <code>px</code> as a way to access <code>x</code> indirectly. This means that we can read or modify the value of the variable <code>x</code> through <code>px</code>. Since <code>px</code> itself is a variable we can change its value by making it point to another variable. We do this by storing the address of a different variable in <code>px</code>.</p>
+<p>Here’s an example from the slides:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/* pointers.c */</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="dt">int</span> a = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="dt">int</span> b = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">  <span class="dt">int</span> *pointer;</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">  printf(<span class="st">&quot;1: a = %d   b = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a, b);</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">  pointer = &amp;a;</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  printf(<span class="st">&quot;2: *pointer = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *pointer);</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">  a = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">  printf(<span class="st">&quot;3: *pointer = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *pointer);</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">  *pointer = <span class="dv">123</span>;</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">  printf(<span class="st">&quot;4: a = %d   b = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a, b);</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">  pointer = &amp;b;</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">  printf(<span class="st">&quot;5: *pointer = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *pointer);</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">  *pointer = <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">  printf(<span class="st">&quot;6: a = %d   b = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a, b);</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">}</a></code></pre></div>
+<p>And here’s the output:</p>
 <pre><code>$ ./pointers.exe
 1: a = 1   b = 2
 2: *pointer = 1
@@ -83,60 +129,60 @@ code > span.er { color: #ff0000; font-weight: bold; }
 4: a = 123   b = 2
 5: *pointer = 2
 6: a = 123   b = -1</code></pre>
-<p>So let's try to pull this apart. Firstly the statement <code>int *pointer</code> declares a variable with name <code>pointer</code> and type <code>int*</code>. The type <code>int*</code> is read as &quot;pointer to int&quot;. It means that the <code>pointer</code> is a pointer type variable but the compiler should interpret the variable it points to as being of type <code>int</code>.</p>
+<p>So let’s try to pull this apart. Firstly the statement <code>int *pointer</code> declares a variable with name <code>pointer</code> and type <code>int*</code>. The type <code>int*</code> is read as “pointer to int”. It means that the <code>pointer</code> is a pointer type variable but the compiler should interpret the variable it points to as being of type <code>int</code>.</p>
 <p>The line <code>pointer = &amp;a</code> initialises the pointer with the memory address of the variable <code>a</code> which is of type <code>int</code>. If <code>a</code> was of a different type e.g. <code>char</code> then the compiler would complain since <code>pointer</code> has type <code>int*</code> an should point to a variable of type <code>int</code>. The operator <code>&amp;</code> used in this way is called the <em>address of</em> operator. We can use it on any variable and gives us the integer number of the first byte slot used by the variable. So this line stores that address in <code>pointer</code>.</p>
-<p>The line <code>printf(&quot;2: *pointer = %d\n&quot;, *pointer);</code> uses <code>*pointer</code> as the value to print out. When we have a pointer variable - such as <code>pointer</code> in this example - writing <code>*pointer</code> means the value of the variable pointed to by pointer. The operator <code>*</code> used in this way is called the <em>dereferencing</em> operator. In a sense the dereferencing operator is the inverse of the address of operator since for any variable <code>a</code> we would have that <code>a==*(&amp;(a))</code>. Writing the operators the other way round (<code>&amp;(*(a))</code>) doesn't work unless <code>a</code> has a pointer type (non-pointers cannot be dereferenced). Note how the expression <code>&amp;a</code> implicitly means a value of type pointer to <code>int</code> if <code>a</code> has type <code>int</code>. Likewise if <code>a</code> has type <code>int*</code> then <code>*a</code> has type <code>int</code>.</p>
+<p>The line <code>printf(&quot;2: *pointer = %d\n&quot;, *pointer);</code> uses <code>*pointer</code> as the value to print out. When we have a pointer variable - such as <code>pointer</code> in this example - writing <code>*pointer</code> means the value of the variable pointed to by pointer. The operator <code>*</code> used in this way is called the <em>dereferencing</em> operator. In a sense the dereferencing operator is the inverse of the address of operator since for any variable <code>a</code> we would have that <code>a==*(&amp;(a))</code>. Writing the operators the other way round (<code>&amp;(*(a))</code>) doesn’t work unless <code>a</code> has a pointer type (non-pointers cannot be dereferenced). Note how the expression <code>&amp;a</code> implicitly means a value of type pointer to <code>int</code> if <code>a</code> has type <code>int</code>. Likewise if <code>a</code> has type <code>int*</code> then <code>*a</code> has type <code>int</code>.</p>
 <p>We can use the dereferencing operator to read a variable as just described or we can use it to modify a value. The statement <code>*pointer = 123</code> does not change the value of <code>pointer</code>. Rather it changes the value of the variable pointed at by <code>pointer</code>. So we can use <code>*pointer</code> anywhere in a statement that we would use a normal variable name but the effect is to read/write the value of the variable whose address <code>pointer</code> stores rather than changing <code>pointer</code> itself. This is different from the statement <code>pointer = &amp;b</code> which causes the pointer to point at a different object and does not modify the value of the variables pointed to by the pointer.</p>
-<h2 id="exercise"><a href="#TOC">Exercise</a></h2>
-<p>Study the above program carefully and ensure that you understand each line of output. Make your own program that uses pointers to modify variables and print out the value of all of the variables. Play around with this until you're sure that you understand this concept.</p>
-<h2 id="why-pointers"><a href="#TOC">Why pointers?</a></h2>
-<p>Okay so we've talked about what pointers are now the question is: why would we want to use them? Let's work through a few simple programmes to see.</p>
-<p>Firstly in C we can only ever return one value from a function. So let's say I want to have a function that parses a decimal string (e.g. &quot;123&quot;) and returns the corresponding integer value. Let's quickly make a function like that and a short programme to go with it:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* double.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-<span class="ot">#include &lt;ctype.h&gt;</span>
-
-<span class="dt">int</span> int_from_decimal_string(<span class="dt">char</span> decimal_string[]);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-    <span class="kw">if</span>(argc == <span class="dv">2</span>)
-    {
-        <span class="dt">int</span> number = int_from_decimal_string(argv[<span class="dv">1</span>]);
-        printf(<span class="st">&quot;2*%d = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, number, <span class="dv">2</span>*number);
-        <span class="kw">return</span> <span class="dv">0</span>;
-    }
-    <span class="kw">else</span>
-    {
-        fprintf(stderr, <span class="st">&quot;Usage:</span><span class="ch">\n</span><span class="st">./double.exe NUM</span><span class="ch">\n</span><span class="st">&quot;</span>);
-        <span class="kw">return</span> <span class="dv">1</span>;
-    }
-}
-
-<span class="dt">int</span> int_from_decimal_string(<span class="dt">char</span> decimal_string[])
-{
-    <span class="co">/* Check that the string is all digits */</span>
-    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; decimal_string[i] != &#39;\<span class="dv">0</span>&#39;; i++)
-    {
-        <span class="kw">if</span>(!isdigit(decimal_string[i]))
-        {
-            fprintf(stderr,
-                    <span class="st">&quot;Bad decimal string </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
-                    decimal_string);
-            <span class="kw">return</span> -<span class="dv">1</span>; <span class="co">// What should we return?</span>
-        }
-    }
-
-    <span class="dt">int</span> total = <span class="dv">0</span>;
-    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; decimal_string[i] != &#39;\<span class="dv">0</span>&#39;; i++)
-    {
-        total = total * <span class="dv">10</span> + (decimal_string[i] - &#39;<span class="dv">0</span>&#39;);
-    }
-
-    <span class="co">// Success</span>
-    <span class="kw">return</span> total;
-}</code></pre>
+<h2 id="exercise">Exercise</h2>
+<p>Study the above program carefully and ensure that you understand each line of output. Make your own program that uses pointers to modify variables and print out the value of all of the variables. Play around with this until you’re sure that you understand this concept.</p>
+<h2 id="why-pointers">Why pointers?</h2>
+<p>Okay so we’ve talked about what pointers are now the question is: why would we want to use them? Let’s work through a few simple programmes to see.</p>
+<p>Firstly in C we can only ever return one value from a function. So let’s say I want to have a function that parses a decimal string (e.g. “123”) and returns the corresponding integer value. Let’s quickly make a function like that and a short programme to go with it:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* double.c */</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="pp">#include </span><span class="im">&lt;ctype.h&gt;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="dt">int</span> int_from_decimal_string(<span class="dt">char</span> decimal_string[]);</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">{</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="cf">if</span>(argc == <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">        <span class="dt">int</span> number = int_from_decimal_string(argv[<span class="dv">1</span>]);</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">        printf(<span class="st">&quot;2*%d = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, number, <span class="dv">2</span>*number);</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">        <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    }</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="cf">else</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    {</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">        fprintf(stderr, <span class="st">&quot;Usage:</span><span class="sc">\n</span><span class="st">./double.exe NUM</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">        <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">    }</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">}</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="dt">int</span> int_from_decimal_string(<span class="dt">char</span> decimal_string[])</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">{</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">    <span class="co">/* Check that the string is all digits */</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">    <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; decimal_string[i] != &#39;\<span class="dv">0</span>&#39;; i++)</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">    {</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">        <span class="cf">if</span>(!isdigit(decimal_string[i]))</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29">        {</a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">            fprintf(stderr,</a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">                    <span class="st">&quot;Bad decimal string </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-32" data-line-number="32">                    decimal_string);</a>
+<a class="sourceLine" id="cb3-33" data-line-number="33">            <span class="cf">return</span> <span class="dv">-1</span>; <span class="co">// What should we return?</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34">        }</a>
+<a class="sourceLine" id="cb3-35" data-line-number="35">    }</a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37">    <span class="dt">int</span> total = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-38" data-line-number="38">    <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; decimal_string[i] != &#39;\<span class="dv">0</span>&#39;; i++)</a>
+<a class="sourceLine" id="cb3-39" data-line-number="39">    {</a>
+<a class="sourceLine" id="cb3-40" data-line-number="40">        total = total * <span class="dv">10</span> + (decimal_string[i] - <span class="ch">&#39;0&#39;</span>);</a>
+<a class="sourceLine" id="cb3-41" data-line-number="41">    }</a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb3-43" data-line-number="43">    <span class="co">// Success</span></a>
+<a class="sourceLine" id="cb3-44" data-line-number="44">    <span class="cf">return</span> total;</a>
+<a class="sourceLine" id="cb3-45" data-line-number="45">}</a></code></pre></div>
 <p>We can run this programme like so</p>
 <pre><code>$ make
 gcc -std=c99 -Wall double.c -o double.exe
@@ -144,7 +190,7 @@ $ ./double.exe 123
 2*123 = 246
 $ ./double.exe 12
 2*12 = 24</code></pre>
-<p>Okay so far so good. Now what happens if we give the programme an invalid string? Let's try it out:</p>
+<p>Okay so far so good. Now what happens if we give the programme an invalid string? Let’s try it out:</p>
 <pre><code>$ ./double.exe asd
 Bad decimal string &quot;asd&quot;
 2*-1 = -2
@@ -152,137 +198,137 @@ $ ./double.exe -1
 Bad decimal string &quot;-1&quot;
 2*-1 = -2</code></pre>
 <p>So the function <code>int_from_decimal_string</code> has a problem. When it finds an invalid decimal string it can print a message to <code>stderr</code> but it still needs to return a value. In this case it returns <code>-1</code>. So how can the calling code check that an error occurred? Well the calling code can just check for a return value of <code>-1</code>.</p>
-<p>But what if <code>-1</code> is a valid return value from the function? The function doesn't check for minus signs but we could try and improve it to do so and then what integer value could we possibly return to indicate that an error occurred?</p>
+<p>But what if <code>-1</code> is a valid return value from the function? The function doesn’t check for minus signs but we could try and improve it to do so and then what integer value could we possibly return to indicate that an error occurred?</p>
 <p>If we were working in Python we could raise an exception which would terminate the calling code. However in C there are no exceptions so any error has to be signalled somehow through the values a function returns. So maybe the function could return two values? One value would be the integer that results from parsing the string and the other could be a flag that indicates whether the function succeeded or not.</p>
-<p>So how do we return two values from a function? There are two basic answers to this question. One is that we can return a struct. The other is that we can modify the inputs to the function using pointers. In this article we'll focus on using pointers.</p>
-<h2 id="modifying-input-arguments"><a href="#TOC">Modifying input arguments</a></h2>
-<p>So how do we modify the input arguments to a function? Well let's just try it and see what happens:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* inputs.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> a);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argtv[])
-{
-    <span class="dt">int</span> a = <span class="dv">2</span>;
-    modify_value(a);
-    printf(<span class="st">&quot;main: a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
-    <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> a)
-{
-    a = <span class="dv">1</span>;
-    printf(<span class="st">&quot;modify_value: a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
-}</code></pre>
-<p>Okay so let's run that and see what happens:</p>
+<p>So how do we return two values from a function? There are two basic answers to this question. One is that we can return a struct. The other is that we can modify the inputs to the function using pointers. In this article we’ll focus on using pointers.</p>
+<h2 id="modifying-input-arguments">Modifying input arguments</h2>
+<p>So how do we modify the input arguments to a function? Well let’s just try it and see what happens:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">/* inputs.c */</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="dt">void</span> modify_value(<span class="dt">int</span> a);</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argtv[])</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">{</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">int</span> a = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">    modify_value(a);</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">    printf(<span class="st">&quot;main: a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="dt">void</span> modify_value(<span class="dt">int</span> a)</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">{</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">    a = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">    printf(<span class="st">&quot;modify_value: a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">}</a></code></pre></div>
+<p>Okay so let’s run that and see what happens:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall inputs.c -o inputs.exe
 $ ./inputs.exe 
 modify_value: a = 1
 main: a = 2</code></pre>
-<p>Is that what you expected? We can see that <code>a</code> was set to 1 in <code>modify_value</code> but then it still printed out as 2 in <code>main</code>. Why is that? Really I'm deliberately confusing you by calling the parameter to <code>modify_value</code> the same name <code>a</code> as the variable in <code>main</code>. The programme above is roughly equivalent to</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* inputs.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> b);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-    <span class="dt">int</span> a = <span class="dv">2</span>;
-    modify_value(a);
-    printf(<span class="st">&quot;main: a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
-    <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> b)
-{
-    b = <span class="dv">1</span>;
-    printf(<span class="st">&quot;modify_value: b = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, b);
-}</code></pre>
-<p>What we can see more clearly in this example is that the variable <code>b</code> in <code>modify_value</code> is a different variable than the <code>a</code> in <code>main</code> (it doesn't matter if they have the same name or not). So what happens when we call <code>modify_value</code>? The <code>modify_value</code> function receives a <em>copy</em> of the <em>value</em> of the <code>a</code> variable. The value is copied to a new variable which is called <code>b</code> in <code>modify_value</code>. Inside the <code>modify_value</code> function we can modify that copy but it doesn't affect the variable <code>a</code> in the <code>main</code> function.</p>
+<p>Is that what you expected? We can see that <code>a</code> was set to 1 in <code>modify_value</code> but then it still printed out as 2 in <code>main</code>. Why is that? Really I’m deliberately confusing you by calling the parameter to <code>modify_value</code> the same name <code>a</code> as the variable in <code>main</code>. The programme above is roughly equivalent to</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">/* inputs.c */</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="dt">void</span> modify_value(<span class="dt">int</span> b);</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">{</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="dt">int</span> a = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">    modify_value(a);</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">    printf(<span class="st">&quot;main: a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="dt">void</span> modify_value(<span class="dt">int</span> b)</a>
+<a class="sourceLine" id="cb8-16" data-line-number="16">{</a>
+<a class="sourceLine" id="cb8-17" data-line-number="17">    b = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb8-18" data-line-number="18">    printf(<span class="st">&quot;modify_value: b = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, b);</a>
+<a class="sourceLine" id="cb8-19" data-line-number="19">}</a></code></pre></div>
+<p>What we can see more clearly in this example is that the variable <code>b</code> in <code>modify_value</code> is a different variable than the <code>a</code> in <code>main</code> (it doesn’t matter if they have the same name or not). So what happens when we call <code>modify_value</code>? The <code>modify_value</code> function receives a <em>copy</em> of the <em>value</em> of the <code>a</code> variable. The value is copied to a new variable which is called <code>b</code> in <code>modify_value</code>. Inside the <code>modify_value</code> function we can modify that copy but it doesn’t affect the variable <code>a</code> in the <code>main</code> function.</p>
 <p>So how do we make a function that modifies one of its inputs if the function always receives copies of its input arguments? We can send the function a pointer. This works because a copy of a pointer still points to the same memory location. So how does that look:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* inputs.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> *pb);
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-    <span class="dt">int</span> a = <span class="dv">2</span>;
-    modify_value(&amp;a);
-    printf(<span class="st">&quot;main: a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
-    <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">void</span> modify_value(<span class="dt">int</span> *pb)
-{
-    *pb = <span class="dv">1</span>;
-    printf(<span class="st">&quot;modify_value: *pb = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *pb);
-}</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">/* inputs.c */</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="dt">void</span> modify_value(<span class="dt">int</span> *pb);</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">{</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="dt">int</span> a = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">    modify_value(&amp;a);</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">    printf(<span class="st">&quot;main: a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="dt">void</span> modify_value(<span class="dt">int</span> *pb)</a>
+<a class="sourceLine" id="cb9-16" data-line-number="16">{</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17">    *pb = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb9-18" data-line-number="18">    printf(<span class="st">&quot;modify_value: *pb = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *pb);</a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">}</a></code></pre></div>
 <p>And when we run this we see</p>
 <pre><code>$ ./inputs.exe 
 modify_value: *pb = 1
 main: a = 1</code></pre>
-<p>So there's a few points to note. Firstly we declare the argument is being of type pointer to int (i.e. <code>int*</code>). Secondly within the function we modify not <code>pb</code> but the value pointed to by <code>pb</code> using <code>*pb</code>. It is conventional that pointer variables often have a name that begins with 'p'. Also when we call <code>modify_value</code> we don't pass in <code>a</code> but rather <code>&amp;a</code> - the address of <code>a</code>. The address of <code>a</code> is <em>copied</em> to <code>pb</code> when the function is called. However the copy of the memory location still points to the same location so when we modify what it points to we are modifying the value of the variable <code>a</code> in the <code>main</code> function.</p>
-<h2 id="sscanf-revisited"><a href="#TOC"><code>sscanf</code> revisited</a></h2>
+<p>So there’s a few points to note. Firstly we declare the argument is being of type pointer to int (i.e. <code>int*</code>). Secondly within the function we modify not <code>pb</code> but the value pointed to by <code>pb</code> using <code>*pb</code>. It is conventional that pointer variables often have a name that begins with ‘p’. Also when we call <code>modify_value</code> we don’t pass in <code>a</code> but rather <code>&amp;a</code> - the address of <code>a</code>. The address of <code>a</code> is <em>copied</em> to <code>pb</code> when the function is called. However the copy of the memory location still points to the same location so when we modify what it points to we are modifying the value of the variable <code>a</code> in the <code>main</code> function.</p>
+<h2 id="sscanf-revisited"><code>sscanf</code> revisited</h2>
 <p>Now generally modifying the input arguments to a function is considered bad practice. However there are many places in C where it is the natural way to do things and there are some particular functions that need to work this way. A good example is the <code>sscanf</code> function that we have already seen. A simple example of use is</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* double2.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-    <span class="kw">if</span>(argc == <span class="dv">2</span>)
-    {
-        <span class="dt">int</span> number;
-        <span class="dt">int</span> ret;
-
-        ret = sscanf(argv[<span class="dv">1</span>], <span class="st">&quot;%d&quot;</span>, &amp;number);
-        <span class="kw">if</span>(!ret)
-        {
-            fprintf(stderr,
-                    <span class="st">&quot;Invalid decimal string </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>,
-                    argv[<span class="dv">1</span>]);
-            <span class="kw">return</span> <span class="dv">1</span>;
-        }
-
-        printf(<span class="st">&quot;2 * %d = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, number, <span class="dv">2</span>*number);
-        <span class="kw">return</span> <span class="dv">0</span>;
-    }
-    <span class="kw">else</span>
-    {
-        fprintf(stderr, <span class="st">&quot;Usage:</span><span class="ch">\n</span><span class="st">./double.exe NUM</span><span class="ch">\n</span><span class="st">&quot;</span>);
-        <span class="kw">return</span> <span class="dv">1</span>;
-    }
-}</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">/* double2.c */</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">    <span class="cf">if</span>(argc == <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">    {</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">        <span class="dt">int</span> number;</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">        <span class="dt">int</span> ret;</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">        ret = sscanf(argv[<span class="dv">1</span>], <span class="st">&quot;%d&quot;</span>, &amp;number);</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13">        <span class="cf">if</span>(!ret)</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">        {</a>
+<a class="sourceLine" id="cb11-15" data-line-number="15">            fprintf(stderr,</a>
+<a class="sourceLine" id="cb11-16" data-line-number="16">                    <span class="st">&quot;Invalid decimal string </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">                    argv[<span class="dv">1</span>]);</a>
+<a class="sourceLine" id="cb11-18" data-line-number="18">            <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb11-19" data-line-number="19">        }</a>
+<a class="sourceLine" id="cb11-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21">        printf(<span class="st">&quot;2 * %d = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, number, <span class="dv">2</span>*number);</a>
+<a class="sourceLine" id="cb11-22" data-line-number="22">        <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb11-23" data-line-number="23">    }</a>
+<a class="sourceLine" id="cb11-24" data-line-number="24">    <span class="cf">else</span></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">    {</a>
+<a class="sourceLine" id="cb11-26" data-line-number="26">        fprintf(stderr, <span class="st">&quot;Usage:</span><span class="sc">\n</span><span class="st">./double.exe NUM</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">        <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb11-28" data-line-number="28">    }</a>
+<a class="sourceLine" id="cb11-29" data-line-number="29">}</a></code></pre></div>
 <p>And when we run this we see</p>
 <pre><code>$ ./double2.exe asd
 Invalid decimal string &quot;asd&quot;
 $ ./double2.exe 123
 2 * 123 = 246</code></pre>
-<p>We're now in a position to understand what goes in with <code>sscanf</code>. Notice that we get two different values from <code>sscanf</code>. We have the value <code>ret</code> which is returned and also it sets the value of the variable <code>number</code> which is provided as input. We can now see why we actually pass the <em>memory address</em> of <code>number</code> (i.e. <code>&amp;number</code>) - with that <code>sscanf</code> can modify the value of <code>number</code>. Since <code>ret</code> is returned separately from <code>number</code> we have a way to detect if an error occurred in <code>sscanf</code> without needing to assume that any particular value of <code>number</code> represents an error.</p>
-<h2 id="pointers-and-arrays"><a href="#TOC">Pointers and arrays</a></h2>
+<p>We’re now in a position to understand what goes in with <code>sscanf</code>. Notice that we get two different values from <code>sscanf</code>. We have the value <code>ret</code> which is returned and also it sets the value of the variable <code>number</code> which is provided as input. We can now see why we actually pass the <em>memory address</em> of <code>number</code> (i.e. <code>&amp;number</code>) - with that <code>sscanf</code> can modify the value of <code>number</code>. Since <code>ret</code> is returned separately from <code>number</code> we have a way to detect if an error occurred in <code>sscanf</code> without needing to assume that any particular value of <code>number</code> represents an error.</p>
+<h2 id="pointers-and-arrays">Pointers and arrays</h2>
 <p>We are now in a position to understand how array access syntac works. An array in C is two things: it is a block of memory and it is a variable that refers to that block of memory. We can use the variable name to access the elements of the array using subscript notation. Really this just uses pointer arithmetic. Consider the following:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* pointerarray.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">int</span> array[] = {<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>};
-  <span class="dt">int</span> *pointer = &amp;array[<span class="dv">0</span>];
-
-  printf(<span class="st">&quot;array[2]       = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, array[<span class="dv">2</span>]);
-  printf(<span class="st">&quot;*pointer       = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *pointer);
-  printf(<span class="st">&quot;*(pointer + 2) = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, *(pointer + <span class="dv">2</span>));
-  printf(<span class="st">&quot;pointer[2]     = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, pointer[<span class="dv">2</span>]);
-
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">/* pointerarray.c */</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">  <span class="dt">int</span> array[] = {<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>};</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">  <span class="dt">int</span> *pointer = &amp;array[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">  printf(<span class="st">&quot;array[2]       = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, array[<span class="dv">2</span>]);</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">  printf(<span class="st">&quot;*pointer       = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *pointer);</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">  printf(<span class="st">&quot;*(pointer + 2) = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, *(pointer + <span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">  printf(<span class="st">&quot;pointer[2]     = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, pointer[<span class="dv">2</span>]);</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb13-16" data-line-number="16">}</a></code></pre></div>
 <p>When we run this we see</p>
 <pre><code>$ ./pointerarray.exe
 array[2]       = 10
@@ -291,28 +337,28 @@ array[2]       = 10
 pointer[2]     = 10</code></pre>
 <p>This shows us a few things. Firstly we can set a pointer to piont to the first element of an array and then we can use the <code>pointer</code> variable to access the array with subscript notation just as we could with <code>array</code>. The line <code>int *pointer = &amp;array[0]</code> sets <code>pointer</code> to point to the first element of <code>array</code>. Afterwards both <code>pointer[2]</code> and <code>array[2]</code> refer to the same element of the array.</p>
 <p>The third line printed shows us that <code>pointer[2]</code> is equivalent to <code>*(pointer + 2)</code>. In other words if <code>pointer</code> is a pointer to a memory address then <code>pointer + 2</code> points to the memory address that is two steps along in memory. In the case of our array if <code>pointer</code> points to the first element then the memory address two steps along is the third element.</p>
-<p>In the last paragraph I've referred to the memory address that is two &quot;steps&quot; along rather than two <em>bytes</em> along. The reason for this is that each <code>int</code> uses 4 bytes. So actually if we think of the pointer is the integer number for a byte in memory then <code>pointer + 2</code> will be the integer number for the byte that is 8 bytes further along. The compiler knows that our pointer is a pointer to <code>int</code> and therefore knows that when we say <code>pointer + 1</code> we want to get the memory address that is 4 bytes further on from the location currently referred to by <code>pointer</code>. We can see this directly by printing out the value of the pointer in hex using the &quot;%p&quot; format code to <code>printf</code>. This prints out something like the integer number of the memory address for a pointer:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* pointerarithmetic.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">int</span> x;
-  <span class="dt">int</span> *px = &amp;x;
-
-  printf(<span class="st">&quot;sizeof(int) = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">int</span>)<span class="kw">sizeof</span>(<span class="dt">int</span>));
-  printf(<span class="st">&quot;px   = %p</span><span class="ch">\n</span><span class="st">&quot;</span>, px);
-  printf(<span class="st">&quot;px+1 = %p</span><span class="ch">\n</span><span class="st">&quot;</span>, px + <span class="dv">1</span>);
-
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<p>In the last paragraph I’ve referred to the memory address that is two “steps” along rather than two <em>bytes</em> along. The reason for this is that each <code>int</code> uses 4 bytes. So actually if we think of the pointer is the integer number for a byte in memory then <code>pointer + 2</code> will be the integer number for the byte that is 8 bytes further along. The compiler knows that our pointer is a pointer to <code>int</code> and therefore knows that when we say <code>pointer + 1</code> we want to get the memory address that is 4 bytes further on from the location currently referred to by <code>pointer</code>. We can see this directly by printing out the value of the pointer in hex using the “%p” format code to <code>printf</code>. This prints out something like the integer number of the memory address for a pointer:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">/* pointerarithmetic.c */</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">  <span class="dt">int</span> x;</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">  <span class="dt">int</span> *px = &amp;x;</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">  printf(<span class="st">&quot;sizeof(int) = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, (<span class="dt">int</span>)<span class="kw">sizeof</span>(<span class="dt">int</span>));</a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">  printf(<span class="st">&quot;px   = %p</span><span class="sc">\n</span><span class="st">&quot;</span>, px);</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">  printf(<span class="st">&quot;px+1 = %p</span><span class="sc">\n</span><span class="st">&quot;</span>, px + <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb15-15" data-line-number="15">}</a></code></pre></div>
 <p>When we run this we get:</p>
 <pre><code>$ ./pointerarithmetic.exe
 sizeof(int) = 4
 px   = 0x7fffa4d2917c
 px+1 = 0x7fffa4d29180</code></pre>
-<p>The two pointer values are printed in hexadecimal. Just looking at the end of the two pointer values we can see that only the last two digits are different: <code>px</code> ends with \(7c\) whereas <code>px+1</code> ends with \(80\). The difference between these two is 4 which is the same as the size of an <code>int</code>.</p>
+<p>The two pointer values are printed in hexadecimal. Just looking at the end of the two pointer values we can see that only the last two digits are different: <code>px</code> ends with <span class="math inline">\(7c\)</span> whereas <code>px+1</code> ends with <span class="math inline">\(80\)</span>. The difference between these two is 4 which is the same as the size of an <code>int</code>.</p>
 <hr />
 <p>Next section: <a href="structs.html">structs</a></p>
     </div>
