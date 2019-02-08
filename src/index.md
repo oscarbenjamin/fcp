@@ -28,3 +28,14 @@ Notes
 * [Installing the compiler](installing.html)
 * [Slides](slides1.html)
 
+# More stuff...
+
+* [Week 2 overview](week2overview.html)
+* [Advanced shell usage](advanced_shell.html)
+* [Make files](makefiles.html)
+* [Loops and branching](loopsbranching.html)
+* [Functions](functions.html)
+* [Floating point](floating_point.html)
+* [Command line programs](commandline.html)
+* [Exercises](exercises2.html)
+* [Slides](slides2.html)
