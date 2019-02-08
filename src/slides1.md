@@ -59,22 +59,19 @@ Java test    week 24      25%
 
 ## C assignment
 
-You will complete the C assignment working in pairs.
+You will complete the first C assignment individually. The second assignment
+will be done in pairs. Then the last will be done individually again.
 
 I will randomly assign the pairs (within cohort) once you have submited the
-basic C test. If you don't submit I won't pair you up with anyone.
-
-The assignment will then be assessed by viva (interview) in week 21.
-
-You will submit the same code jointly but are expected to separately write a
-short report explaining what you have done.
+basic C test. If you don't submit I won't pair you up with anyone. I will also
+assign each pair to a TA who will be your supervisor for the rest of the unit.
 
 ## Plagiarism
 
 We had problems with plagiarism the year before last:
 
 - Fine to work together when not doing assignments
-- Obviously fine to work with your partner.
+- Obviously fine to work with your partner when doing the pair assignment.
 - Please do NOT work with other pairs.
 - Do not share your code with anyone.
 - (We will check for plagiarism)
