@@ -4,73 +4,27 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - basic_c</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -93,50 +47,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
     </div>
     <div id="main">
-<h1 id="basic-c">Basic C</h1>
-<h2 id="another-look-at-hello-world">Another look at hello world</h2>
-<p>In the last section we saw how to save our C code in a file and how to compile and run that code using the terminal. We’re now in a position to start thinking about the C code itself. First things first let’s have another look at the hello world C program that we wrote in the previous section:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">    puts(<span class="st">&quot;Hello world!&quot;</span>);</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">}</a></code></pre></div>
-<p>Now let’s go through this from the top. The first line is <code>#include &lt;stdio.h&gt;</code> and is an example of a <code>#include</code> statement. This is similar to an <code>import</code> statement in Python and is used to reference functions and variables from other code files. In this case we want to be able to use the <code>puts</code> function which is declared in <code>stdio.h</code> so we need to <code>#include</code> this for that reason. Files ending with <code>.h</code> also contain C code and are called <em>header files</em>. We will look more at these later. For now just know that we will probably always need to have the line <code>#include &lt;stdio.h&gt;</code> at the top of our C programs.</p>
+<h1 id="basic-c"><a href="#TOC">Basic C</a></h1>
+<h2 id="another-look-at-hello-world"><a href="#TOC">Another look at hello world</a></h2>
+<p>In the last section we saw how to save our C code in a file and how to compile and run that code using the terminal. We're now in a position to start thinking about the C code itself. First things first let's have another look at the hello world C program that we wrote in the previous section:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    puts(<span class="st">&quot;Hello world!&quot;</span>);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>Now let's go through this from the top. The first line is <code>#include &lt;stdio.h&gt;</code> and is an example of a <code>#include</code> statement. This is similar to an <code>import</code> statement in Python and is used to reference functions and variables from other code files. In this case we want to be able to use the <code>puts</code> function which is declared in <code>stdio.h</code> so we need to <code>#include</code> this for that reason. Files ending with <code>.h</code> also contain C code and are called <em>header files</em>. We will look more at these later. For now just know that we will probably always need to have the line <code>#include &lt;stdio.h&gt;</code> at the top of our C programs.</p>
 <p>The rest of the code is for the <code>main</code> function. This is made up of a <em>signature line</em> <code>int main(int argc, char *argv[])</code> and a <em>function body</em> which is enclosed in a pair of curly brackets <code>{</code> and <code>}</code>. We will look more at how to write functions later but for now just know that this defines the <code>main</code> function. Every C program needs to have a <code>main</code> function. When we run the program from the terminal it is the <code>main</code> function that is called and it is the code in the body of the main function that is executed.</p>
 <p>In the body of the <code>main</code> function there are two statements on two different lines. The end of a statement is marked with a <code>;</code> in C. The first statement is <code>puts(&quot;Hello world!&quot;);</code>. This equivalent to the Python statement <code>print(&quot;Hello world!&quot;)</code>. The <code>puts</code> function is the function for printing a string in C. Like in Python we can make a string using double quotes <code>&quot;</code>. Unlike in Python we cannot use single quotes <code>'</code> here and the statement needs to be terminated with a semicolon.</p>
 <p>Finally the last statement in the body of the <code>main</code> function is <code>return 0</code>. This sets the <em>exit code</em> of the program (more on this later). For now just know that we always need to return an integer value from the <code>main</code> function and this statement is the syntax for doing that.</p>
-<h2 id="variables-in-c">Variables in C</h2>
+<h2 id="variables-in-c"><a href="#TOC">Variables in C</a></h2>
 <p>So the basic idea that we get above is that our C program has to have a bunch of stuff just to get it to work and that the code that we want to run needs to go inside the <code>main</code> function. So how can we start to put some interesting things in there? Suppose we have a Python script that looks like:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">a <span class="op">=</span> <span class="dv">20</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">b <span class="op">=</span> <span class="dv">30</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">c <span class="op">=</span> a <span class="op">*</span> b</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="bu">print</span>(<span class="st">&quot;c = </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> c)</a></code></pre></div>
+<pre class="sourceCode python"><code class="sourceCode python">a = <span class="dv">20</span>
+b = <span class="dv">30</span>
+c = a * b
+<span class="kw">print</span>(<span class="st">&quot;c = </span><span class="ot">%d</span><span class="st">&quot;</span> % c)</code></pre>
 <p>Assuming I saved the above as <code>variables.py</code> I can open a terminal, <code>cd</code> into the appropriate directory, and run it like so:</p>
 <pre><code>$ python variables.py
 c = 600</code></pre>
-<p>Here we have three variables <code>a</code>, <code>b</code>, and <code>c</code>. The first statement assigns the value <code>20</code> to the name <code>a</code>. The second statement assigns the value <code>30</code> to the name <code>b</code>. The third statement computes the result <code>a * b</code> and assigns that value to the name <code>c</code>. Finally we print a message that shows the value of <code>c</code>. Hopefully that’s all straight-forward. So how do we do the same in C?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="dt">int</span> a;</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">int</span> b;</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">int</span> c;</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">    a = <span class="dv">20</span>;</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">    b = <span class="dv">30</span>;</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    c = a * b;</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">}</a></code></pre></div>
-<p>I’ll save the above code as <code>variables.c</code>. To compile and run it open a terminal, <code>cd</code> into the appropriate directory and do</p>
+<p>Here we have three variables <code>a</code>, <code>b</code>, and <code>c</code>. The first statement assigns the value <code>20</code> to the name <code>a</code>. The second statement assigns the value <code>30</code> to the name <code>b</code>. The third statement computes the result <code>a * b</code> and assigns that value to the name <code>c</code>. Finally we print a message that shows the value of <code>c</code>. Hopefully that's all straight-forward. So how do we do the same in C?</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> a;
+    <span class="dt">int</span> b;
+    <span class="dt">int</span> c;
+    a = <span class="dv">20</span>;
+    b = <span class="dv">30</span>;
+    c = a * b;
+    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>I'll save the above code as <code>variables.c</code>. To compile and run it open a terminal, <code>cd</code> into the appropriate directory and do</p>
 <pre><code>$ gcc variables.c -o variables.exe
 $ ./variables.exe
 c = 600</code></pre>
 <p>Hopefully this is broadly self-explanatory. Remembering the hello world program we can see that we have the same basic stuff in this program. We first <code>#include &lt;stdio.h&gt;</code> and then we have the <code>main</code> function with its signature line and the opening and closing curly braces and <code>return 0</code>. The code that actually executes in a C program is the code in the body of the <code>main</code> function before the <code>return 0;</code> statement.</p>
-<p>Firstly, in order to have three variables <code>a</code>, <code>b</code>, and <code>c</code> in a C program we need to declare the variables. The line that says <code>int a;</code> is the <em>declaration</em> for variable <code>a</code>. It declares that there will be a variable named <code>a</code> that will be of a particular <em>type</em>, specifically <code>int</code>. The name <code>int</code> is short for <em>integer</em> and we’ll explain more about what <code>int</code> really means in C later. Having declared the variable <code>a</code> we can later give it a value with the statement <code>a = 20;</code>. The first statement that gives a value to a variable is said to <em>initialise</em> the variable. The last statement in this program uses the <code>printf</code> function which prints out the value of the variable <code>c</code> (we’ll come back to <code>printf</code> later).</p>
-<p>In Python we don’t declare variables and just skip straight to initialising them. In Python objects also have types but we don’t need to declare the type of object that a variable can have. We can see the type of an object in Python using the <code>type</code> function:</p>
+<p>Firstly, in order to have three variables <code>a</code>, <code>b</code>, and <code>c</code> in a C program we need to declare the variables. The line that says <code>int a;</code> is the <em>declaration</em> for variable <code>a</code>. It declares that there will be a variable named <code>a</code> that will be of a particular <em>type</em>, specifically <code>int</code>. The name <code>int</code> is short for <em>integer</em> and we'll explain more about what <code>int</code> really means in C later. Having declared the variable <code>a</code> we can later give it a value with the statement <code>a = 20;</code>. The first statement that gives a value to a variable is said to <em>initialise</em> the variable. The last statement in this program uses the <code>printf</code> function which prints out the value of the variable <code>c</code> (we'll come back to <code>printf</code> later).</p>
+<p>In Python we don't declare variables and just skip straight to initialising them. In Python objects also have types but we don't need to declare the type of object that a variable can have. We can see the type of an object in Python using the <code>type</code> function:</p>
 <pre><code>$ python
 &gt;&gt;&gt; a = 1
 &gt;&gt;&gt; type(a)
@@ -144,88 +98,88 @@ c = 600</code></pre>
 &gt;&gt;&gt; b = &#39;hello&#39;
 &gt;&gt;&gt; type(b)
 &lt;type &#39;str&#39;&gt;</code></pre>
-<p>So in Python we can just write <code>a = 1</code> and set the variable <code>a</code> to be an object of type <code>int</code> having the value <code>1</code>. In C we first have to tell the compiler what the type of a variable <code>a</code> should be before we can set it to any value. Now the C program above declares all of its variables at one place at the top of the <code>main</code> function but that’s not the only way to do it. We can make it a bit shorter. For example we can declare all three variables on one line like this:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="dt">int</span> a, b, c;</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    a = <span class="dv">20</span>;</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    b = <span class="dv">30</span>;</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">    c = a * b;</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">}</a></code></pre></div>
+<p>So in Python we can just write <code>a = 1</code> and set the variable <code>a</code> to be an object of type <code>int</code> having the value <code>1</code>. In C we first have to tell the compiler what the type of a variable <code>a</code> should be before we can set it to any value. Now the C program above declares all of its variables at one place at the top of the <code>main</code> function but that's not the only way to do it. We can make it a bit shorter. For example we can declare all three variables on one line like this:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> a, b, c;
+    a = <span class="dv">20</span>;
+    b = <span class="dv">30</span>;
+    c = a * b;
+    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>In our C program the line <code>int a, b, c;</code> is equivalent to the three separate statements <code>int a;</code> etc. This is a handy way of declaring lots of variables without using too much screen space. We can also declare each variable at the same time as initialising it e.g.:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="dt">int</span> a = <span class="dv">20</span>;</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="dt">int</span> b = <span class="dv">30</span>;</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">    <span class="dt">int</span> c = a * b;</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> a = <span class="dv">20</span>;
+    <span class="dt">int</span> b = <span class="dv">30</span>;
+    <span class="dt">int</span> c = a * b;
+    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>However what we must not do is try to use a variable before it is declared or initialised. The compiler reads the code in order from start to finish. If we refer to a variable before it is declared then the compiler will refuse to compile it. So changing the above to</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="dt">int</span> c = a * b; <span class="co">/* before declaration */</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="dt">int</span> a = <span class="dv">20</span>;</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">    <span class="dt">int</span> b = <span class="dv">30</span>;</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> c = a * b; <span class="co">/* before declaration */</span>
+    <span class="dt">int</span> a = <span class="dv">20</span>;
+    <span class="dt">int</span> b = <span class="dv">30</span>;
+    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>we now get</p>
 <pre><code>$ gcc variables.c -o variables.exe
 variables.c: In function ‘main’:
 variables.c:5:13: error: ‘a’ undeclared (first use in this function)
 variables.c:5:13: note: each undeclared identifier is reported only once for each function it appears in
 variables.c:5:17: error: ‘b’ undeclared (first use in this function)</code></pre>
-<p>There are two types of messages that the compiler can give us: <em>errors</em> and <em>warnings</em>. Both type of message indicates a problem with our code. The difference is that if there are <em>any</em> errors then the code will not be compiled. In other words the file <code>variables.exe</code> will not have been created (or if it already exists then it won’t have been modified).</p>
-<p>If instead we declare <code>a</code> and <code>b</code> before using them but don’t initialise them until after we get a warning.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">    <span class="dt">int</span> a, b;</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">    <span class="dt">int</span> c = a * b; <span class="co">/* before initialisation */</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">    a = <span class="dv">20</span>;</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">    b = <span class="dv">30</span>;</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb11-11" data-line-number="11">}</a></code></pre></div>
+<p>There are two types of messages that the compiler can give us: <em>errors</em> and <em>warnings</em>. Both type of message indicates a problem with our code. The difference is that if there are <em>any</em> errors then the code will not be compiled. In other words the file <code>variables.exe</code> will not have been created (or if it already exists then it won't have been modified).</p>
+<p>If instead we declare <code>a</code> and <code>b</code> before using them but don't initialise them until after we get a warning.</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="dt">int</span> a, b;
+    <span class="dt">int</span> c = a * b; <span class="co">/* before initialisation */</span>
+    a = <span class="dv">20</span>;
+    b = <span class="dv">30</span>;
+    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Now we get</p>
 <pre><code>$ gcc variables.c -o variables.exe
 $ ./variables.exe
 c = 0</code></pre>
-<p>But that’s totally wrong. How did <code>c</code> get the value <code>0</code>. What’s happened is that the compiler has implicitly set the values of <code>a</code> and <code>b</code> to <code>0</code> when they were declared. This is not guaranteed to happen though so this program could potentially print any value.</p>
-<p>Annoyingly the compiler didn’t give us any warnings or errors about this. If we want to see the warnings then we need to ask the compiler to turn them on by giving it the <code>-Wall</code> argument like so</p>
+<p>But that's totally wrong. How did <code>c</code> get the value <code>0</code>. What's happened is that the compiler has implicitly set the values of <code>a</code> and <code>b</code> to <code>0</code> when they were declared. This is not guaranteed to happen though so this program could potentially print any value.</p>
+<p>Annoyingly the compiler didn't give us any warnings or errors about this. If we want to see the warnings then we need to ask the compiler to turn them on by giving it the <code>-Wall</code> argument like so</p>
 <pre><code>$ gcc -Wall variables.c -o variables.exe
 variables.c: In function ‘main’:
 variables.c:6:9: warning: ‘a’ is used uninitialised in this function [-Wuninitialized]
 variables.c:6:9: warning: ‘b’ is used uninitialised in this function [-Wuninitialized]</code></pre>
-<p>Always compile all of your code with the warnings turned on and always fix all warning messages. The warnings means that something is wrong in your code. Don’t ignore them!</p>
-<h2 id="changing-variables">Changing variables</h2>
+<p>Always compile all of your code with the warnings turned on and always fix all warning messages. The warnings means that something is wrong in your code. Don't ignore them!</p>
+<h2 id="changing-variables"><a href="#TOC">Changing variables</a></h2>
 <p>Just like in Python we can change the value of a variable by writing e.g. <code>x = x + 2</code> or in shorthand <code>x += 2</code>. Unlike in Python we also have the increment and decrement operators <code>x++</code>, <code>++x</code>, <code>x--</code>, and <code>--x</code>. The <code>++</code> operators are a short form for <code>x += 1</code> and the <code>--</code> operators are for <code>x -= 1</code>. So we have</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="dt">int</span> a = <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">  printf(<span class="st">&quot;a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">  a = a + <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">  printf(<span class="st">&quot;a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">  a += <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">  printf(<span class="st">&quot;a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">  a++;</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12">  printf(<span class="st">&quot;a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">  --a;</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">  printf(<span class="st">&quot;a = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a);</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> a = <span class="dv">2</span>;
+  printf(<span class="st">&quot;a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
+  a = a + <span class="dv">4</span>;
+  printf(<span class="st">&quot;a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
+  a += <span class="dv">4</span>;
+  printf(<span class="st">&quot;a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
+  a++;
+  printf(<span class="st">&quot;a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
+  --a;
+  printf(<span class="st">&quot;a = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>This gives</p>
 <pre><code>$ gcc -Wall change.c -o change.exe
 $ ./change.exe
@@ -234,52 +188,52 @@ a = 6
 a = 10
 a = 11
 a = 10</code></pre>
-<p>So we can see that the value of the variable changes with each of these statements. As you can expect the output of this program shows that each statement is executed in order one after another just like in Python (there are some programming languages that don’t behave this way).</p>
-<h2 id="the-printf-function">The <code>printf</code> function</h2>
-<p>In the last section we have used the <code>printf</code> function to print output rather than the <code>puts</code> function that we used before. These functions are similar but not the same. <code>puts</code> is short for “PUT String” and just prints a string to the terminal. <code>printf</code> is short for “PRINT Formatted” (or something like that) and is used to print the formatted value of a variable. The specific line that we used above is</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" data-line-number="1">    printf(<span class="st">&quot;c = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, c);</a></code></pre></div>
+<p>So we can see that the value of the variable changes with each of these statements. As you can expect the output of this program shows that each statement is executed in order one after another just like in Python (there are some programming languages that don't behave this way).</p>
+<h2 id="the-printf-function"><a href="#TOC">The <code>printf</code> function</a></h2>
+<p>In the last section we have used the <code>printf</code> function to print output rather than the <code>puts</code> function that we used before. These functions are similar but not the same. <code>puts</code> is short for &quot;PUT String&quot; and just prints a string to the terminal. <code>printf</code> is short for &quot;PRINT Formatted&quot; (or something like that) and is used to print the formatted value of a variable. The specific line that we used above is</p>
+<pre class="sourceCode C"><code class="sourceCode c">    printf(<span class="st">&quot;c = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, c);</code></pre>
 <p>The equivalent Python code is</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bu">print</span>(<span class="st">&quot;c = </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> c)</a></code></pre></div>
-<p>I’m hoping that you’ve already seen this %-style formatting in Python so that it’s easy to understand how the C version works. Essentially the idea is that we have a format string e.g. <code>&quot;c = %d&quot;</code> which has certain variable place-holders in it e.g. the <code>%d</code> part. Here <code>%d</code> means format an integer using <em>Decimal</em> digits. So the Python code <code>&quot;c = %d&quot; % c</code> results in the string “c = 600” because <code>&quot;600&quot;</code> is the decimal digit representation of the value of the variable <code>c</code>. In Python we can then print that string with the <code>print</code> function.</p>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">print</span>(<span class="st">&quot;c = </span><span class="ot">%d</span><span class="st">&quot;</span> % c)</code></pre>
+<p>I'm hoping that you've already seen this %-style formatting in Python so that it's easy to understand how the C version works. Essentially the idea is that we have a format string e.g. <code>&quot;c = %d&quot;</code> which has certain variable place-holders in it e.g. the <code>%d</code> part. Here <code>%d</code> means format an integer using <em>Decimal</em> digits. So the Python code <code>&quot;c = %d&quot; % c</code> results in the string &quot;c = 600&quot; because <code>&quot;600&quot;</code> is the decimal digit representation of the value of the variable <code>c</code>. In Python we can then print that string with the <code>print</code> function.</p>
 <p>The way it works in C is slightly different: we have one function called <code>printf</code> that takes the format string i.e. <code>&quot;c = %d\n&quot;</code> and any variables to be formatted (i.e. <code>c</code> in the example) and prints the result straight out to the terminal. So this results in a string like <code>&quot;c = 600\n&quot;</code> being printed.</p>
-<p>You may be wondering what the <code>\n</code> in the string does. This is a <em>newline</em> character. It is used to mark the end of a line of text. The terminal knows when it sees this that any new things that will be printed should be printed on the line below. When we use the <code>print</code> function in Python or the <code>puts</code> function in C the newline character is added automatically which is why if you call <code>print</code> or <code>puts</code> twice then the different strings will show on different lines in the terminal. With <code>printf</code> this newline character is not automatically added so we need to include it in the string to be printed. The symbol for a newline character in a string (in C or Python) is <code>\n</code>. Although this looks like two characters it’s really just one special character.</p>
+<p>You may be wondering what the <code>\n</code> in the string does. This is a <em>newline</em> character. It is used to mark the end of a line of text. The terminal knows when it sees this that any new things that will be printed should be printed on the line below. When we use the <code>print</code> function in Python or the <code>puts</code> function in C the newline character is added automatically which is why if you call <code>print</code> or <code>puts</code> twice then the different strings will show on different lines in the terminal. With <code>printf</code> this newline character is not automatically added so we need to include it in the string to be printed. The symbol for a newline character in a string (in C or Python) is <code>\n</code>. Although this looks like two characters it's really just one special character.</p>
 <p>To see the effect of newline characters try modifying the hello world program to use <code>printf</code> like this</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">    printf(<span class="st">&quot;Hello world!&quot;</span>);</a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb18-7" data-line-number="7">}</a></code></pre></div>
-<h2 id="exercises">Exercises</h2>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    printf(<span class="st">&quot;Hello world!&quot;</span>);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<h2 id="exercises"><a href="#TOC">Exercises</a></h2>
 <p>Now try changing the string to <code>&quot;Hello world!\n&quot;</code>, <code>&quot;Hello\nworld!&quot;</code>, or <code>&quot;Hello\nworld!\n&quot;</code> and see what happens. What happens if you call <code>puts(&quot;Hello&quot;)</code> followed by <code>puts(&quot;World&quot;)</code>? What if you use two <code>printf</code> calls instead of <code>puts</code>?</p>
-<h2 id="comments-and-coding-style">Comments and coding style</h2>
+<h2 id="comments-and-coding-style"><a href="#TOC">Comments and coding style</a></h2>
 <p>In C as in Python we normally use comments to help explain the meaning of our code. For example:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co">/*</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co"> * hello.c : prints a nice greeting</span></a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co"> *</span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co"> * Author: Oscar Benjamin</span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co"> * Date: 29 Jan 2016</span></a>
-<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co"> */</span></a>
-<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb19-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb19-10" data-line-number="10">{</a>
-<a class="sourceLine" id="cb19-11" data-line-number="11">    <span class="co">/* Actually print the message. */</span></a>
-<a class="sourceLine" id="cb19-12" data-line-number="12">    printf(<span class="st">&quot;Hello world!&quot;</span>);</a>
-<a class="sourceLine" id="cb19-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb19-14" data-line-number="14">    <span class="cf">return</span> <span class="dv">0</span>; <span class="co">// Never forget to return 0!</span></a>
-<a class="sourceLine" id="cb19-15" data-line-number="15">}</a></code></pre></div>
-<p>There are two types of comments. Double slash <code>//</code> comments are similar to Python and mean that from that point to the end of the line is a comment that will be ignored by the compiler. The other kind of comment begins with <code>/*</code> and ends with <code>*/</code> and can span multiple lines. It is common to put a big comment at the start that is nicely formatted with a <code>*</code> at the beginning of each line. In small examples in these notes I will use a comment at the start to indicate the name of the file (so that you understand which file I’m compiling later).</p>
-<p>In Python indentation defines the beginning and end of blocks e.g. in an <code>if</code> block or a <code>for</code> loop. In C blocks begin and end with curly brackets e.g. <code>{</code> and <code>}</code> so the indentation is unnecessary. Also since a semicolon <code>;</code> is used to mark the end of statements it’s not important for them to be on one line as it is in Python. This means that we could write the code above like this:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="dt">int</span> main(</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="dt">int</span> argc, <span class="dt">char</span> *          argv[]) {</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">printf(</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">&quot;Hello world!&quot;</span></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">; <span class="cf">return</span> <span class="dv">0</span>; }</a></code></pre></div>
-<p>However this code is much harder to read so please don’t do that! Always use indentation consistently as it makes it much easier to read your code. Also make sure that you keep your indentation correct at all times. Your programming editor will be able to handle a lot of the indentation for you but only if you keep it correct. Please don’t think of indentation as being something that you should fix at the end; keep your code clean and easy to read at all times. (How you write your code is part of the markscheme in this unit.)</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/*</span>
+<span class="co"> * hello.c : prints a nice greeting</span>
+<span class="co"> *</span>
+<span class="co"> * Author: Oscar Benjamin</span>
+<span class="co"> * Date: 29 Jan 2016</span>
+<span class="co"> */</span>
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="co">/* Actually print the message. */</span>
+    printf(<span class="st">&quot;Hello world!&quot;</span>);
+
+    <span class="kw">return</span> <span class="dv">0</span>; <span class="co">// Never forget to return 0!</span>
+}</code></pre>
+<p>There are two types of comments. Double slash <code>//</code> comments are similar to Python and mean that from that point to the end of the line is a comment that will be ignored by the compiler. The other kind of comment begins with <code>/*</code> and ends with <code>*/</code> and can span multiple lines. It is common to put a big comment at the start that is nicely formatted with a <code>*</code> at the beginning of each line. In small examples in these notes I will use a comment at the start to indicate the name of the file (so that you understand which file I'm compiling later).</p>
+<p>In Python indentation defines the beginning and end of blocks e.g. in an <code>if</code> block or a <code>for</code> loop. In C blocks begin and end with curly brackets e.g. <code>{</code> and <code>}</code> so the indentation is unnecessary. Also since a semicolon <code>;</code> is used to mark the end of statements it's not important for them to be on one line as it is in Python. This means that we could write the code above like this:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="dt">int</span> main(
+<span class="dt">int</span> argc, <span class="dt">char</span> *          argv[]) {
+printf(
+<span class="st">&quot;Hello world!&quot;</span>
+)
+; <span class="kw">return</span> <span class="dv">0</span>; }</code></pre>
+<p>However this code is much harder to read so please don't do that! Always use indentation consistently as it makes it much easier to read your code. Also make sure that you keep your indentation correct at all times. Your programming editor will be able to handle a lot of the indentation for you but only if you keep it correct. Please don't think of indentation as being something that you should fix at the end; keep your code clean and easy to read at all times. (How you write your code is part of the markscheme in this unit.)</p>
 <hr />
 <p>Next section: <a href="elementary_types.html">elementary types</a></p>
     </div>

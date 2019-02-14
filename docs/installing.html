@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - installing</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>EMAT10006 - Further Computer Programming - </title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -25,16 +25,16 @@
 </ul>
     </div>
     <div id="main">
-<h1 id="installing-c-compilers">Installing C compilers</h1>
-<p>Finally you’re probably wondering how to get the C compilers installed for your computer. The answer here is that it depends what operating system you’re using.</p>
-<h2 id="linux">Linux</h2>
-<p>Instruct your package manager to install the compilers e.g. on Ubuntu the following command will install all of the compilers and some other stuff you might want:</p>
+<h1 id="installing-c-compilers"><a href="#TOC">Installing C compilers</a></h1>
+<p>Finally you're probably wondering how to get the C compilers installed for your computer. The answer here is that it depends what operating system you're using.</p>
+<h2 id="linux"><a href="#TOC">Linux</a></h2>
+<p>Instruct your package manager to install the compilers e.g. on Ubuntu the following command will install all of the compilers and some other stuff you might want:</p>
 <pre><code>$ sudo apt-get install build-essential</code></pre>
 <p>Now you can run <code>gcc</code> etc in the terminal.</p>
-<h2 id="osx">OSX</h2>
+<h2 id="osx"><a href="#TOC">OSX</a></h2>
 <p>Install <a href="https://developer.apple.com/xcode/">Xcode</a>.</p>
 <p>That will give you an editor, compilers, and a load of other stuff. You should then be able to run <code>gcc</code> from the terminal.</p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows"><a href="#TOC">Windows</a></h2>
 <p>Install <a href="https://notepad-plus-plus.org/">notepad++</a> to get an editor.</p>
 <p>Windows is the trickiest platform to install compilers. To install MinGW (like on the lab machines) there are instructions <a href="http://www.mingw.org/wiki/getting_started">here</a>. At the time of writing (Jan 2016) I have seen that the following instructions should work:</p>
 <p>First MinGW is not just a compiler. The MinGW project consists of several things</p>
@@ -43,7 +43,7 @@
 <li>A collection of software packages (some of which we want e.g. <code>gcc</code> etc.).</li>
 <li>A package manager program that can download and install the packages you want.</li>
 </ul>
-<p>To install the compilers with MinGW we need to first install the “MinGW installation Manager”.</p>
+<p>To install the compilers with MinGW we need to first install the &quot;MinGW installation Manager&quot;.</p>
 <ul>
 <li>Download <a href="https://sourceforge.net/projects/mingw/files/latest/download">mingw-get-setup.exe</a></li>
 <li>Run the downloaded <code>mingw-get-setup.exe</code> to install the MinGW Installation Manager.</li>
@@ -51,7 +51,7 @@
 <p>Now that you have installed the Installation Manager you need to run it to install the packages we want.</p>
 <ul>
 <li>Launch MinGW Installation Manager</li>
-<li>On the left tab click “basic setup”</li>
+<li>On the left tab click &quot;basic setup&quot;</li>
 <li>Then on the right tab select the following packages (by clicking the tickbox next to each package):
 <ul>
 <li>mingw32-base</li>
@@ -59,8 +59,8 @@
 <li>mingw32-gcc-objc</li>
 <li>msys-base</li>
 </ul></li>
-<li>Go to the program menu (at the top) and choose “Intallation” and then “Apply changes”.</li>
-<li>Click “Apply”</li>
+<li>Go to the program menu (at the top) and choose &quot;Intallation&quot; and then &quot;Apply changes&quot;.</li>
+<li>Click &quot;Apply&quot;</li>
 </ul>
 <p>By default MinGW will install all of its files in the folder <code>C:\MinGW</code>. We have now installed the shell (<code>sh.exe</code>) and the compilers (<code>gcc.exe</code>) and some other bits that we need. The only thing left is to create a shortcut that will open a console and run the shell. Use Notepad++ to create a <code>.bat</code> file.</p>
 <p>Open Notepad++, create a new file and save it on the desktop as <code>mingw.bat</code>. The contents of the file should be</p>
@@ -73,12 +73,12 @@ compilation terminated.</code></pre>
 <p>That error message is fine. It just means that you need to tell <code>gcc</code> which files to compile. If instead you see</p>
 <pre><code>$ gcc
 gcc: command not found</code></pre>
-<p>then it means that <code>gcc</code> is not installed or is not on your <code>PATH</code> environment variable. This could be because you didn’t install <code>gcc</code> but actually a common problem that I’ve seen is that the <code>/etc/fstab</code> file is missing. If that happens then try:</p>
+<p>then it means that <code>gcc</code> is not installed or is not on your <code>PATH</code> environment variable. This could be because you didn't install <code>gcc</code> but actually a common problem that I've seen is that the <code>/etc/fstab</code> file is missing. If that happens then try:</p>
 <pre><code>$ ls /etc</code></pre>
 <p>If you can see a file called <code>fstab.sample</code> but not a file called <code>fstab</code> then your <code>fstab</code> is missing. The file <code>fstab.sample</code> is an example of what this file should look like. You can fix the problem by typing</p>
 <pre><code>$ cp /etc/fstab.sample /etc/fstab</code></pre>
 <p>This will copy (<code>cp</code>) the <code>fstab.sample</code> file to <code>/etc/fstab</code>. Having done that close the shell and reopen it. You should then find that <code>gcc</code> is working.</p>
-<p>If it still doesn’t work or if you get it to work some other way then please let me know because I want these instructions to be as good as possible.</p>
+<p>If it still doesn't work or if you get it to work some other way then please let me know because I want these instructions to be as good as possible.</p>
 <hr />
 <p><a href="index.html">Back to index</a></p>
     </div>

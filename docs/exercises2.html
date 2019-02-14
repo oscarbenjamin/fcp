@@ -4,74 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - exercises2</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -91,63 +45,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
     </div>
     <div id="main">
-<h1 id="exercises">Exercises</h1>
-<h2 id="loops-and-branching">Loops and branching</h2>
+<h1 id="exercises"><a href="#TOC">Exercises</a></h1>
+<h2 id="loops-and-branching"><a href="#TOC">Loops and branching</a></h2>
 <p>Write a program that can determine if a (positive) number is prime. Fill out this skeleton program:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/* primetest.c */</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="dt">unsigned</span> <span class="dt">int</span> number = <span class="dv">51</span>;</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">  <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">   * Insert code here</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">   */</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">}</a></code></pre></div>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* primetest.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">unsigned</span> <span class="dt">int</span> number = <span class="dv">51</span>;
+
+  <span class="co">/*</span>
+<span class="co">   * Insert code here</span>
+<span class="co">   */</span>
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Your program should print out</p>
 <pre><code>$ make
 gcc -std=c99 -Wall primetest.c -o primetest.exe
 $ ./primetest.exe
 51 is not prime</code></pre>
-<p>You can test if a number <span class="math inline">\(N\)</span> is prime by checking if it is divisible by any number <span class="math inline">\(n\)</span> where <span class="math inline">\(2 \leq n\)</span> and <span class="math inline">\(n^2 \leq N\)</span>. Try changing the value of <code>number</code> to check that it works. Now write a program that can print out all the prime numbers less than 100.</p>
-<p>Write a program that can check if an integer <span class="math inline">\(x\)</span> is a root of a cubic polynomial <span class="math display">\[ax^3 + bx^2 + cx + d\]</span> where <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> are integers. Fill out the skeleton</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* isroot.c */</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">int</span> x = <span class="dv">5</span>;</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="dt">int</span> a = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  <span class="dt">int</span> b = <span class="dv">-4</span>;</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="dt">int</span> c = <span class="dv">-7</span>;</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  <span class="dt">int</span> d = <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">  <span class="co">/*</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">   * Insert code here</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">   */</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">}</a></code></pre></div>
+<p>You can test if a number \(N\) is prime by checking if it is divisible by any number \(n\) where \(2 \leq n\) and \(n^2 \leq N\). Try changing the value of <code>number</code> to check that it works. Now write a program that can print out all the prime numbers less than 100.</p>
+<p>Write a program that can check if an integer \(x\) is a root of a cubic polynomial \[ax^3 + bx^2 + cx + d\] where \(a\), \(b\), \(c\) and \(d\) are integers. Fill out the skeleton</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* isroot.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> x = <span class="dv">5</span>;
+
+  <span class="dt">int</span> a = <span class="dv">1</span>;
+  <span class="dt">int</span> b = -<span class="dv">4</span>;
+  <span class="dt">int</span> c = -<span class="dv">7</span>;
+  <span class="dt">int</span> d = <span class="dv">10</span>;
+
+  <span class="co">/*</span>
+<span class="co">   * Insert code here</span>
+<span class="co">   */</span>
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Your program should print out something like</p>
 <pre><code>$ make
 gcc -std=c99 -Wall isroot.c -o isroot.exe
 $ ./isroot.exe
 5 is a root of 1x^3 + -4x^2 + -7x + 10</code></pre>
-<p>Try different values for <code>x</code>, <code>a</code>, etc. Feel free to try and make the output polynomial look better…</p>
-<h2 id="cubic-solver">Cubic solver</h2>
-<p>The <a href="https://en.wikipedia.org/wiki/Rational_root_theorem">rational root theorem</a> states that any integer root of a cubic with integer coefficients divides <span class="math inline">\(d\)</span>. Hence any integer root <span class="math inline">\(x\)</span> must satisfy <span class="math inline">\(-d \le x \le d\)</span> (assuming that <span class="math inline">\(d\)</span> is positive). Adapt the above program so that it prints out all integer roots of the given cubic. Test your program out with different cubics. Example output might be</p>
+<p>Try different values for <code>x</code>, <code>a</code>, etc. Feel free to try and make the output polynomial look better...</p>
+<h2 id="cubic-solver"><a href="#TOC">Cubic solver</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Rational_root_theorem">rational root theorem</a> states that any integer root of a cubic with integer coefficients divides \(d\). Hence any integer root \(x\) must satisfy \(-d \le x \le d\) (assuming that \(d\) is positive). Adapt the above program so that it prints out all integer roots of the given cubic. Test your program out with different cubics. Example output might be</p>
 <pre><code>$ ./findroots.exe
 Roots of 1x^3 + -4x^2 + -7x + 10:
 -2 1 5</code></pre>
-<h2 id="functions">Functions</h2>
+<h2 id="functions"><a href="#TOC">Functions</a></h2>
 <p>Take the programs you wrote for the previous loop exercises and split them up using functions. In particular create a function <code>isprime(n)</code> that returns whether or not an integer <code>n</code> is prime.</p>
-<p>Also make a function <code>polyeval(x, a, b, c, d)</code> that can evaluate the polynomial <span class="math display">\[P(x) = ax^3 + bx^2 + cx + d.\]</span> Then use that function to make a function <code>isroot(x, a, b, c, d)</code> that returns whether or not <code>x</code> is a root of <span class="math inline">\(P(x)\)</span>. Finally make a function <code>polyprint</code> that can print a polynomial to the terminal. Use all of these functions in your previous program to find the integer roots of a cubic. Think carefully about the output of the <code>polyprint</code> function. Does it print all polynomials the way you want it to?</p>
+<p>Also make a function <code>polyeval(x, a, b, c, d)</code> that can evaluate the polynomial \[P(x) = ax^3 + bx^2 + cx + d.\] Then use that function to make a function <code>isroot(x, a, b, c, d)</code> that returns whether or not <code>x</code> is a root of \(P(x)\). Finally make a function <code>polyprint</code> that can print a polynomial to the terminal. Use all of these functions in your previous program to find the integer roots of a cubic. Think carefully about the output of the <code>polyprint</code> function. Does it print all polynomials the way you want it to?</p>
     </div>
   </body>
 </html>

@@ -4,74 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - functions</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -91,10 +45,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
     </div>
     <div id="main">
-<h1 id="functions">Functions</h1>
-<h2 id="what-are-functions">What are functions?</h2>
+<h1 id="functions"><a href="#TOC">Functions</a></h1>
+<h2 id="what-are-functions"><a href="#TOC">What are functions?</a></h2>
 <p>You should have already seen functions in Python. The concept behind functions in C is similar but there are some important differences. First though I want to consider an important classification of functions that is useful in designing good functions.</p>
-<p>First let’s think about the idea of what a <em>function</em> is. The name function used in programming comes from Mathematics. A mathematical function is an object which associates each value from one set of things to a value from another set of things. We might have a function <span class="math display">\[ f : A \to B\]</span> which associates each element in the set <span class="math inline">\(A\)</span> with an element from the set <span class="math inline">\(B\)</span>. For any element <span class="math inline">\(a\)</span> from the set <span class="math inline">\(A\)</span> we can write <span class="math inline">\(f(a)\)</span> which should be the associated element from the set <span class="math inline">\(B\)</span>. The analogue of this in a computing context is that a function is some code that has both an input and an output. In the expression <code>y = f(x)</code> we say that <code>x</code> is an input to the function <code>f</code> and that <code>y</code> is the resulting output.</p>
+<p>First let's think about the idea of what a <em>function</em> is. The name function used in programming comes from Mathematics. A mathematical function is an object which associates each value from one set of things to a value from another set of things. We might have a function \[ f : A \to B\] which associates each element in the set \(A\) with an element from the set \(B\). For any element \(a\) from the set \(A\) we can write \(f(a)\) which should be the associated element from the set \(B\). The analogue of this in a computing context is that a function is some code that has both an input and an output. In the expression <code>y = f(x)</code> we say that <code>x</code> is an input to the function <code>f</code> and that <code>y</code> is the resulting output.</p>
 <p>However in programming a function can do more things than simply take an input and return an output. A function might print something out to the terminal or it might get some of its inputs by reading from a file. If the function has some effect other than simply returning a value we say that this is a <em>side effect</em> of calling the function. Examples of side effects include</p>
 <ul>
 <li>Printing output</li>
@@ -102,7 +56,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Also the value or behaviour of some functions may depend on <em>external state</em> rather than simply the input arguments. A function call <code>f(x)</code> might return different values depending on something other than <code>x</code>. The external state might be</p>
 <ul>
-<li>Input from a file or from <code>stdin</code> (i.e. typed by the user)</li>
+<li>Input from a file or from <code>stdin</code> (i.e. typed by the user)</li>
 <li>A global variable in the program</li>
 </ul>
 <p>Using these two properties we can distinguish 4 types of functions:</p>
@@ -113,62 +67,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Functions that do not depend on external state and do not have side effects. These are called <em>pure functions</em>. A pure function always returns the same result given the same input and has no effect except for the value it returns. This corresponds to the mathematical idea of a function.</p></li>
 </ul>
 <p>Ideally we want as many of our functions as possible to be pure. Pure functions are easier to understand and less error-prone. Of course a useful program will always need to have some side effects (such as printing output) so we cannot make a programme entirely out of pure functions but the idea is to have as much code as possible in pure functions. The <code>main</code> function is generally not a pure function.</p>
-<h2 id="functions-in-c">Functions in C</h2>
+<h2 id="functions-in-c"><a href="#TOC">Functions in C</a></h2>
 <p>In C there are three parts to using a function. The function must have a <em>declaration</em> and a <em>definition</em> and then you can have function <em>calls</em>. So how does that look?</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/* square.c */</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">/* Function declaration */</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="dt">int</span> square(<span class="dt">int</span> x);</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">{</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">  <span class="dt">int</span> y = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">  printf(<span class="st">&quot;%d squared is %d</span><span class="sc">\n</span><span class="st">&quot;</span>, y, z);</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">/* Function definition */</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="dt">int</span> square(<span class="dt">int</span> x)</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">{</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="cf">return</span> x * x;</a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* square.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="co">/* Function declaration */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x);
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> y = <span class="dv">4</span>;
+  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span>
+
+  printf(<span class="st">&quot;%d squared is %d</span><span class="ch">\n</span><span class="st">&quot;</span>, y, z);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="co">/* Function definition */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x)
+{
+  <span class="kw">return</span> x * x;
+}</code></pre>
 <p>We can run that to see</p>
 <pre><code>$ make
 gcc -std=c99 -Wall square.c -o square.exe
 $ ./square.exe
 4 squared is 16</code></pre>
-<p>So we have a function <code>square</code> which is declared above the <code>main</code> function. The definition is below the <code>main</code> function and that’s fine. The important things are that</p>
+<p>So we have a function <code>square</code> which is declared above the <code>main</code> function. The definition is below the <code>main</code> function and that's fine. The important things are that</p>
 <ul>
 <li>The function declaration needs to come before any function calls.</li>
 <li>The function definition needs to be consistent with the declaration.</li>
 <li>Any function call needs to be consistent with the declaration and the definition.</li>
 </ul>
-<p>Before we move on let’s consider all of the ways in which using a function can go wrong.</p>
+<p>Before we move on let's consider all of the ways in which using a function can go wrong.</p>
 <p>Firstly what happens if we remove the declaration:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* square.c */</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">int</span> y = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  printf(<span class="st">&quot;%d squared is %d</span><span class="sc">\n</span><span class="st">&quot;</span>, y, z);</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">}</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">/* Function definition */</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="dt">int</span> square(<span class="dt">int</span> x)</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">{</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">  <span class="cf">return</span> x * x;</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* square.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> y = <span class="dv">4</span>;
+  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span>
+
+  printf(<span class="st">&quot;%d squared is %d</span><span class="ch">\n</span><span class="st">&quot;</span>, y, z);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="co">/* Function definition */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x)
+{
+  <span class="kw">return</span> x * x;
+}</code></pre>
 <p>Now if we compile that then we see</p>
 <pre><code>$ make
 gcc -std=c99 -Wall square.c -o square.exe
@@ -179,22 +133,22 @@ $ ./square.exe
 4 squared is 16</code></pre>
 <p>So it works but the compiler warns us about it. With another compiler this might not compile. If the function definition was in another file then this would be a compile error.</p>
 <p>So what happens if instead we remove the function definition:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">/* square.c */</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">/* Function declaration */</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="dt">int</span> square(<span class="dt">int</span> x);</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">{</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">  <span class="dt">int</span> y = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">  printf(<span class="st">&quot;%d squared is %d</span><span class="sc">\n</span><span class="st">&quot;</span>, y, z);</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* square.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="co">/* Function declaration */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x);
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> y = <span class="dv">4</span>;
+  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span>
+
+  printf(<span class="st">&quot;%d squared is %d</span><span class="ch">\n</span><span class="st">&quot;</span>, y, z);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Now it refuses to compile altogether:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall square.c -o square.exe
@@ -203,29 +157,29 @@ square.c:(.text+0x1c): undefined reference to `square&#39;
 collect2: ld returned 1 exit status
 make: *** [square.exe] Error 1</code></pre>
 <p>This is a funny looking error message. The message comes from late on in the compilation process, specifically from the <em>linker</em>. The linker combines all the bits of code in your program and expects to find the definitions for all functions that were called in the code. This error indicates that the linker has failed to find the code for the <code>square</code> function.</p>
-<p>Now let’s try using a definition that is inconsistent with the declaration</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">/* square.c */</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">/* Function declaration */</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="dt">int</span> square(<span class="dt">int</span> x);</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">{</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">  <span class="dt">int</span> y = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">  printf(<span class="st">&quot;%d squared is %d</span><span class="sc">\n</span><span class="st">&quot;</span>, y, z);</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">/* Function definition */</span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="dt">int</span> square(<span class="dt">int</span> x, <span class="dt">int</span> w)</a>
-<a class="sourceLine" id="cb7-20" data-line-number="20">{</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">  <span class="cf">return</span> x * x;</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22">}</a></code></pre></div>
+<p>Now let's try using a definition that is inconsistent with the declaration</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* square.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="co">/* Function declaration */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x);
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> y = <span class="dv">4</span>;
+  <span class="dt">int</span> z = square(y); <span class="co">// Function call</span>
+
+  printf(<span class="st">&quot;%d squared is %d</span><span class="ch">\n</span><span class="st">&quot;</span>, y, z);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="co">/* Function definition */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x, <span class="dt">int</span> w)
+{
+  <span class="kw">return</span> x * x;
+}</code></pre>
 <p>Here the definition says that this function takes two <code>int</code> arguments <code>x</code> and <code>w</code>. However the declaration lists it as taking one <code>int</code> argument. This gives a new compiler error</p>
 <pre><code>$ make
 gcc -std=c99 -Wall square.c -o square.exe
@@ -233,29 +187,29 @@ square.c:19:5: error: conflicting types for ‘square’
 square.c:6:5: note: previous declaration of ‘square’ was here
 make: *** [square.exe] Error 1</code></pre>
 <p>When you see an error message like this look carefully at the line number information. Here it is pointing us to lines 19 and 6 of the code file which are the lines of the definition and declaration respectively. The error has occurred because these two are inconsistent.</p>
-<p>Lastly what happens if the declaration and definition are consistent but the function call is invalid? Let’s call the function as <code>square(y, y)</code> which is invalid for a function that only takes one argument:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">/* square.c */</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">/* Function declaration */</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="dt">int</span> square(<span class="dt">int</span> x);</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">{</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">  <span class="dt">int</span> y = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">  <span class="dt">int</span> z = square(y, y); <span class="co">// Function call</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13">  printf(<span class="st">&quot;%d squared is %d</span><span class="sc">\n</span><span class="st">&quot;</span>, y, z);</a>
-<a class="sourceLine" id="cb9-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb9-15" data-line-number="15">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb9-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">/* Function definition */</span></a>
-<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="dt">int</span> square(<span class="dt">int</span> x)</a>
-<a class="sourceLine" id="cb9-20" data-line-number="20">{</a>
-<a class="sourceLine" id="cb9-21" data-line-number="21">  <span class="cf">return</span> x * x;</a>
-<a class="sourceLine" id="cb9-22" data-line-number="22">}</a></code></pre></div>
+<p>Lastly what happens if the declaration and definition are consistent but the function call is invalid? Let's call the function as <code>square(y, y)</code> which is invalid for a function that only takes one argument:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* square.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="co">/* Function declaration */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x);
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">int</span> y = <span class="dv">4</span>;
+  <span class="dt">int</span> z = square(y, y); <span class="co">// Function call</span>
+
+  printf(<span class="st">&quot;%d squared is %d</span><span class="ch">\n</span><span class="st">&quot;</span>, y, z);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="co">/* Function definition */</span>
+<span class="dt">int</span> square(<span class="dt">int</span> x)
+{
+  <span class="kw">return</span> x * x;
+}</code></pre>
 <p>Now we get a different error message again:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall square.c -o square.exe
@@ -263,21 +217,21 @@ square.c: In function ‘main’:
 square.c:11:3: error: too many arguments to function ‘square’
 square.c:6:5: note: declared here
 make: *** [square.exe] Error 1</code></pre>
-<p>It’s worth trying to understand why the compiler gives the error messages that it does. They are hard to understand at first but if you can learn what they mean then you can use them to help fix your code (that’s the purpose of those messages).</p>
-<h2 id="more-functions">More functions</h2>
-<p>Let’s make a function <code>mypow(x, p)</code> which computes <span class="math inline">\(x^p\)</span>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="dt">int</span> mypow(<span class="dt">int</span> x, <span class="dt">int</span> p)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">{</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="dt">int</span> power = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="cf">while</span>(p)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">  {</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">    power *= x;</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">    p--;</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">  <span class="cf">return</span> power;</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">}</a></code></pre></div>
-<p>Now we can call e.g. <code>mypow(2, 3)</code> to compute <span class="math inline">\(2^3=8\)</span>. Give this a try and see if it works. Now let’s pick apart the idea of the function a bit. The function signature has a return type (<code>int</code>) the name of the function (<code>mypow</code>) and then lists the type and names of the arguments to the function <code>int x</code> and <code>int p</code>. This means that the function takes two arguments both of which have type <code>int</code>. Inside the function body we can refer to these input argument as variables. We can modify these variables if we want (e.g. <code>p</code> in the example above).</p>
-<p>A function can have as many arguments as you like but it can have only one return value. Notice that the type of the return value is fixed so it’s not possible to have a function that e.g. sometimes returns an <code>int</code> and sometimes returns a string.</p>
+<p>It's worth trying to understand why the compiler gives the error messages that it does. They are hard to understand at first but if you can learn what they mean then you can use them to help fix your code (that's the purpose of those messages).</p>
+<h2 id="more-functions"><a href="#TOC">More functions</a></h2>
+<p>Let's make a function <code>mypow(x, p)</code> which computes \(x^p\).</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="dt">int</span> mypow(<span class="dt">int</span> x, <span class="dt">int</span> p)
+{
+  <span class="dt">int</span> power = <span class="dv">1</span>;
+  <span class="kw">while</span>(p)
+  {
+    power *= x;
+    p--;
+  }
+  <span class="kw">return</span> power;
+}</code></pre>
+<p>Now we can call e.g. <code>mypow(2, 3)</code> to compute \(2^3=8\). Give this a try and see if it works. Now let's pick apart the idea of the function a bit. The function signature has a return type (<code>int</code>) the name of the function (<code>mypow</code>) and then lists the type and names of the arguments to the function <code>int x</code> and <code>int p</code>. This means that the function takes two arguments both of which have type <code>int</code>. Inside the function body we can refer to these input argument as variables. We can modify these variables if we want (e.g. <code>p</code> in the example above).</p>
+<p>A function can have as many arguments as you like but it can have only one return value. Notice that the type of the return value is fixed so it's not possible to have a function that e.g. sometimes returns an <code>int</code> and sometimes returns a string.</p>
 <hr />
 <p>Next section: <a href="quadratic1.html">Quadratic example</a></p>
     </div>
