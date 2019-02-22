@@ -35,10 +35,18 @@ Notes
 * [Make files](makefiles.html)
 * [Loops and branching](loopsbranching.html)
 * [Functions](functions.html)
+* [Quadratic Example](quadratic1.html)
 * [Floating point](floating_point.html)
 * [Command line programs](commandline.html)
 * [Exercises](exercises2.html)
 * [Slides](slides2.html)
+
+# More C
+* [Arrays](arrays.html)
+* [Strings](strings.html)
+* [Quadratic Revisited](quadratic2.html)
+* [Exercises](exercises3.html)
+* [Slides](week3.html)
 
 # Week 4
 
