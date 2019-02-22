@@ -39,3 +39,9 @@ Notes
 * [Command line programs](commandline.html)
 * [Exercises](exercises2.html)
 * [Slides](slides2.html)
+
+# Week 4
+
+* [Pointers](pointers.html)
+* [Structs](structs.html)
+* [FileIO](fileio.html)
