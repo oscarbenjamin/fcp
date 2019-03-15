@@ -247,9 +247,9 @@ CFILES =\
 	exponential.c
 
 HFILES =\
-	factorial.c\
-	squareroot.c\
-	exponential.c
+	factorial.h\
+	squareroot.h\
+	exponential.h
 
 all: calc.exe rpn.exe
 
