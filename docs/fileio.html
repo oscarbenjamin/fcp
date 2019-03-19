@@ -4,74 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - fileio</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -93,150 +47,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     <div id="main">
 <h1 id="file-io">File IO</h1>
-<p>Most real programs need to do stuff with files. There are basically two things you can do with files: you can <em>read from</em> them or you can <em>write to</em> them. These are analogous to the load/save commands that you’re probably used to using in graphical programs. Many programs don’t have a graphical interface and in fact their sole purpose is to read one file and use it to write another. A good example of this is the compiler <code>gcc</code> which we have been using to compile our C programs. When we type</p>
+<p>Most real programs need to do stuff with files. There are basically two things you can do with files: you can <em>read from</em> them or you can <em>write to</em> them. These are analogous to the load/save commands that you're probably used to using in graphical programs. Many programs don't have a graphical interface and in fact their sole purpose is to read one file and use it to write another. A good example of this is the compiler <code>gcc</code> which we have been using to compile our C programs. When we type</p>
 <pre><code>$ gcc hello.c -o hello.exe</code></pre>
-<p>we are running <code>gcc</code> and telling it that the input file is <code>hello.c</code> and the output (<code>-o</code> for output) should be a file called <code>hello.exe</code>. The <code>gcc</code> program will read the file <code>hello.c</code> line by line, compile the C code to machine code and write the output to the file <code>hello.exe</code>. Actually there’s a few more stages than this in what <code>gcc</code> does but it doesn’t matter much right now. This concept of input/output is so common and generic in computing that it is typically abbreviated to “IO”. This is why the header file we’ve been using all along is called <code>stdio.h</code> which is short for STandarD Input Output.</p>
+<p>we are running <code>gcc</code> and telling it that the input file is <code>hello.c</code> and the output (<code>-o</code> for output) should be a file called <code>hello.exe</code>. The <code>gcc</code> program will read the file <code>hello.c</code> line by line, compile the C code to machine code and write the output to the file <code>hello.exe</code>. Actually there's a few more stages than this in what <code>gcc</code> does but it doesn't matter much right now. This concept of input/output is so common and generic in computing that it is typically abbreviated to &quot;IO&quot;. This is why the header file we've been using all along is called <code>stdio.h</code> which is short for STandarD Input Output.</p>
 <h2 id="character-by-character">Character by character</h2>
 <p>In some cases the simplest way to do IO is to read and write individual characters. C provides two functions for doing this: <code>fgetc</code> and <code>fputc</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">/* chario.c */</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">   * Open both files checking for success.</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">   */</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">  <span class="dt">char</span> infilename[] = <span class="st">&quot;foo.txt&quot;</span>;</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">  <span class="dt">char</span> outfilename[] = <span class="st">&quot;bar.txt&quot;</span>;</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">  <span class="dt">FILE</span>* infile = fopen(infilename, <span class="st">&quot;r&quot;</span>); <span class="co">// read</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">  <span class="cf">if</span>(infile == NULL)</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">  {</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>, infilename);</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">  }</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20">  <span class="dt">FILE</span>* outfile = fopen(outfilename, <span class="st">&quot;w&quot;</span>); <span class="co">// write</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21">  <span class="cf">if</span>(outfile == NULL)</a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">  {</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>, outfilename);</a>
-<a class="sourceLine" id="cb2-24" data-line-number="24">    fclose(infile);</a>
-<a class="sourceLine" id="cb2-25" data-line-number="25">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-26" data-line-number="26">  }</a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28">  <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">   * read each character of infile and write to outfile</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">   */</span></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31">  <span class="dt">char</span> character;</a>
-<a class="sourceLine" id="cb2-32" data-line-number="32">  <span class="cf">for</span>(;;) <span class="co">// &lt;-- infinite loop</span></a>
-<a class="sourceLine" id="cb2-33" data-line-number="33">  {</a>
-<a class="sourceLine" id="cb2-34" data-line-number="34">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">     * Read character and check for End Of File</span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37">    character = fgetc(infile);</a>
-<a class="sourceLine" id="cb2-38" data-line-number="38">    <span class="cf">if</span>(character == EOF)</a>
-<a class="sourceLine" id="cb2-39" data-line-number="39">    {</a>
-<a class="sourceLine" id="cb2-40" data-line-number="40">      <span class="cf">break</span>; <span class="co">// exit loop</span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41">    }</a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb2-43" data-line-number="43">    <span class="co">/* convert to lower case */</span></a>
-<a class="sourceLine" id="cb2-44" data-line-number="44">    <span class="cf">if</span>(<span class="ch">&#39;a&#39;</span> &lt;= character &amp;&amp; character &lt;= <span class="ch">&#39;z&#39;</span>)</a>
-<a class="sourceLine" id="cb2-45" data-line-number="45">    {</a>
-<a class="sourceLine" id="cb2-46" data-line-number="46">      character -= <span class="ch">&#39;a&#39;</span> - <span class="ch">&#39;A&#39;</span>;</a>
-<a class="sourceLine" id="cb2-47" data-line-number="47">    }</a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49">    <span class="co">/* Write to hte output file */</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50">    fputc(character, outfile);</a>
-<a class="sourceLine" id="cb2-51" data-line-number="51">  }</a>
-<a class="sourceLine" id="cb2-52" data-line-number="52"></a>
-<a class="sourceLine" id="cb2-53" data-line-number="53">  fclose(infile);</a>
-<a class="sourceLine" id="cb2-54" data-line-number="54">  fclose(outfile);</a>
-<a class="sourceLine" id="cb2-55" data-line-number="55">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-56" data-line-number="56">}</a></code></pre></div>
-<p>(For the above program to work you first need to create a file called “foo.txt” and put some text in it.)</p>
-<p>Note that there’s a few stages to using files here. First before we can read/write we need to <em>open</em> the files with <code>fopen</code>. When calling <code>fopen</code> we ask for either read <code>&quot;r&quot;</code> or write <code>&quot;w&quot;</code> permissions. We need to check the success of the <code>fopen</code> function. Like many functions which return a pointer the <code>fopen</code> function returns <code>NULL</code> on failure. We must not attempt to read/write the files in this case so we print a message and exit the program. When we’re done reading/writing the files we need to close them with <code>fclose</code>.</p>
-<p>Between <code>fopen</code> and <code>fclose</code> we can call read/write functions on the file objects. In this case we’re using <code>fgetc</code> to read one character at a time from the file. We can also use <code>fputc</code> to write one character to the output at a time. This program reads the input character, converts it to upper case and then writes it to the output file. It does this in a loop until <code>fgetc</code> returns <code>EOF</code> which is a special value indicating that all the characters have been read from the file and we are now at the End Of the File.</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* chario.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="co">/*</span>
+<span class="co">   * Open both files checking for success.</span>
+<span class="co">   */</span>
+  <span class="dt">char</span> infilename[] = <span class="st">&quot;foo.txt&quot;</span>;
+  <span class="dt">char</span> outfilename[] = <span class="st">&quot;bar.txt&quot;</span>;
+
+  FILE* infile = fopen(infilename, <span class="st">&quot;r&quot;</span>); <span class="co">// read</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  FILE* outfile = fopen(outfilename, <span class="st">&quot;w&quot;</span>); <span class="co">// write</span>
+  <span class="kw">if</span>(outfile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, outfilename);
+    fclose(infile);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="co">/*</span>
+<span class="co">   * read each character of infile and write to outfile</span>
+<span class="co">   */</span>
+  <span class="dt">char</span> character;
+  <span class="kw">for</span>(;;) <span class="co">// &lt;-- infinite loop</span>
+  {
+    <span class="co">/*</span>
+<span class="co">     * Read character and check for End Of File</span>
+<span class="co">     */</span>
+    character = fgetc(infile);
+    <span class="kw">if</span>(character == EOF)
+    {
+      <span class="kw">break</span>; <span class="co">// exit loop</span>
+    }
+
+    <span class="co">/* convert to lower case */</span>
+    <span class="kw">if</span>(&#39;a&#39; &lt;= character &amp;&amp; character &lt;= &#39;z&#39;)
+    {
+      character -= &#39;a&#39; - &#39;A&#39;;
+    }
+
+    <span class="co">/* Write to hte output file */</span>
+    fputc(character, outfile);
+  }
+
+  fclose(infile);
+  fclose(outfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>(For the above program to work you first need to create a file called &quot;foo.txt&quot; and put some text in it.)</p>
+<p>Note that there's a few stages to using files here. First before we can read/write we need to <em>open</em> the files with <code>fopen</code>. When calling <code>fopen</code> we ask for either read <code>&quot;r&quot;</code> or write <code>&quot;w&quot;</code> permissions. We need to check the success of the <code>fopen</code> function. Like many functions which return a pointer the <code>fopen</code> function returns <code>NULL</code> on failure. We must not attempt to read/write the files in this case so we print a message and exit the program. When we're done reading/writing the files we need to close them with <code>fclose</code>.</p>
+<p>Between <code>fopen</code> and <code>fclose</code> we can call read/write functions on the file objects. In this case we're using <code>fgetc</code> to read one character at a time from the file. We can also use <code>fputc</code> to write one character to the output at a time. This program reads the input character, converts it to upper case and then writes it to the output file. It does this in a loop until <code>fgetc</code> returns <code>EOF</code> which is a special value indicating that all the characters have been read from the file and we are now at the End Of the File.</p>
 <h2 id="line-by-line">Line by line</h2>
-<p>Reading a file character-by-character is tedious for many applications and can also be inefficient. It’s more common to read in larger chunks and there are two main ways to do this depending on whether the file is a <em>text file</em> or a <em>binary file</em>. Text files contain bytes representing ASCII characters and are typically separated into <em>lines</em>. A line is a sequence of characters that ends with a newline character. Binary files are not usually organised in lines and can have any structure for the bytes inside. When reading text files the lines have some logical meaning so it is common to write a program that reads such a file line by line. For that C provides the functions <code>fgets</code> and <code>fputs</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* fgets.c */</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">char</span> line[<span class="dv">256</span>];</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">int</span> line_number = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  <span class="dt">FILE</span>* inputfile = fopen(<span class="st">&quot;fgets.c&quot;</span>, <span class="st">&quot;r&quot;</span>);</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="cf">if</span>(inputfile == NULL)</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  {</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">    fprintf(stderr, <span class="st">&quot;Unable to open file</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">  }</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">  <span class="cf">while</span>(fgets(line, <span class="dv">256</span>, inputfile) != NULL)</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">  {</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">    printf(<span class="st">&quot;%d: %s&quot;</span>, line_number, line);</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">    line_number++;</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">  }</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22">  fclose(inputfile);</a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-24" data-line-number="24">}</a></code></pre></div>
-<p>Note that when calling <code>fgets</code> we pass it an array (called <code>line</code> in this example). The function will read bytes from the file and copy them into the array. It stops wen it finds a newline character in the file (or EOF or an error). <code>fgets</code> will return <code>NULL</code> when it gets to the EOF so we can use that as a condition to terminate our loop that reads lines. We also need to tell <code>fgets</code> how big our array is (256 in this example) so that it doesn’t overfill the array. We choose the size of the array to be big enough that we will usually be able to fit a whole line in. Note that the loop above replaces the contents of <code>line</code> on each iteration: at the end of the program <code>line</code> will only store the last line that was read from the file.</p>
+<p>Reading a file character-by-character is tedious for many applications and can also be inefficient. It's more common to read in larger chunks and there are two main ways to do this depending on whether the file is a <em>text file</em> or a <em>binary file</em>. Text files contain bytes representing ASCII characters and are typically separated into <em>lines</em>. A line is a sequence of characters that ends with a newline character. Binary files are not usually organised in lines and can have any structure for the bytes inside. When reading text files the lines have some logical meaning so it is common to write a program that reads such a file line by line. For that C provides the functions <code>fgets</code> and <code>fputs</code>:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* fgets.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">char</span> line[<span class="dv">256</span>];
+  <span class="dt">int</span> line_number = <span class="dv">1</span>;
+
+  FILE* inputfile = fopen(<span class="st">&quot;fgets.c&quot;</span>, <span class="st">&quot;r&quot;</span>);
+  <span class="kw">if</span>(inputfile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open file</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="kw">while</span>(fgets(line, <span class="dv">256</span>, inputfile) != NULL)
+  {
+    printf(<span class="st">&quot;%d: %s&quot;</span>, line_number, line);
+    line_number++;
+  }
+  fclose(inputfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>Note that when calling <code>fgets</code> we pass it an array (called <code>line</code> in this example). The function will read bytes from the file and copy them into the array. It stops wen it finds a newline character in the file (or EOF or an error). <code>fgets</code> will return <code>NULL</code> when it gets to the EOF so we can use that as a condition to terminate our loop that reads lines. We also need to tell <code>fgets</code> how big our array is (256 in this example) so that it doesn't overfill the array. We choose the size of the array to be big enough that we will usually be able to fit a whole line in. Note that the loop above replaces the contents of <code>line</code> on each iteration: at the end of the program <code>line</code> will only store the last line that was read from the file.</p>
 <h2 id="chunk-by-chunk">Chunk by chunk</h2>
-<p>The other way to read files is in fixed size chunks. This is the most common way to read a binary file and often the contents of a binary file are arranged in chunks of some known size. For this C provides the functions <code>fread</code> and <code>fwrite</code> which will read/write fixed size chunks. Let’s say for example that we wanted to copy a file (just like the <code>cp</code> command). The standard way would be to read in chunks that are not too large or too small (4096 bytes is a reasonable size) and write each chunk to the output file. We can do that like so:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">/* chunks.c */</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">  <span class="co">/* input args should be source and destination */</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="cf">if</span>(argc != <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">  {</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    fprintf(stderr, <span class="st">&quot;Usage: ./chunks.exe INPUTFILE OUTPUTFILE</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">  }</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">  <span class="dt">char</span>* infilename = argv[<span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">  <span class="dt">char</span>* outfilename = argv[<span class="dv">2</span>];</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16">  <span class="dt">FILE</span>* infile = fopen(infilename, <span class="st">&quot;rb&quot;</span>); <span class="co">// read</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">  <span class="cf">if</span>(infile == NULL)</a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">  {</a>
-<a class="sourceLine" id="cb4-19" data-line-number="19">    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>, infilename);</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21">  }</a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23">  <span class="dt">FILE</span>* outfile = fopen(outfilename, <span class="st">&quot;wb&quot;</span>); <span class="co">// write</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24">  <span class="cf">if</span>(infile == NULL)</a>
-<a class="sourceLine" id="cb4-25" data-line-number="25">  {</a>
-<a class="sourceLine" id="cb4-26" data-line-number="26">    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="sc">\&quot;</span><span class="st">%s</span><span class="sc">\&quot;\n</span><span class="st">&quot;</span>, infilename);</a>
-<a class="sourceLine" id="cb4-27" data-line-number="27">    fclose(infile);</a>
-<a class="sourceLine" id="cb4-28" data-line-number="28">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb4-29" data-line-number="29">  }</a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31">  <span class="co">/*</span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">   * Loop until read less than 4096 bytes.</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">   */</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34">  <span class="dt">int</span> bytes_read;</a>
-<a class="sourceLine" id="cb4-35" data-line-number="35">  <span class="dt">char</span> chunk[<span class="dv">4096</span>];</a>
-<a class="sourceLine" id="cb4-36" data-line-number="36">  <span class="cf">for</span>(;;)</a>
-<a class="sourceLine" id="cb4-37" data-line-number="37">  {</a>
-<a class="sourceLine" id="cb4-38" data-line-number="38">    bytes_read = fread(chunk, <span class="dv">1</span>, <span class="dv">4096</span>, infile);</a>
-<a class="sourceLine" id="cb4-39" data-line-number="39">    fwrite(chunk, <span class="dv">1</span>, bytes_read, outfile);</a>
-<a class="sourceLine" id="cb4-40" data-line-number="40">    <span class="cf">if</span>(bytes_read &lt; <span class="dv">4096</span>)</a>
-<a class="sourceLine" id="cb4-41" data-line-number="41">    {</a>
-<a class="sourceLine" id="cb4-42" data-line-number="42">      <span class="cf">break</span>;</a>
-<a class="sourceLine" id="cb4-43" data-line-number="43">    }</a>
-<a class="sourceLine" id="cb4-44" data-line-number="44">  }</a>
-<a class="sourceLine" id="cb4-45" data-line-number="45"></a>
-<a class="sourceLine" id="cb4-46" data-line-number="46">  fclose(infile);</a>
-<a class="sourceLine" id="cb4-47" data-line-number="47">  fclose(outfile);</a>
-<a class="sourceLine" id="cb4-48" data-line-number="48">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb4-49" data-line-number="49">}</a></code></pre></div>
-<p>So in the example above we see that we call <code>fread</code> with 4 arguments which are: the array we want to read into (<code>chunk</code>), the size of the elementary type that we’re trying to read (e.g. 1 byte for <code>char</code>), the number of elements we want to read (4096) and the file object we want to read from. <code>fread</code> will then read <span class="math inline">\(1\times 4096\)</span> bytes from the file referred to by <code>infile</code> and store them in the array <code>chunk</code>.</p>
-<p><code>fread</code> returns the number of bytes actually read from the file which may be less than we requested if e.g. we’ve reached the end of the file. <code>fwrite</code> takes all the same arguments but writes the bytes currently in the array <code>chunk</code> out to the file referred to by <code>outfile</code>. We tell <code>fwrite</code> to write the number of bytes that <code>fread</code> said it read. <code>bytes_read</code> will be 4096 after reading each chunk except for the last iteration when we’ve reached the end of the file.</p>
+<p>The other way to read files is in fixed size chunks. This is the most common way to read a binary file and often the contents of a binary file are arranged in chunks of some known size. For this C provides the functions <code>fread</code> and <code>fwrite</code> which will read/write fixed size chunks. Let's say for example that we wanted to copy a file (just like the <code>cp</code> command). The standard way would be to read in chunks that are not too large or too small (4096 bytes is a reasonable size) and write each chunk to the output file. We can do that like so:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* chunks.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="co">/* input args should be source and destination */</span>
+  <span class="kw">if</span>(argc != <span class="dv">3</span>)
+  {
+    fprintf(stderr, <span class="st">&quot;Usage: ./chunks.exe INPUTFILE OUTPUTFILE</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+  <span class="dt">char</span>* infilename = argv[<span class="dv">1</span>];
+  <span class="dt">char</span>* outfilename = argv[<span class="dv">2</span>];
+
+  FILE* infile = fopen(infilename, <span class="st">&quot;rb&quot;</span>); <span class="co">// read</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  FILE* outfile = fopen(outfilename, <span class="st">&quot;wb&quot;</span>); <span class="co">// write</span>
+  <span class="kw">if</span>(infile == NULL)
+  {
+    fprintf(stderr, <span class="st">&quot;Unable to open </span><span class="ch">\&quot;</span><span class="st">%s</span><span class="ch">\&quot;\n</span><span class="st">&quot;</span>, infilename);
+    fclose(infile);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  <span class="co">/*</span>
+<span class="co">   * Loop until read less than 4096 bytes.</span>
+<span class="co">   */</span>
+  <span class="dt">int</span> bytes_read;
+  <span class="dt">char</span> chunk[<span class="dv">4096</span>];
+  <span class="kw">for</span>(;;)
+  {
+    bytes_read = fread(chunk, <span class="dv">1</span>, <span class="dv">4096</span>, infile);
+    fwrite(chunk, <span class="dv">1</span>, bytes_read, outfile);
+    <span class="kw">if</span>(bytes_read &lt; <span class="dv">4096</span>)
+    {
+      <span class="kw">break</span>;
+    }
+  }
+
+  fclose(infile);
+  fclose(outfile);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>So in the example above we see that we call <code>fread</code> with 4 arguments which are: the array we want to read into (<code>chunk</code>), the size of the elementary type that we're trying to read (e.g. 1 byte for <code>char</code>), the number of elements we want to read (4096) and the file object we want to read from. <code>fread</code> will then read <span class="math">\(1\times 4096\)</span> bytes from the file referred to by <code>infile</code> and store them in the array <code>chunk</code>.</p>
+<p><code>fread</code> returns the number of bytes actually read from the file which may be less than we requested if e.g. we've reached the end of the file. <code>fwrite</code> takes all the same arguments but writes the bytes currently in the array <code>chunk</code> out to the file referred to by <code>outfile</code>. We tell <code>fwrite</code> to write the number of bytes that <code>fread</code> said it read. <code>bytes_read</code> will be 4096 after reading each chunk except for the last iteration when we've reached the end of the file.</p>
 <h2 id="exercises">Exercises</h2>
 <p>Test out the programs above. Compile them, try them with different input files and make sure that you understand what they do.</p>
     </div>

@@ -4,73 +4,27 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - commandline</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -106,8 +60,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="command-line-programs-1">Command line programs</h2>
 <p>What are command line programs? You have already been using them: command line programs are programs that are intended to be run in the terminal such as <code>gcc</code> etc. These are to be contrasted with programs that have a Graphical User Interface (GUI) such as <code>Notepad++</code>. By contrast <code>gcc</code> has a Command Line Interface (CLI).</p>
 <p>Our interest in CLI programs comes from the fact that they are much easier to make than GUI programs and are also more easily <em>composed</em>. That is to say that CLI programs can easily be combined in order to do more complicated things. GUI programs are generally not composable because they are difficult to automate.</p>
-<p>Let’s consider an example: suppose a GUI program provides a way to compile a <code>.c</code> code file but in order to do so you have to click <code>File</code> then <code>Open</code> then find the file and double-click to open it and then click the <code>Compile</code> button. Now suppose I want to compile 1000 .c files. It is going to take me a long to do all that clicking! On the other hand with <code>gcc</code> I can easily compile 1000 <code>.c</code> files using a loop in the shell. Suppose I have a folder full of <code>.c</code> files. The following command will compile all of them one by one:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1">$ <span class="kw">for</span> <span class="ex">x</span> in *.c<span class="kw">;</span> <span class="kw">do</span> <span class="fu">gcc</span> -std=c99 -Wall <span class="va">$x</span> -o <span class="va">$x</span>.exe<span class="kw">;</span> <span class="kw">done</span></a></code></pre></div>
+<p>Let's consider an example: suppose a GUI program provides a way to compile a <code>.c</code> code file but in order to do so you have to click <code>File</code> then <code>Open</code> then find the file and double-click to open it and then click the <code>Compile</code> button. Now suppose I want to compile 1000 .c files. It is going to take me a long to do all that clicking! On the other hand with <code>gcc</code> I can easily compile 1000 <code>.c</code> files using a loop in the shell. Suppose I have a folder full of <code>.c</code> files. The following command will compile all of them one by one:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">for</span> <span class="kw">x</span> in *.c<span class="kw">;</span> <span class="kw">do</span> <span class="kw">gcc</span> -std=c99 -Wall <span class="ot">$x</span> -o <span class="ot">$x</span>.exe<span class="kw">;</span> <span class="kw">done</span></code></pre>
 <p>It may take a while to compile them all but I can go and have a cup of coffee instead of clicking for hours.</p>
 <p>Of course it is possible to make a GUI program that can be told to compile 1000 .c files in a loop. The difference is that well-written CLI programs are naturally composable so that anyone who wants to adapt them for an unanticipated purpose in the future will be able to. The idea with command line programs is that you just write a program that does one simple thing and does it well. Other people can then build other programs using that simple program - this is very similar to the idea behind using functions within your programs.</p>
 <h2 id="the-command-line-interface">The command line interface</h2>
@@ -119,20 +73,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Output: text/data on <code>stdout</code>, <code>stderr</code></li>
 <li>Output: return code (success, failure)</li>
 </ul>
-<p>It is also common for a CLI program to do input/output with named files – in that case the filenames are usually supplied as arguments to the program.</p>
+<p>It is also common for a CLI program to do input/output with named files -- in that case the filenames are usually supplied as arguments to the program.</p>
 <h2 id="input-arguments">Input arguments</h2>
 <p>The most important inputs to a CLI program are the command line <em>arguments</em>. These are the additional words that you type on the command line when running your program. As an example consider telling <code>gcc</code> to compile a file called <code>stuff.c</code>. We might run</p>
 <pre><code>$ gcc stuff.c -o stuff.exe</code></pre>
 <p>In this instance we are running the program <code>gcc</code> and we are giving it 3 additional arguments <code>stuff.c</code>, <code>-o</code> and <code>stuff.exe</code>. The <code>gcc</code> program (which is itself a C program) will receive these arguments through the <code>argc</code> and <code>argv</code> arguments to the <code>main</code> function. When <code>gcc</code> runs it will look at these and see that it should be compiling a file called <code>stuff.c</code> and that the output (<code>-o</code>) executable should be saved in a file called <code>stuff.exe</code>. Having checked that it will then go and do what we have asked it to do.</p>
 <p>So how do we make our own program that can respond to the arguments provided by the user on the command line? The two arguments to the main function <code>argc</code> and <code>argv</code> provide us with a way to access the command line arguments provided to the program. In particular <code>argc</code> is of type <code>int</code> and tells us the number of arguments on the command line. We can make a program that prints out the value of <code>argc</code> to test what it does:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* argcount.c */</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">{</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  printf(<span class="st">&quot;argc = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, argc);</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">}</a></code></pre></div>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* argcount.c */</span>
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  printf(<span class="st">&quot;argc = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, argc);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Compiling and running we see:</p>
 <pre><code>$ gcc -Wall -std=c99 argcount.c -o argcount.exe
 $ ./argcount.exe
@@ -144,49 +98,49 @@ argc = 3
 $ ./argcount.exe foo bar baz
 argc = 4</code></pre>
 <p>So each time we run the program we see that <code>argc</code> is different depending on the number of arguments we gave to the program. However <code>argc</code> seems to be one bigger than we might otherwise expect. This is because it also counts the name of the program (<code>argcount.exe</code>) as being the first command line argument.</p>
-<p>We can access the argument strings themselves through <code>argv</code>. The type of <code>argv</code> is <code>*char[]</code> which I don’t want to explain right now but it means an <em>array of strings</em>. Think of this as something like a list of strings in Python. Hence <code>argv[2]</code> gives us the 3rd argument string and we can use this expression wherever we would otherwise use a string (e.g. in <code>printf</code>). For example:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">/* argprint.c */</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="co">/* argument indices are 0 to argc-1 inclusive */</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;argc; i++)</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">    {</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">        puts(argv[i]); <span class="co">// puts adds a newline</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">    }</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">}</a></code></pre></div>
+<p>We can access the argument strings themselves through <code>argv</code>. The type of <code>argv</code> is <code>*char[]</code> which I don't want to explain right now but it means an <em>array of strings</em>. Think of this as something like a list of strings in Python. Hence <code>argv[2]</code> gives us the 3rd argument string and we can use this expression wherever we would otherwise use a string (e.g. in <code>printf</code>). For example:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* argprint.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+    <span class="co">/* argument indices are 0 to argc-1 inclusive */</span>
+    <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;argc; i++)
+    {
+        puts(argv[i]); <span class="co">// puts adds a newline</span>
+    }
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Running this (with randomly chosen arguments) we see:</p>
 <pre><code>$ ./argprint.exe foo bar baz
 ./argprint.exe
 foo
 bar
 baz</code></pre>
-<p>Try these programs yourself to make sure that you understand what is happening. At this stage we haven’t covered how to work with strings properly so it’s difficult to make use of these arguments. Hopefully you can begin to see why this is useful though: if our program takes its instructions from the command line then we can change what our program will do without needing to recompile it.</p>
+<p>Try these programs yourself to make sure that you understand what is happening. At this stage we haven't covered how to work with strings properly so it's difficult to make use of these arguments. Hopefully you can begin to see why this is useful though: if our program takes its instructions from the command line then we can change what our program will do without needing to recompile it.</p>
 <h2 id="reading-from-stdin">Reading from stdin</h2>
 <p>Another way to get input is from <code>stdin</code> or <em>standard input</em>. This corresponds to the things that you type into the terminal while your program is running:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">/* getinput.c */</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">  printf(<span class="st">&quot;Please enter a character: &quot;</span>);</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">  <span class="co">/* Read one character from stdin */</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">  <span class="dt">int</span> c = fgetc(stdin);</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">  <span class="cf">if</span>( c == EOF )</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">  {</a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">    fprintf(stderr, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">Something went wrong...</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">  }</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">  printf(<span class="st">&quot;You entered &#39;%c&#39;</span><span class="sc">\n</span><span class="st">&quot;</span>, (<span class="dt">char</span>)c);</a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">}</a></code></pre></div>
-<p>We haven’t yet explained the <code>fgetc</code> function. It reads a single character from a file (in this case <code>stdin</code>) and returns that character as an object of type <code>int</code>. If there are no characters to be read from the file then it returns the special result <code>EOF</code>.</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* getinput.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  printf(<span class="st">&quot;Please enter a character: &quot;</span>);
+
+  <span class="co">/* Read one character from stdin */</span>
+  <span class="dt">int</span> c = fgetc(stdin);
+  <span class="kw">if</span>( c == EOF )
+  {
+    fprintf(stderr, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">Something went wrong...</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+
+  printf(<span class="st">&quot;You entered &#39;%c&#39;</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">char</span>)c);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>We haven't yet explained the <code>fgetc</code> function. It reads a single character from a file (in this case <code>stdin</code>) and returns that character as an object of type <code>int</code>. If there are no characters to be read from the file then it returns the special result <code>EOF</code>.</p>
 <p>When you run the above you should see (note that you have to type the <code>q</code> that you can see at the end of the first line and then hit enter):</p>
 <pre><code>$ gcc -Wall -std=c99 getinput.c -o getinput.exe
 $ ./getinput.exe
@@ -203,20 +157,20 @@ $ ./getinput.exe &lt; empty.txt
 
 Something went wrong...
 Please enter a character:</code></pre>
-<p>Don’t worry about the fact that the messages are out of order (one is sent to <code>stdout</code> and one to <code>stderr</code>). This is just to demonstrate that whenever we read from a file we have to be prepared for the possibility that there won’t be anything for us to read.</p>
+<p>Don't worry about the fact that the messages are out of order (one is sent to <code>stdout</code> and one to <code>stderr</code>). This is just to demonstrate that whenever we read from a file we have to be prepared for the possibility that there won't be anything for us to read.</p>
 <h2 id="output-on-stdoutstderr">Output on stdout/stderr</h2>
-<p>In addition to <code>stdin</code> as the standard input stream we also have two stdandard streams for output: <code>stdout</code> (standard output) and <code>stderr</code> (standard error). We use <code>stdout</code> for normal output when the program is working fine. We use <code>stderr</code> to print error messages when something goes wrong. When a program is run normally in the terminal messages printed to both <code>stdout</code> and <code>stderr</code> will simply appear in the terminal. The difference appears when we <em>redirect</em> either/both of them. Let’s make a program that prints messages to <code>stdout</code> and to <code>stderr</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">/* outerr.c */</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">  printf(<span class="st">&quot;This is a message to stdout</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">  fprintf(stdout, <span class="st">&quot;So is this...</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">  fprintf(stderr, <span class="st">&quot;This one is for stderr</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb11-11" data-line-number="11">}</a></code></pre></div>
+<p>In addition to <code>stdin</code> as the standard input stream we also have two stdandard streams for output: <code>stdout</code> (standard output) and <code>stderr</code> (standard error). We use <code>stdout</code> for normal output when the program is working fine. We use <code>stderr</code> to print error messages when something goes wrong. When a program is run normally in the terminal messages printed to both <code>stdout</code> and <code>stderr</code> will simply appear in the terminal. The difference appears when we <em>redirect</em> either/both of them. Let's make a program that prints messages to <code>stdout</code> and to <code>stderr</code>:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* outerr.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  printf(<span class="st">&quot;This is a message to stdout</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  fprintf(stdout, <span class="st">&quot;So is this...</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  fprintf(stderr, <span class="st">&quot;This one is for stderr</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Note that the first two lines in <code>main</code> are entirely equivalent. <code>printf(...)</code> is precisely a convenient shorthand for <code>fprintf(sdtout, ...)</code>. This shorthand is provided because it is so common to want to print to <code>stdout</code>. The longer form makes it explicit though that we are asking to print to <code>stdout</code>. The 3rd line of <code>main</code> shows that we can also print to <code>stderr</code> instead of <code>stdout</code> (there is no conveience function for <code>stderr</code>).</p>
 <p>If we run the program above normally then we see this:</p>
 <pre><code>$ gcc -std=c99 -Wall outerr.c -o outerr.exe
@@ -231,7 +185,7 @@ $ cat output.txt
 This is a message to stdout
 So is this...</code></pre>
 <p>The shell will reinterpret our command line above is asking to run <code>./outerr.exe</code> with its <code>stdout</code> redirected to the file <code>output.txt</code>. The words <code>&gt;</code> and <code>output.txt</code> will not be received by <code>outerr.exe</code> as command line arguments as these are instructions for the shell about how to run <code>outerr.exe</code>.</p>
-<p>When we run <code>outerr.exe</code> with its <code>stdout</code> redirected we no longer see the messages printed to <code>stdout</code> in the terminal. Instead we only see the one message that is printed to <code>stderr</code>. The output that was sent to <code>stdout</code> by the program is now in the file <code>output.txt</code> (which will be created if it didn’t already exist). You can view its contents in an editor or we can print its contents to the terminal using the <code>cat</code> command as above.</p>
+<p>When we run <code>outerr.exe</code> with its <code>stdout</code> redirected we no longer see the messages printed to <code>stdout</code> in the terminal. Instead we only see the one message that is printed to <code>stderr</code>. The output that was sent to <code>stdout</code> by the program is now in the file <code>output.txt</code> (which will be created if it didn't already exist). You can view its contents in an editor or we can print its contents to the terminal using the <code>cat</code> command as above.</p>
 <p>On the other hand we can redirect only <code>stderr</code> to a file using <code>2&gt;</code> instead of <code>&gt;</code>:</p>
 <pre><code>$ ./outerr.exe 2&gt; error.txt
 This is a message to stdout
@@ -246,28 +200,28 @@ This one is for stderr</code></pre>
 </ul>
 <p>For simple programs the output rules are simple: all output goes to <code>stdout</code> unless something goes wrong. When something goes wrong the program should print a single (ideally informative) error message on <code>stderr</code> and immediately abort.</p>
 <h2 id="return-codes">Return codes</h2>
-<p>The final piece of the command line interface that we will cover is the <em>return code</em> (or exit code) of our program. This is the way that a program informs us that it has ultimately succeeded or failed in what we asked it to do. We have seen the return code in all of our programs so far: it is the number that we return from our <code>main</code> function. Let’s make a simple program that returns different numbers depending on how many arguments it is given:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">{</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="cf">if</span>( argc != <span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">  {</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="co">/* error message - non-zero exit code */</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8">    fprintf(stderr, <span class="st">&quot;I want exactly one argument!</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">    <span class="cf">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10">  }</a>
-<a class="sourceLine" id="cb15-11" data-line-number="11">  <span class="co">/* Normal message - zero exit code */</span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12">  printf(<span class="st">&quot;Thanks for the argument.</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-13" data-line-number="13">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb15-14" data-line-number="14">}</a></code></pre></div>
+<p>The final piece of the command line interface that we will cover is the <em>return code</em> (or exit code) of our program. This is the way that a program informs us that it has ultimately succeeded or failed in what we asked it to do. We have seen the return code in all of our programs so far: it is the number that we return from our <code>main</code> function. Let's make a simple program that returns different numbers depending on how many arguments it is given:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="kw">if</span>( argc != <span class="dv">2</span> )
+  {
+    <span class="co">/* error message - non-zero exit code */</span>
+    fprintf(stderr, <span class="st">&quot;I want exactly one argument!</span><span class="ch">\n</span><span class="st">&quot;</span>);
+    <span class="kw">return</span> <span class="dv">1</span>;
+  }
+  <span class="co">/* Normal message - zero exit code */</span>
+  printf(<span class="st">&quot;Thanks for the argument.</span><span class="ch">\n</span><span class="st">&quot;</span>);
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Now if we run this program with one argument we see:</p>
 <pre><code>$ gcc -std=c99 -Wall retcode.c -o retcode.exe
 $ ./retcode.exe
 I want exactly one argument!
 $ echo $?
 1</code></pre>
-<p>Note that when we just run a command in the shell we don’t automatically see the return code in any way. The command <code>echo $?</code> prints the return code of the previously run program. The <code>echo</code> command is the shell’s version of a <em>print</em> command and will print any command line arguments we give it (to its <code>stdout</code>). The special variable <code>$?</code> is a shell variable that stores the return code of the previously run program. Note that if we run this command again it will show <code>0</code> since that is the return code of the <code>echo</code> command:</p>
+<p>Note that when we just run a command in the shell we don't automatically see the return code in any way. The command <code>echo $?</code> prints the return code of the previously run program. The <code>echo</code> command is the shell's version of a <em>print</em> command and will print any command line arguments we give it (to its <code>stdout</code>). The special variable <code>$?</code> is a shell variable that stores the return code of the previously run program. Note that if we run this command again it will show <code>0</code> since that is the return code of the <code>echo</code> command:</p>
 <pre><code>$ echo $?
 0</code></pre>
 <p>If we give our program the argument it wants then we will see that it returns 0:</p>
@@ -287,7 +241,7 @@ $ ./outerr.exe | ./getinput.exe</code></pre>
 <p>We can also send text directly to <code>stdin</code> using <code>&lt;&lt;&lt;</code>. Compare:</p>
 <pre><code>$ ./getinput.exe &lt;&lt;&lt; blah
 $ ./getinput.exe &lt; blah</code></pre>
-<p>That’s all…</p>
+<p>That's all...</p>
     </div>
   </body>
 </html>

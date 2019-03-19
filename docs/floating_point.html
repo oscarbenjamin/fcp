@@ -4,74 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - floating_point</title>
+  <title>EMAT10006 - Further Computer Programming - </title>
   <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -96,106 +50,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     <div id="main">
 <h1 id="floating-point">Floating point</h1>
-<p>This page discusses the use of floating point data types in C. Floating point is a way of representing non-integer numbers commonly used in programming. Many of the details here are applicable to the majority of programming languages (e.g. Python). Python’s <code>float</code> datatype is the same as the <code>double</code> datatype used in C.</p>
+<p>This page discusses the use of floating point data types in C. Floating point is a way of representing non-integer numbers commonly used in programming. Many of the details here are applicable to the majority of programming languages (e.g. Python). Python's <code>float</code> datatype is the same as the <code>double</code> datatype used in C.</p>
 <h2 id="decimal-floating-point">Decimal floating point</h2>
-<p>We have seen that in C we can represent integers using e.g. the <code>int</code> data type which is a 32-bit binary representation of an integer. It is easy to see how, working in base 2, the integer 11 (for example) can be represented as 1011. So how can we represent non-integer numbers? The first question we need to ask is: what kind of non-integer numbers do we want to represent?</p>
-<p>The integers <span class="math inline">\(\mathbb{Z}\)</span> are a subset of the rational numbers <span class="math inline">\(\mathbb{Q}\)</span>. In turn the rationals <span class="math inline">\(\mathbb{Q}\)</span> are a subset of the real numbers <span class="math inline">\(\mathbb{R}\)</span> which are a subset of the complex numbers <span class="math inline">\(\mathbb{C}\)</span>. In scientific work we often want to work with real numbers but there is no way to exactly represent such numbers in binary. The most common way to approximate real numbers is by using floating point.</p>
-<p>Consider an example in decimal. We represent non-integer numbers using decimal by writing e.g. <span class="math inline">\(123.4\)</span> which means <span class="math display">\[
+<p>We have seen that in C we can represent integers using e.g. the <code>int</code> data type which is a 32-bit binary representation of an integer. It is easy to see how, working in base 2, the integer 11 (for example) can be represented as 1011. So how can we represent non-integer numbers? The first question we need to ask is: what kind of non-integer numbers do we want to represent?</p>
+<p>The integers <span class="math">\(\mathbb{Z}\)</span> are a subset of the rational numbers <span class="math">\(\mathbb{Q}\)</span>. In turn the rationals <span class="math">\(\mathbb{Q}\)</span> are a subset of the real numbers <span class="math">\(\mathbb{R}\)</span> which are a subset of the complex numbers <span class="math">\(\mathbb{C}\)</span>. In scientific work we often want to work with real numbers but there is no way to exactly represent such numbers in binary. The most common way to approximate real numbers is by using floating point.</p>
+<p>Consider an example in decimal. We represent non-integer numbers using decimal by writing e.g. <span class="math">\(123.4\)</span> which means <span class="math">\[
     1 \times 100 + 2 \times 10 + 3 \times 1 + 4 \times \frac{1}{10}
-\]</span> That is the numbers after the decimal point are the coefficients for the <em>negative</em> powers of 10. In <em>standard form</em> we would write this number as <span class="math display">\[
+\]</span> That is the numbers after the decimal point are the coefficients for the <em>negative</em> powers of 10. In <em>standard form</em> we would write this number as <span class="math">\[
     1.234 \times 10^2
-\]</span> using 1 digit before the decimal point. In this form we say that the first part <span class="math inline">\(1.234\)</span> is the <em>mantissa</em> and that the <em>exponent</em> is <span class="math inline">\(2\)</span>. In general we can write any such number using an integer mantissa e.g. <span class="math display">\[
+\]</span> using 1 digit before the decimal point. In this form we say that the first part <span class="math">\(1.234\)</span> is the <em>mantissa</em> and that the <em>exponent</em> is <span class="math">\(2\)</span>. In general we can write any such number using an integer mantissa e.g. <span class="math">\[
     1234 \times 10^{-1}
-\]</span> and since we know how to write integers in binary this is a clue to how we will write non-integers in binary: using an integer mantissa and exponent. With a bit of thought we can see that any such number will always be a rational number. We cannot exactly represent any irrational number in this way but using a lot of digits in the mantissa we can get close. For example <span class="math display">\[
+\]</span> and since we know how to write integers in binary this is a clue to how we will write non-integers in binary: using an integer mantissa and exponent. With a bit of thought we can see that any such number will always be a rational number. We cannot exactly represent any irrational number in this way but using a lot of digits in the mantissa we can get close. For example <span class="math">\[
     \sqrt{2} \approx 14142135623730952 \times 10^{-16}.
 \]</span></p>
 <h2 id="rounding">Rounding</h2>
-<p>When working formally with <em>floating point</em> arithmetic we will usually define a fixed number of digits to work with and then ensure that all of our calculations are rounded to that number of digits. Suppose that we are working with decimal floating point using 2 digits and want to calculate <span class="math inline">\(120 \times 120\)</span>. We can write 12 in standard form and then use integer addition and multiplication to compute the result: <span class="math display">\[
+<p>When working formally with <em>floating point</em> arithmetic we will usually define a fixed number of digits to work with and then ensure that all of our calculations are rounded to that number of digits. Suppose that we are working with decimal floating point using 2 digits and want to calculate <span class="math">\(120 \times 120\)</span>. We can write 12 in standard form and then use integer addition and multiplication to compute the result: <span class="math">\[
     120 \times 120 = 12 \times 10^1 \times 12 \times 10^1 = 144 \times 10^2
           \approx 14 \times 10^3
 \]</span> Notice that in the last step of our floating point calculation we round the result to the nearest 2-digit decimal floating point number. As a result our final computer value is not exactly correct: we have 14000 instead of the correct answer which is 14400. The fact that our answer is only approximately correct is a general feature of floating point.</p>
-<p>The difference between the our rounded result and the exact result is called the rounding error and is in this case <span class="math inline">\(-400\)</span> and has a magnitude around 1% of the result. This is to be expected when using 2-digit decimal floating point. When using 3-digit decimal floating point there would be no error in this example but other calculations would have errors on the order of 0.1% of each result. For practical purposes we would often want to make the error much smaller than this so something like 15 digits would be typical for a computer program.</p>
-<p>Notice that some relatively simple numbers cannot be represented in decimal floating point no matter how many digits we use: <span class="math display">\[
+<p>The difference between the our rounded result and the exact result is called the rounding error and is in this case <span class="math">\(-400\)</span> and has a magnitude around 1% of the result. This is to be expected when using 2-digit decimal floating point. When using 3-digit decimal floating point there would be no error in this example but other calculations would have errors on the order of 0.1% of each result. For practical purposes we would often want to make the error much smaller than this so something like 15 digits would be typical for a computer program.</p>
+<p>Notice that some relatively simple numbers cannot be represented in decimal floating point no matter how many digits we use: <span class="math">\[
     \frac{1}{3} = 0.3333333333333333\cdots
-\]</span> In general a rational number <span class="math inline">\(\frac{n}{d}\)</span> can be represented exactly with a finite number of decimal digits of the denominator is only divisible by <span class="math inline">\(2\)</span> or <span class="math inline">\(5\)</span>. Note though that any number that we write in decimal e.g. <span class="math inline">\(0.1\)</span> can be exactly represented in decimal floating point (this is not true for binary floating point).</p>
+\]</span> In general a rational number <span class="math">\(\frac{n}{d}\)</span> can be represented exactly with a finite number of decimal digits of the denominator is only divisible by <span class="math">\(2\)</span> or <span class="math">\(5\)</span>. Note though that any number that we write in decimal e.g. <span class="math">\(0.1\)</span> can be exactly represented in decimal floating point (this is not true for binary floating point).</p>
 <h2 id="binary-floating-point">Binary floating point</h2>
-<p>The above has all been described in terms of decimal floating point because it is more familar and so easier to understand. Many computing environments ( e.g. Python) do provide libraries for using decimal floating point but the default types (e.g. <code>float</code> in Python) always to use binary floating point. We can extend our binary digit notation to non-integers in the obvious way so that e.g. the number 1.25 is written as <span class="math display">\[
+<p>The above has all been described in terms of decimal floating point because it is more familar and so easier to understand. Many computing environments (e.g. Python) do provide libraries for using decimal floating point but the default types (e.g. <code>float</code> in Python) always to use binary floating point. We can extend our binary digit notation to non-integers in the obvious way so that e.g. the number 1.25 is written as <span class="math">\[
     1.01 = 1 \times 1 + 0 \times \frac{1}{2} + 1 \times \frac{1}{4}.
-\]</span> Any number that we can write in this way using binary digits can be written with some integer mantissa <span class="math inline">\(m\)</span> and exponent <span class="math inline">\(e\)</span> as <span class="math display">\[
+\]</span> Any number that we can write in this way using binary digits can be written with some integer mantissa <span class="math">\(m\)</span> and exponent <span class="math">\(e\)</span> as <span class="math">\[
     m \times 2^e.
-\]</span> As for decimals this can only exactly represent particular rational numbers: those with denominators that are powers of 2. What this means is that some fairly innocent looking numbers will not be represented exactly: the number 0.1 for example has the recurring binary representation <span class="math display">\[
+\]</span> As for decimals this can only exactly represent particular rational numbers: those with denominators that are powers of 2. What this means is that some fairly innocent looking numbers will not be represented exactly: the number 0.1 for example has the recurring binary representation <span class="math">\[
     \frac{1}{10} = 0.0001100110011\cdots
-\]</span> This leads to a lot of confusion around floating point arithmetic since calculations appear to be “inexact” in some sense. Because of this and also because of the rounding errors in arithmetic floating point numbers are usually treated as being <em>imprecise</em>. So for example we wouldn’t assume that the result of a calculation would be exactly correct but rather comes with some (hopefully) small error.</p>
+\]</span> This leads to a lot of confusion around floating point arithmetic since calculations appear to be &quot;inexact&quot; in some sense. Because of this and also because of the rounding errors in arithmetic floating point numbers are usually treated as being <em>imprecise</em>. So for example we wouldn't assume that the result of a calculation would be exactly correct but rather comes with some (hopefully) small error.</p>
 <h2 id="ieee-64-bit-floating-point">IEEE 64-bit floating point</h2>
-<p>Python’s <code>float</code> type and C’s <code>double</code> type both use the IEEE 64-bit floating point standard. This prescribes a way to represent a binary floating point number using 1 sign bit (indicating whether the number is positive or negative), a 53 bit mantissa and 11 bits for the exponent. Since the leading digit of the mantissa is always 1 we don’t need to store it so the mantissa takes up 52 bits of space. Altogether storing a number this way therefore takes <span class="math inline">\(52+11+1 = 64\)</span> bits of (<span class="math inline">\(8\)</span> bytes) of space.</p>
+<p>Python's <code>float</code> type and C's <code>double</code> type both use the IEEE 64-bit floating point standard. This prescribes a way to represent a binary floating point number using 1 sign bit (indicating whether the number is positive or negative), a 53 bit mantissa and 11 bits for the exponent. Since the leading digit of the mantissa is always 1 we don't need to store it so the mantissa takes up 52 bits of space. Altogether storing a number this way therefore takes <span class="math">\(52+11+1 = 64\)</span> bits of (<span class="math">\(8\)</span> bytes) of space.</p>
 <p>We can see this type in action in Python:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">3.0</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> x</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="fl">0.3333333333333333</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(x)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;float&#39;</span><span class="op">&gt;</span></a></code></pre></div>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; x = <span class="fl">1.0</span> / <span class="fl">3.0</span>
+&gt;&gt;&gt; x
+<span class="fl">0.3333333333333333</span>
+&gt;&gt;&gt; <span class="dt">type</span>(x)
+&lt;<span class="kw">class</span> <span class="st">&#39;float&#39;</span>&gt;</code></pre>
 <p>Here we can see that Python choose to show us 16 digits of the number. This is because 16 decimal digits is approximately the same precision as 53 binary digits:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> <span class="dv">10</span><span class="op">**</span><span class="dv">16</span> <span class="op">/</span> <span class="dv">2</span><span class="op">**</span><span class="dv">53</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="fl">1.1102230246251565</span></a></code></pre></div>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; <span class="dv">10</span>**<span class="dv">16</span> / <span class="dv">2</span>**<span class="dv">53</span>
+<span class="fl">1.1102230246251565</span></code></pre>
 <p>The effect of rounding error can be seen in something like</p>
 <pre><code>&gt;&gt;&gt; (0.11 - 0.1) - 0.01
 -5.204170427930421e-18
 &gt;&gt;&gt; 0.11 - (0.1 + 0.01)
 0.0</code></pre>
-<p>which also shows that the order of arithmetic can be important in floating point. Note that e.g. <code>-5.2e-18</code> is a shorthand for <span class="math inline">\(-5.2 \times 10^{-18}\)</span>. The error here is around <span class="math inline">\(10^{-18}\)</span> which is typical for 64-bit floating point.</p>
-<p>We can use Python’s decimal module to see the exact value of a binary <code>float</code> which can have a very long decimal representation:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> y <span class="op">=</span> <span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> y</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> decimal</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="op">&gt;&gt;&gt;</span> decimal.Decimal(y)</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">Decimal(<span class="st">&#39;0.1000000000000000055511151231257827021181583404541015625&#39;</span>)</a></code></pre></div>
+<p>which also shows that the order of arithmetic can be important in floating point. Note that e.g. <code>-5.2e-18</code> is a shorthand for <span class="math">\(-5.2 \times 10^{-18}\)</span>. The error here is around <span class="math">\(10^{-18}\)</span> which is typical for 64-bit floating point.</p>
+<p>We can use Python's decimal module to see the exact value of a binary <code>float</code> which can have a very long decimal representation:</p>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; y = <span class="fl">0.1</span>
+&gt;&gt;&gt; y
+<span class="fl">0.1</span>
+&gt;&gt;&gt; <span class="ch">import</span> decimal
+&gt;&gt;&gt; decimal.Decimal(y)
+Decimal(<span class="st">&#39;0.1000000000000000055511151231257827021181583404541015625&#39;</span>)</code></pre>
 <p>Th decimal output shows that normally when we print the value of a binary <code>float</code> in decimal the result is rounded on <em>output</em> (which adds to the confusion around the errors in floating point).</p>
 <p>The 53 bit mantissa means that we can use binary floating point to exactly represent any integer up to <code>2**53</code> but then other things happen:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> z <span class="op">=</span> <span class="fl">2.0</span> <span class="op">**</span> <span class="dv">53</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> z</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fl">9007199254740992.0</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> z <span class="op">+</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="fl">9007199254740992.0</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="op">&gt;&gt;&gt;</span> z <span class="op">==</span> z <span class="op">+</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="va">True</span></a></code></pre></div>
-<p>This happens because exactly representing <span class="math inline">\(2^{53} + 1\)</span> would need 54 binary digits so the expression <code>z + 1</code> gets rounded down.</p>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; z = <span class="fl">2.0</span> ** <span class="dv">53</span>
+&gt;&gt;&gt; z
+<span class="fl">9007199254740992.0</span>
+&gt;&gt;&gt; z + <span class="dv">1</span>
+<span class="fl">9007199254740992.0</span>
+&gt;&gt;&gt; z == z + <span class="dv">1</span>
+<span class="ot">True</span></code></pre>
+<p>This happens because exactly representing <span class="math">\(2^{53} + 1\)</span> would need 54 binary digits so the expression <code>z + 1</code> gets rounded down.</p>
 <p>There is also a limit on the number of bits used for the exponent so that large numbers eventually get too big. In the opposite direction small numbers can become so small that they are just treated as zero:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> x <span class="op">**</span> <span class="dv">123</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="fl">1e+123</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="op">&gt;&gt;&gt;</span> x <span class="op">**</span> <span class="dv">1240</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">Traceback (most recent call last):</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="pp">OverflowError</span>: (<span class="dv">34</span>, <span class="st">&#39;Numerical result out of range&#39;</span>)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="op">&gt;&gt;&gt;</span> x<span class="op">**-</span><span class="dv">123</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="fl">1e-123</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="op">&gt;&gt;&gt;</span> x<span class="op">**-</span><span class="dv">1234</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="fl">0.0</span></a></code></pre></div>
-<p>The notation <code>1e+123</code> is a short-hand way of printing a <code>float</code> which a large/small exponent and represents <span class="math inline">\(1\times 10^{123}\)</span>.</p>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; x ** <span class="dv">123</span>
+<span class="fl">1e+123</span>
+&gt;&gt;&gt; x ** <span class="dv">1240</span>
+Traceback (most recent call last):
+  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, in &lt;module&gt;
+<span class="ot">OverflowError</span>: (<span class="dv">34</span>, <span class="st">&#39;Numerical result out of range&#39;</span>)
+&gt;&gt;&gt; x**-<span class="dv">123</span>
+<span class="fl">1e-123</span>
+&gt;&gt;&gt; x**-<span class="dv">1234</span>
+<span class="fl">0.0</span></code></pre>
+<p>The notation <code>1e+123</code> is a short-hand way of printing a <code>float</code> which a large/small exponent and represents <span class="math">\(1\times 10^{123}\)</span>.</p>
 <p>The only other feature worth mentioning is that there are a few special floating point values representing things like positive and negative infinity and the special <code>NaN</code> (not a number) value which represents the result of invalid calculations:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> w <span class="op">=</span> <span class="bu">float</span>(<span class="st">&#39;inf&#39;</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> w</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">inf</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="op">&gt;&gt;&gt;</span> <span class="op">-</span>w</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="op">-</span>inf</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="op">&gt;&gt;&gt;</span> w <span class="op">-</span> w</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">nan</a></code></pre></div>
+<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; w = <span class="dt">float</span>(<span class="st">&#39;inf&#39;</span>)
+&gt;&gt;&gt; w
+inf
+&gt;&gt;&gt; -w
+-inf
+&gt;&gt;&gt; w - w
+nan</code></pre>
 <h2 id="floating-point-in-c">Floating point in C</h2>
 <p>In C we usually do binary floating point with the <code>double</code> datatype. This is shorthand for <em>double precision</em> and reflects the fact that C also has a <code>float</code> datatype that only uses 32 bits instead of 64. We can see this type in action here:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">/* double.c */</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dt">double</span> x = <span class="dv">1</span> / <span class="fl">3.0</span>;</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">  printf(<span class="st">&quot;x = %f</span><span class="sc">\n</span><span class="st">&quot;</span>, x);</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">  printf(<span class="st">&quot;x = %.10f</span><span class="sc">\n</span><span class="st">&quot;</span>, x);</a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">  printf(<span class="st">&quot;x = %.20f</span><span class="sc">\n</span><span class="st">&quot;</span>, x);</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">}</a></code></pre></div>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* double.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">double</span> x = <span class="dv">1</span> / <span class="fl">3.0</span>;
+
+  printf(<span class="st">&quot;x = %f</span><span class="ch">\n</span><span class="st">&quot;</span>, x);
+  printf(<span class="st">&quot;x = %.10f</span><span class="ch">\n</span><span class="st">&quot;</span>, x);
+  printf(<span class="st">&quot;x = %.20f</span><span class="ch">\n</span><span class="st">&quot;</span>, x);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>Running this gives</p>
 <pre><code>$ make
 gcc -std=c99 -Wall double.c -o double.exe
@@ -203,31 +157,31 @@ $ ./double.exe
 x = 0.333333
 x = 0.3333333333
 x = 0.33333333333333331483</code></pre>
-<p>Note that when printing a variable of type <code>double</code> we need to use the <code>%f</code> format code instead of the <code>%d</code> code. This is <code>f</code> for <em>floating point</em>. We can specify the number of decimal places to print with e.g. <code>%.10f</code> for 10 d.p. Notice that if we try to print too many digits then gibberish comes out. This is because <code>x</code> does not hold the <em>exact</em> value <span class="math inline">\(\frac{1}{3}\)</span> which cannot be exactly represented in binary floating point.</p>
+<p>Note that when printing a variable of type <code>double</code> we need to use the <code>%f</code> format code instead of the <code>%d</code> code. This is <code>f</code> for <em>floating point</em>. We can specify the number of decimal places to print with e.g. <code>%.10f</code> for 10 d.p. Notice that if we try to print too many digits then gibberish comes out. This is because <code>x</code> does not hold the <em>exact</em> value <span class="math">\(\frac{1}{3}\)</span> which cannot be exactly represented in binary floating point.</p>
 <h2 id="mathematical-functions">Mathematical functions</h2>
-<p>Part of the point of using floating point is to be able to do scientific calculations so naturally we have all of the usual scientific functions, like <span class="math inline">\(\sin\)</span>, <span class="math inline">\(\cos\)</span> etc. In Python these are found in the <code>math</code> module and in C we get them from the <code>math.h</code> header. This shows how to compute the square root of a number in binary floating point:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">/* sqrt.c */</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span><span class="pp">  </span><span class="co">// for the sqrt function</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">{</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">  <span class="dt">double</span> y = <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">  <span class="dt">double</span> sqrty = sqrt(y); <span class="co">// call sqrt</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">  printf(<span class="st">&quot;sqrt(%f) = %f</span><span class="sc">\n</span><span class="st">&quot;</span>, y, sqrty);</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14">  <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb10-15" data-line-number="15">}</a></code></pre></div>
+<p>Part of the point of using floating point is to be able to do scientific calculations so naturally we have all of the usual scientific functions, like <span class="math">\(\sin\)</span>, <span class="math">\(\cos\)</span> etc. In Python these are found in the <code>math</code> module and in C we get them from the <code>math.h</code> header. This shows how to compute the square root of a number in binary floating point:</p>
+<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* sqrt.c */</span>
+
+<span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;math.h&gt;  </span><span class="co">// for the sqrt function</span>
+
+<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
+{
+  <span class="dt">double</span> y = <span class="dv">2</span>;
+
+  <span class="dt">double</span> sqrty = sqrt(y); <span class="co">// call sqrt</span>
+
+  printf(<span class="st">&quot;sqrt(%f) = %f</span><span class="ch">\n</span><span class="st">&quot;</span>, y, sqrty);
+
+  <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
 <p>To compile this we need to tell <code>gcc</code> to link with the math library which we do by giving an additional argument <code>-lm</code> to the compiler e.g.:</p>
 <pre><code>$ make
 gcc -std=c99 -Wall sqrt.c -o sqrt.exe -lm
 $ ./sqrt.exe
 sqrt(2.000000) = 1.414214</code></pre>
 <h2 id="exercises">Exercises</h2>
-<p>We can also print floating point numbers in different formats using e.g. the <code>%e</code> or <code>%g</code> codes (try these out with both large and small numbers.) What does <code>%3.3e</code> do?</p>
+<p>We can also print floating point numbers in different formats using e.g. the <code>%e</code> or <code>%g</code> codes (try these out with both large and small numbers.) What does <code>%3.3e</code> do?</p>
 <p>The <code>math.h</code> header also defines other functions that we can use e.g. <code>sin</code>, <code>cos(x)</code>, <code>exp(x)</code>, <code>pow(x, y)</code>, <code>log(x)</code>, etc. Try them out. Do they use degrees or radians? What base does <code>log</code> use? What does <code>log(-1)</code> or <code>sqrt(-1)</code> give?</p>
     </div>
   </body>
