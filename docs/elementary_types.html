@@ -4,28 +4,74 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - </title>
+  <title>EMAT10006 - Further Computer Programming - elementary_types</title>
   <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
-  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -53,260 +99,260 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <div id="main">
 <h1 id="elementary-types">Elementary types</h1>
 <h2 id="bits-and-bytes">Bits and bytes</h2>
-<p>In the previous section we saw how to declare variables of type <code>int</code>. Let's now try to understand a little more about what this means. So <code>int</code> is short for <em>integer</em>. Hopefully you know what an integer is i.e. it's a type of number that is a whole number such as 0, 1, 2, ..., -1, -2, ... etc. Now a computer represents all data and all variables using bits: individual 1s and 0s. So how exactly does that work?</p>
-<p>A bit is a single <em>binary digit</em> which can be a 1 or a 0. In decimal we have 10 digits 0, 1, 2, ..., 9 and to write down an integer larger than 9 we use several of these digits together e.g. 1024. A computer represents integers in the same way using binary digits so for example 1024 is written as 10000000000 (that's a 1 with 10 zeros after it). The idea is the same as when working in base 10 except that there's no higher digit than 1 so when counting it looks like 0, 1, 10, 11, 100, 101, 110, 111, 1000, ... To interpret a number written in binary form let's first consider how to interpret a number in decimal form e.g.: <span class="math">\[
+<p>In the previous section we saw how to declare variables of type <code>int</code>. Let’s now try to understand a little more about what this means. So <code>int</code> is short for <em>integer</em>. Hopefully you know what an integer is i.e. it’s a type of number that is a whole number such as 0, 1, 2, …, -1, -2, … etc. Now a computer represents all data and all variables using bits: individual 1s and 0s. So how exactly does that work?</p>
+<p>A bit is a single <em>binary digit</em> which can be a 1 or a 0. In decimal we have 10 digits 0, 1, 2, …, 9 and to write down an integer larger than 9 we use several of these digits together e.g. 1024. A computer represents integers in the same way using binary digits so for example 1024 is written as 10000000000 (that’s a 1 with 10 zeros after it). The idea is the same as when working in base 10 except that there’s no higher digit than 1 so when counting it looks like 0, 1, 10, 11, 100, 101, 110, 111, 1000, … To interpret a number written in binary form let’s first consider how to interpret a number in decimal form e.g.: <span class="math display">\[
    123 = 1 \times 100 + 2 \times 10 + 3 \times 1
-\]</span> Each digit in of a number written in decimal form is the coefficient for a different power of 10 with the powers increasing from right to left. In the same way given a binary number we have <span class="math">\[
+\]</span> Each digit in of a number written in decimal form is the coefficient for a different power of 10 with the powers increasing from right to left. In the same way given a binary number we have <span class="math display">\[
     0\mathrm{b}11001 = 1 \times 16 + 1 \times 8 + 0 \times 4 + 0 \times 2 + 1 \times 1
             = 25
-\]</span> Here I'm using the <span class="math">\(0\mathrm{b}\)</span> prefix to indicate that a number is represented in binary form (otherwise 11001 looks like eleven thousand and one). So we can see here that each digit in the binary representation of an integer is a coefficient for a power of 2 instead of 10. The powers of 2 come up a lot in computing and should hopefully look familiar: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, etc.</p>
-<p>Another representation of integers that is common in programming is to represent the number in <em>hexadecimal</em> form. In hexadecimal we have 16 digits which go from 0, 1, 2, ..., 9, A, B, C, D, E, F. We will prefix numbers in hexadecimal form with <span class="math">\(0\mathrm{x}\)</span> to avoid ambiguity. In this way we have that <span class="math">\(15 = 0\mathrm{xF}\)</span>. In hexadecimal form 123 would be written as <span class="math">\[
+\]</span> Here I’m using the <span class="math inline">\(0\mathrm{b}\)</span> prefix to indicate that a number is represented in binary form (otherwise 11001 looks like eleven thousand and one). So we can see here that each digit in the binary representation of an integer is a coefficient for a power of 2 instead of 10. The powers of 2 come up a lot in computing and should hopefully look familiar: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, etc.</p>
+<p>Another representation of integers that is common in programming is to represent the number in <em>hexadecimal</em> form. In hexadecimal we have 16 digits which go from 0, 1, 2, …, 9, A, B, C, D, E, F. We will prefix numbers in hexadecimal form with <span class="math inline">\(0\mathrm{x}\)</span> to avoid ambiguity. In this way we have that <span class="math inline">\(15 = 0\mathrm{xF}\)</span>. In hexadecimal form 123 would be written as <span class="math display">\[
     123 = 0\mathrm{x7B} = 7 \times 16 + 11 \times 1
 \]</span> so that each digit is a coefficient for a power of 16. One hexadecimal digit is equivalent to 4 binary digits so two hexadecimal digits is just right for 1 byte. This means that we can write any byte with a 2 digit hexadecimal number. This is a handy trick that is often used to shorten long binary strings in programming.</p>
 <p>The easiest way to see the binary or hex representation of an integer is using the Python <code>bin</code> and <code>hex</code> functions which return the representation as a string:</p>
-<pre class="sourceCode python"><code class="sourceCode python">$ python
-...
-&gt;&gt;&gt; <span class="dt">bin</span>(<span class="dv">25</span>)
-<span class="co">&#39;0b11001&#39;</span>
-&gt;&gt;&gt; <span class="dt">bin</span>(<span class="dv">1024</span>)
-<span class="co">&#39;0b10000000000&#39;</span>
-&gt;&gt;&gt; <span class="dt">hex</span>(<span class="dv">25</span>)
-<span class="co">&#39;0x19&#39;</span>
-&gt;&gt;&gt; <span class="dt">hex</span>(<span class="dv">1024</span>)
-<span class="co">&#39;0x400&#39;</span></code></pre>
-<p>Now Python's integers can become arbitrarily large as they are allowed to have an arbitrarily large number of binary digits (bits). So in Python we can easily compute something like <span class="math">\(2^{1000}\)</span> like so</p>
-<pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; <span class="dv">2</span> ** <span class="dv">1000</span>
-<span class="dv">1071508607186267320948425049060001810561404811</span>
-<span class="dv">7055336074437503883703510511249361224931983788</span>
-<span class="dv">1569585812759467291755314682518714528569231404</span>
-<span class="dv">3598457757469857480393456777482423098542107460</span>
-<span class="dv">5062371141877954182153046474983581941267398767</span>
-<span class="dv">5591655439460770629145711964776865421676604298</span>
-<span class="dv">31652624386837205668069376</span></code></pre>
-<p>However in C it is a bit more complicated than this. In C every elementary type has a fixed number of bits. The number of bits that computers can use for anything are always multiples of 8. Really the computer doesn't usually deal in individual <em>bits</em>. Rather it works with whole <em>bytes</em> where each byte is a string of 8 bits.</p>
-<p>So let's imagine that we have an 8-bit (1 byte) data type that represents an integer. The values of this 8-bit data type could be as in this table:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">$ python</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">...</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">&gt;&gt;&gt;</span> <span class="bu">bin</span>(<span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">&#39;0b11001&#39;</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="op">&gt;&gt;&gt;</span> <span class="bu">bin</span>(<span class="dv">1024</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">&#39;0b10000000000&#39;</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="op">&gt;&gt;&gt;</span> <span class="bu">hex</span>(<span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">&#39;0x19&#39;</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="op">&gt;&gt;&gt;</span> <span class="bu">hex</span>(<span class="dv">1024</span>)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">&#39;0x400&#39;</span></a></code></pre></div>
+<p>Now Python’s integers can become arbitrarily large as they are allowed to have an arbitrarily large number of binary digits (bits). So in Python we can easily compute something like <span class="math inline">\(2^{1000}\)</span> like so</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">1000</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dv">1071508607186267320948425049060001810561404811</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="dv">7055336074437503883703510511249361224931983788</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="dv">1569585812759467291755314682518714528569231404</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="dv">3598457757469857480393456777482423098542107460</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="dv">5062371141877954182153046474983581941267398767</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="dv">5591655439460770629145711964776865421676604298</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="dv">31652624386837205668069376</span></a></code></pre></div>
+<p>However in C it is a bit more complicated than this. In C every elementary type has a fixed number of bits. The number of bits that computers can use for anything are always multiples of 8. Really the computer doesn’t usually deal in individual <em>bits</em>. Rather it works with whole <em>bytes</em> where each byte is a string of 8 bits.</p>
+<p>So let’s imagine that we have an 8-bit (1 byte) data type that represents an integer. The values of this 8-bit data type could be as in this table:</p>
 <table>
 <caption>The integer values taken by an <em>8-bit unsigned integer</em> type shown in binary, hexadecimal and decimal.</caption>
 <thead>
 <tr class="header">
-<th align="left">Binary</th>
-<th align="center">Hexadecimal</th>
-<th align="right">Decimal</th>
+<th style="text-align: left;">Binary</th>
+<th style="text-align: center;">Hexadecimal</th>
+<th style="text-align: right;">Decimal</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">00000000</td>
-<td align="center">0x00</td>
-<td align="right">0</td>
+<td style="text-align: left;">00000000</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td align="left">00000001</td>
-<td align="center">0x01</td>
-<td align="right">1</td>
+<td style="text-align: left;">00000001</td>
+<td style="text-align: center;">0x01</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td align="left">00000010</td>
-<td align="center">0x02</td>
-<td align="right">2</td>
+<td style="text-align: left;">00000010</td>
+<td style="text-align: center;">0x02</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td align="left">00000011</td>
-<td align="center">0x03</td>
-<td align="right">3</td>
+<td style="text-align: left;">00000011</td>
+<td style="text-align: center;">0x03</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">00011001</td>
-<td align="center">0x19</td>
-<td align="right">25</td>
+<td style="text-align: left;">00011001</td>
+<td style="text-align: center;">0x19</td>
+<td style="text-align: right;">25</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">01111111</td>
-<td align="center">0x7F</td>
-<td align="right">127</td>
+<td style="text-align: left;">01111111</td>
+<td style="text-align: center;">0x7F</td>
+<td style="text-align: right;">127</td>
 </tr>
 <tr class="odd">
-<td align="left">10000000</td>
-<td align="center">0x80</td>
-<td align="right">128</td>
+<td style="text-align: left;">10000000</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: right;">128</td>
 </tr>
 <tr class="even">
-<td align="left">10000001</td>
-<td align="center">0x81</td>
-<td align="right">129</td>
+<td style="text-align: left;">10000001</td>
+<td style="text-align: center;">0x81</td>
+<td style="text-align: right;">129</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">11111110</td>
-<td align="center">0xFE</td>
-<td align="right">254</td>
+<td style="text-align: left;">11111110</td>
+<td style="text-align: center;">0xFE</td>
+<td style="text-align: right;">254</td>
 </tr>
 <tr class="odd">
-<td align="left">11111111</td>
-<td align="center">0xFF</td>
-<td align="right">255</td>
+<td style="text-align: left;">11111111</td>
+<td style="text-align: center;">0xFF</td>
+<td style="text-align: right;">255</td>
 </tr>
 </tbody>
 </table>
-<p>So with an 8-bit data-type we could represent all of the integers from <span class="math">\(0\)</span> to <span class="math">\(255\)</span>. The number of values we can represent is given by <span class="math">\(2^8=256\)</span> and since we start counting from <span class="math">\(0\)</span> the largest representable value is one less than <span class="math">\(256\)</span>.</p>
-<p>The 8-bit data-type described above is known as an <em>unsigned</em> type. This is because it cannot represent negative numbers. To represent negative numbers we need to use one of the bits to indicate if the number is positive or negative. The standard way to do this for a <em>signed</em> data-type is called 2's complement and uses the first bit as the <em>sign bit</em>. If the first bit is a <span class="math">\(0\)</span> then the value is considered to be positive and the remaining 7 bits give the integer value. If the first bit is a <span class="math">\(1\)</span> then the value is negative and the remaining 7 bits count upwards from the minimum possible value. So a <em>signed</em> 8-bit type would look like:</p>
+<p>So with an 8-bit data-type we could represent all of the integers from <span class="math inline">\(0\)</span> to <span class="math inline">\(255\)</span>. The number of values we can represent is given by <span class="math inline">\(2^8=256\)</span> and since we start counting from <span class="math inline">\(0\)</span> the largest representable value is one less than <span class="math inline">\(256\)</span>.</p>
+<p>The 8-bit data-type described above is known as an <em>unsigned</em> type. This is because it cannot represent negative numbers. To represent negative numbers we need to use one of the bits to indicate if the number is positive or negative. The standard way to do this for a <em>signed</em> data-type is called 2’s complement and uses the first bit as the <em>sign bit</em>. If the first bit is a <span class="math inline">\(0\)</span> then the value is considered to be positive and the remaining 7 bits give the integer value. If the first bit is a <span class="math inline">\(1\)</span> then the value is negative and the remaining 7 bits count upwards from the minimum possible value. So a <em>signed</em> 8-bit type would look like:</p>
 <table>
 <caption>The integer values taken by an <em>8-bit signed integer</em> type shown in binary, hexadecimal and decimal.</caption>
 <thead>
 <tr class="header">
-<th align="left">Binary</th>
-<th align="center">Hexadecimal</th>
-<th align="right">Decimal</th>
+<th style="text-align: left;">Binary</th>
+<th style="text-align: center;">Hexadecimal</th>
+<th style="text-align: right;">Decimal</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">00000000</td>
-<td align="center">0x00</td>
-<td align="right">0</td>
+<td style="text-align: left;">00000000</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td align="left">00000001</td>
-<td align="center">0x01</td>
-<td align="right">1</td>
+<td style="text-align: left;">00000001</td>
+<td style="text-align: center;">0x01</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td align="left">00000010</td>
-<td align="center">0x02</td>
-<td align="right">2</td>
+<td style="text-align: left;">00000010</td>
+<td style="text-align: center;">0x02</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td align="left">00000011</td>
-<td align="center">0x03</td>
-<td align="right">3</td>
+<td style="text-align: left;">00000011</td>
+<td style="text-align: center;">0x03</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">00011001</td>
-<td align="center">0x19</td>
-<td align="right">25</td>
+<td style="text-align: left;">00011001</td>
+<td style="text-align: center;">0x19</td>
+<td style="text-align: right;">25</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">01111111</td>
-<td align="center">0x7F</td>
-<td align="right">127</td>
+<td style="text-align: left;">01111111</td>
+<td style="text-align: center;">0x7F</td>
+<td style="text-align: right;">127</td>
 </tr>
 <tr class="odd">
-<td align="left">10000000</td>
-<td align="center">0x80</td>
-<td align="right">-128</td>
+<td style="text-align: left;">10000000</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: right;">-128</td>
 </tr>
 <tr class="even">
-<td align="left">10000001</td>
-<td align="center">0x81</td>
-<td align="right">-127</td>
+<td style="text-align: left;">10000001</td>
+<td style="text-align: center;">0x81</td>
+<td style="text-align: right;">-127</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="center"></td>
-<td align="right"></td>
+<td style="text-align: left;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
-<td align="left">11111110</td>
-<td align="center">0xFE</td>
-<td align="right">-2</td>
+<td style="text-align: left;">11111110</td>
+<td style="text-align: center;">0xFE</td>
+<td style="text-align: right;">-2</td>
 </tr>
 <tr class="odd">
-<td align="left">11111111</td>
-<td align="center">0xFF</td>
-<td align="right">-1</td>
+<td style="text-align: left;">11111111</td>
+<td style="text-align: center;">0xFF</td>
+<td style="text-align: right;">-1</td>
 </tr>
 </tbody>
 </table>
-<p>Note that the hex value here is the same as in the unsigned table. This is because I'm treating the hex value as a representation of the bits rather than the numeric value. To interpret a negative signed binary integer think of the first 1 as meaning <span class="math">\(-128\)</span> and then add to that the positive integer represented by the remaining 7-bits.</p>
+<p>Note that the hex value here is the same as in the unsigned table. This is because I’m treating the hex value as a representation of the bits rather than the numeric value. To interpret a negative signed binary integer think of the first 1 as meaning <span class="math inline">\(-128\)</span> and then add to that the positive integer represented by the remaining 7-bits.</p>
 <h2 id="integers-in-c">Integers in C</h2>
-<p>In C there are a number of different signed and unsigned integer data types that used fixed numbers of bytes. Usually a type has 1, 2, 4 or 8 bytes (8, 16, 32 or 64 bits). In this particular unit we are only going to consider four of them <code>char</code>, <code>int</code>, <code>unsigned char</code> and <code>unsigned int</code>. Now strictly speaking the number of bits/bytes used for each of these types depends on the compiler used and which operating system you are using and other factors. It's important to know this when working in C but to simplify this discussion I am going to assume the common case which is that <code>char</code>, <code>unsigned char</code> are signed/unsigned 1 byte (8 bit) data types and <code>int</code>, <code>unsigned int</code> are signed/unsigned 4 byte (32 bit) data types.</p>
+<p>In C there are a number of different signed and unsigned integer data types that used fixed numbers of bytes. Usually a type has 1, 2, 4 or 8 bytes (8, 16, 32 or 64 bits). In this particular unit we are only going to consider four of them <code>char</code>, <code>int</code>, <code>unsigned char</code> and <code>unsigned int</code>. Now strictly speaking the number of bits/bytes used for each of these types depends on the compiler used and which operating system you are using and other factors. It’s important to know this when working in C but to simplify this discussion I am going to assume the common case which is that <code>char</code>, <code>unsigned char</code> are signed/unsigned 1 byte (8 bit) data types and <code>int</code>, <code>unsigned int</code> are signed/unsigned 4 byte (32 bit) data types.</p>
 <p>So <code>unsigned char</code> is a 1 byte unsigned integer data type. This is exactly like the unsigned type show in the table above. We can create a variable of type <code>unsigned char</code> simply be using that as the name of type when declaring the variable. Here is a short program that shows how to use this type:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* uchar1.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">10</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">3</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> c = a + b;
-  printf(<span class="st">&quot;10 + 3 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">/* uchar1.c */</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="dt">unsigned</span> <span class="dt">char</span> c = a + b;</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">  printf(<span class="st">&quot;10 + 3 = %u</span><span class="sc">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">}</a></code></pre></div>
 <p>We can run this to see</p>
 <pre><code>$ gcc -Wall uchar1.c -o uchar1.exe
 $ ./uchar1.exe
 10 + 3 = 13</code></pre>
-<p>Now there's two things to notice in <code>uchar.c</code>. Firstly we declare out variables <code>unsigned char</code> to get variables of that type. Secondly in order to print the value of an unsigned char we use the <code>%u</code> format code and we need to <em>cast</em> the variable <code>c</code> to <code>unsigned int</code> (the type that corresponds to the <code>%u</code> format code). We cannot use <code>%d</code> to print an <code>unsigned char</code> as sometimes the wrong value will be printed out if we do.</p>
-<p>To see some perhaps less expected behaviour let's make a program that tests subtraction:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* uchar2.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">10</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">3</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> c = b - a;
-  printf(<span class="st">&quot;3 - 10 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<p>Now there’s two things to notice in <code>uchar.c</code>. Firstly we declare out variables <code>unsigned char</code> to get variables of that type. Secondly in order to print the value of an unsigned char we use the <code>%u</code> format code and we need to <em>cast</em> the variable <code>c</code> to <code>unsigned int</code> (the type that corresponds to the <code>%u</code> format code). We cannot use <code>%d</code> to print an <code>unsigned char</code> as sometimes the wrong value will be printed out if we do.</p>
+<p>To see some perhaps less expected behaviour let’s make a program that tests subtraction:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">/* uchar2.c */</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="dt">unsigned</span> <span class="dt">char</span> c = b - a;</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  printf(<span class="st">&quot;3 - 10 = %u</span><span class="sc">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">}</a></code></pre></div>
 <p>This time we get:</p>
 <pre><code>$ gcc -Wall uchar2.c -o uchar2.exe
 $ ./uchar2.exe
 3 - 10 = 249</code></pre>
 <p>So why does <code>3 - 10</code> give us <code>249</code>? Firstly it depends on the type of the variables involved. In this case we are using <code>unsigned char</code> which can represent integers from <code>0</code> to <code>255</code>.</p>
 <p>To understand how the arithmetic works we can think of it in a few different ways. One way is the idea of <em>wraparound</em>. So if we start from <code>3</code> and repeatedly subtract <code>1</code> then we will get to <code>0</code>. What happens when we subtract <code>1</code> from <code>0</code>? It wraps around from <code>0</code> the smallest integer to <code>255</code> the largest integer. So to subtract <code>10</code> from <code>3</code> it goes 3, 2, 1, 0, 255, 254, 253, 252, 251, 250, 249. And there we have it: <code>249</code>.</p>
-<p>Another way of thinking about the arithmetic is as modular arithmetic. The result we get is equal to the true result <em>modulo 256</em>. What this means is that we calculate the true result and then find the remainder when dividing it by 256. Or perhaps take the true result and add or subtract some multiple of 256 until it is within the range 0-255. In this case we have that <code>10-3</code> is <span class="math">\(-7\)</span>. Since <span class="math">\(-7\)</span> is outside of the desired range we can add <span class="math">\(256\)</span> to it to get <code>249</code> which is in the range.</p>
+<p>Another way of thinking about the arithmetic is as modular arithmetic. The result we get is equal to the true result <em>modulo 256</em>. What this means is that we calculate the true result and then find the remainder when dividing it by 256. Or perhaps take the true result and add or subtract some multiple of 256 until it is within the range 0-255. In this case we have that <code>10-3</code> is <span class="math inline">\(-7\)</span>. Since <span class="math inline">\(-7\)</span> is outside of the desired range we can add <span class="math inline">\(256\)</span> to it to get <code>249</code> which is in the range.</p>
 <h2 id="exercises">Exercises</h2>
 <p>Test out some more calculations to see if you can understand what happens. What do you get from <code>10/3</code>, <code>10%3</code>, <code>255+1</code> or <code>10*100</code>? What happens if you write <code>unsigned char a = -1</code>?</p>
 <p>The signed version of char is just called <code>char</code> (on most compilers). Try using that and testing out arithmetic with negative numbers. See that you can find the minimum and maximum values. What happens when you divide negative numbers e.g. <code>(-10) / 3</code> or <code>(-10) % (-3)</code>? Are the results of these operations the same as in Python?</p>
 <p>In addition to <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>%</code> we have the augmented assignment operators: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>++</code> and <code>--</code>. Test out how these work as well.</p>
 <p>At this point it is good to make sure that you really understand these results and can predict them so test out what you need to ensure that you get it.</p>
 <h2 id="ints-in-c">Ints in C</h2>
-<p>So an <code>int</code> is a signed 4 byte (32 bit) type. The <code>int</code> value of 123 looks like <span class="math">\[
+<p>So an <code>int</code> is a signed 4 byte (32 bit) type. The <code>int</code> value of 123 looks like <span class="math display">\[
     123 = 0\mathrm{b}\,\,00000000\,\,00000000\,\,00000000\,\,01111011
-\]</span> Writing out 32-bit numbers in binary is tedious so these are normally written in hexadecimal. The <code>int</code> value of 123 can be written in hexadecimal as <span class="math">\[
+\]</span> Writing out 32-bit numbers in binary is tedious so these are normally written in hexadecimal. The <code>int</code> value of 123 can be written in hexadecimal as <span class="math display">\[
     123 = 0\mathrm{x}\,\,00\,\,00\,\,00\,\,7\mathrm{B}
 \]</span> which is easier to read than the binary form but still shows us the values of the individual bytes (if you know how to read it).</p>
-<p>So how big can an <code>int</code> be? Well since we have 32 binary digits we can do <span class="math">\(2^{32} = 4294967296\)</span> possible different values. Since the first bit is the sign bit there are 31 bits to represent the number and the result is that a C <code>int</code> can take any value greater than or equal to <span class="math">\(-2^{31}\)</span> and less than or equal to <span class="math">\(2^{31}-1\)</span>. So the minimum and maximum values for an <code>int</code> are <span class="math">\(-2147483648\)</span> and <span class="math">\(2147483647\)</span> respectively.</p>
+<p>So how big can an <code>int</code> be? Well since we have 32 binary digits we can do <span class="math inline">\(2^{32} = 4294967296\)</span> possible different values. Since the first bit is the sign bit there are 31 bits to represent the number and the result is that a C <code>int</code> can take any value greater than or equal to <span class="math inline">\(-2^{31}\)</span> and less than or equal to <span class="math inline">\(2^{31}-1\)</span>. So the minimum and maximum values for an <code>int</code> are <span class="math inline">\(-2147483648\)</span> and <span class="math inline">\(2147483647\)</span> respectively.</p>
 <p>Note that when we write an integer literal e.g. <code>4</code> or <code>123</code> in C code it is implicitly understood to be an object of type <code>int</code> if there are no variables of any other type in the expression. So we can do calculations with <code>int</code> in a more straight-forward way.</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* operations.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-   printf(<span class="st">&quot;4 * 3 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">4</span> * <span class="dv">3</span>);
-   printf(<span class="st">&quot;2 + 2 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">2</span> + <span class="dv">2</span>);
-   printf(<span class="st">&quot;1 - 2 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">1</span> - <span class="dv">2</span>);
-   printf(<span class="st">&quot;9 / 3 = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dv">9</span> / <span class="dv">3</span>);
-   <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">/* operations.c */</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">   printf(<span class="st">&quot;4 * 3 = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">4</span> * <span class="dv">3</span>);</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">   printf(<span class="st">&quot;2 + 2 = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">2</span> + <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">   printf(<span class="st">&quot;1 - 2 = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">1</span> - <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">   printf(<span class="st">&quot;9 / 3 = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">9</span> / <span class="dv">3</span>);</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">   <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">}</a></code></pre></div>
 <p>We can run this to get:</p>
 <pre><code>$ gcc -Wall operations.c -o operations.exe
 $ ./operations.exe
@@ -315,29 +361,29 @@ $ ./operations.exe
 1 - 2 = -1
 9 / 3 = 3</code></pre>
 <h2 id="overflow">Overflow</h2>
-<p>You might think that the maximum values for an <code>int</code> is sufficiently large that we don't need to worry about overflow but it can easily happen:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* arithmetic.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-   <span class="dt">int</span> a = <span class="dv">1000000</span>; <span class="co">/* one million */</span>
-   printf(<span class="st">&quot;1 trillion = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, a * a);
-   <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<p>You might think that the maximum values for an <code>int</code> is sufficiently large that we don’t need to worry about overflow but it can easily happen:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">/* arithmetic.c */</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">   <span class="dt">int</span> a = <span class="dv">1000000</span>; <span class="co">/* one million */</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">   printf(<span class="st">&quot;1 trillion = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, a * a);</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">   <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">}</a></code></pre></div>
 <p>If we compile and run this we might see</p>
 <pre><code>$ gcc -Wall arithmetic.c -o arithmetic.exe
 $ ./arithmetic.exe
 1 trillion = -727379968</code></pre>
 <p>Now clearly this is mathematically incorrect. Why did we get this number? Well the correct answer for 1 million squared is 1 trillion but that number is too big to be represented by an <code>int</code> which can have only 4 bytes and has a maximum value of approximately 2 billion. What happens is that when we do a calculation whose result exceeds the possible range of an <code>int</code> the result will <em>overflow</em> and then we end up getting some random number back. For the benefit of the curious reader we can calculate why I got this particular value using Python:</p>
-<pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; n = <span class="dv">1000000</span>*<span class="dv">1000000</span>
-&gt;&gt;&gt; ((n + <span class="dv">2</span>**<span class="dv">31</span>) % <span class="dv">2</span>**<span class="dv">32</span>) - <span class="dv">2</span>**<span class="dv">31</span>
--<span class="dv">727379968</span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> n <span class="op">=</span> <span class="dv">1000000</span><span class="op">*</span><span class="dv">1000000</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="op">&gt;&gt;&gt;</span> ((n <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">31</span>) <span class="op">%</span> <span class="dv">2</span><span class="op">**</span><span class="dv">32</span>) <span class="op">-</span> <span class="dv">2</span><span class="op">**</span><span class="dv">31</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="dv">-727379968</span></a></code></pre></div>
 <p>However in general when a calculation involving a <em>signed</em> type such as <code>int</code> overflows it is not possible to predict the actual result that the computer will produce. Because of this your program may behave differently when run on different computers so you should avoid ever asking for calculations that would overflow with signed types (with <em>unsigned</em> types the behaviour is always well defined and is explained above with wraparound or modular arithmetic).</p>
 <h2 id="exercises-1">Exercises</h2>
 <p>Play with <code>int</code> and be sure that you understand how it works.</p>
-<p>Similarly try the <code>unsigned int</code> type to make sure that you understand how that works (you'll need to explicitly declare variables of type <code>unsigned int</code> as we did above for <code>unsigned char</code>).</p>
+<p>Similarly try the <code>unsigned int</code> type to make sure that you understand how that works (you’ll need to explicitly declare variables of type <code>unsigned int</code> as we did above for <code>unsigned char</code>).</p>
 <h2 id="bitwise-operations">Bitwise operations</h2>
 <p>Since in C all of our integer data types are represented by bits there are a number of operations that we can do that will operate on the bits in useful ways. It is not possible in C to operate on individual bits: a byte is the smallest unit that we can use. However we have operations that we can use with bytes that will have particular effects on the bits in each of the bytes. Specifically we have the operators:</p>
 <ul>
@@ -349,7 +395,7 @@ $ ./arithmetic.exe
 <li>Left shift <code>&lt;&lt;</code></li>
 </ul>
 <p>We also have the augmented assignment form of each of these operators: <code>&amp;=</code>, <code>|=</code>, <code>^=</code>, <code>~=</code>, <code>&lt;&lt;=</code>, and <code>&gt;&gt;=</code>.</p>
-<p>All of these operators should only be used on <em>unsigned</em> types. Their effects are &quot;undefined&quot; for <em>signed</em> types (meaning that your program behaves differently on different computers or with different compilers).</p>
+<p>All of these operators should only be used on <em>unsigned</em> types. Their effects are “undefined” for <em>signed</em> types (meaning that your program behaves differently on different computers or with different compilers).</p>
 <p>To understand how bitwise AND works we need to understand the logical table for AND</p>
 <ul>
 <li><code>0 AND 0 = 0</code> (False and False = False)</li>
@@ -361,42 +407,42 @@ $ ./arithmetic.exe
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="center">Decimal</th>
-<th align="center">Binary</th>
+<th></th>
+<th style="text-align: center;">Decimal</th>
+<th style="text-align: center;">Binary</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>a</code></td>
-<td align="center"><span class="math">\(25\)</span></td>
-<td align="center"><span class="math">\(00011001\)</span></td>
+<td><code>a</code></td>
+<td style="text-align: center;"><span class="math inline">\(25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(00011001\)</span></td>
 </tr>
 <tr class="even">
-<td align="left"><code>b</code></td>
-<td align="center"><span class="math">\(19\)</span></td>
-<td align="center"><span class="math">\(00010011\)</span></td>
+<td><code>b</code></td>
+<td style="text-align: center;"><span class="math inline">\(19\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(00010011\)</span></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>a &amp; b</code></td>
-<td align="center"><span class="math">\(17\)</span></td>
-<td align="center"><span class="math">\(00010001\)</span></td>
+<td><code>a &amp; b</code></td>
+<td style="text-align: center;"><span class="math inline">\(17\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(00010001\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>So the first bit of <code>a &amp; b</code> is chosen by taking the first bit from <code>a</code> and the first bit from <code>b</code> and combining them with the logical AND operation. In this case since both have <code>0</code> for the first bit we get a zero for the first bit of <code>a &amp; b</code>. Since the operation <code>a &amp; b</code> does logical AND for each of the bits in <code>a</code> and <code>b</code> it is called a <em>bitwise</em> operation. We can test it out like so:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* bitwise.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">25</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">19</span>;
-  <span class="dt">unsigned</span> <span class="dt">char</span> c = a &amp; b; <span class="co">/* bitwise and */</span>
-  printf(<span class="st">&quot;25 &amp; 19 = %u</span><span class="ch">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">/* bitwise.c */</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">unsigned</span> <span class="dt">char</span> a = <span class="dv">25</span>;</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  <span class="dt">unsigned</span> <span class="dt">char</span> b = <span class="dv">19</span>;</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">  <span class="dt">unsigned</span> <span class="dt">char</span> c = a &amp; b; <span class="co">/* bitwise and */</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">  printf(<span class="st">&quot;25 &amp; 19 = %u</span><span class="sc">\n</span><span class="st">&quot;</span>, (<span class="dt">unsigned</span> <span class="dt">int</span>)c);</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">}</a></code></pre></div>
 <p>Running this we get the expected result:</p>
 <pre><code>$ gcc -Wall bitwise.c -o bitwise.exe
 $ ./bitwise.exe
@@ -408,16 +454,16 @@ $ ./bitwise.exe
 <li><code>0 OR 1 = 1</code> (False or True = True)</li>
 <li><code>1 OR 1 = 1</code> (True or True = True)</li>
 </ul>
-<p>XOR is short for eXclusive OR. In English language XOR is similar to either/or as in &quot;either A or B (but not both)&quot;. XOr has the table</p>
+<p>XOR is short for eXclusive OR. In English language XOR is similar to either/or as in “either A or B (but not both)”. XOr has the table</p>
 <ul>
 <li><code>0 XOR 0 = 0</code> (False xor False = False)</li>
 <li><code>1 XOR 0 = 1</code> (True xor False = True)</li>
 <li><code>0 XOR 1 = 1</code> (False xor True = True)</li>
 <li><code>1 XOR 1 = 0</code> (True xor True = False)</li>
 </ul>
-<p>Finally bitwise NOT operates on a single quantity (unlike the binary operators above) and simply inverts all the bits so that e.g. <span class="math">\(10000100\)</span> would become <span class="math">\(01111011\)</span>.</p>
-<p>Finally we have the bit-shift operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. These shift the bits to the left or right by a specified amount. For example we can write <code>a &lt;&lt; 2</code> to shift all of the bits in <code>a</code> 2 digits to the left. What do I mean by that? Well suppose that <code>a</code> has bits <span class="math">\(00001101\)</span> then <code>a &lt;&lt; 2</code> has bits <span class="math">\(00110100\)</span>. Note that in this case this is the same as multiplying <code>a</code> by <span class="math">\(4\)</span>.</p>
-<p>When left-shifting any bits that go off the left hand side are thrown away and the right hand side is padded with zeros. So if <code>a</code> has bits <span class="math">\(11111111\)</span> then <code>a &lt;&lt; 3</code> has bits <span class="math">\(11111000\)</span>. Right-shifting is the same except that we shift the bits to the right. Right-shifting by <span class="math">\(N\)</span> is equivalent to dividing by <span class="math">\(2^N\)</span> (and rounding down).</p>
+<p>Finally bitwise NOT operates on a single quantity (unlike the binary operators above) and simply inverts all the bits so that e.g. <span class="math inline">\(10000100\)</span> would become <span class="math inline">\(01111011\)</span>.</p>
+<p>Finally we have the bit-shift operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. These shift the bits to the left or right by a specified amount. For example we can write <code>a &lt;&lt; 2</code> to shift all of the bits in <code>a</code> 2 digits to the left. What do I mean by that? Well suppose that <code>a</code> has bits <span class="math inline">\(00001101\)</span> then <code>a &lt;&lt; 2</code> has bits <span class="math inline">\(00110100\)</span>. Note that in this case this is the same as multiplying <code>a</code> by <span class="math inline">\(4\)</span>.</p>
+<p>When left-shifting any bits that go off the left hand side are thrown away and the right hand side is padded with zeros. So if <code>a</code> has bits <span class="math inline">\(11111111\)</span> then <code>a &lt;&lt; 3</code> has bits <span class="math inline">\(11111000\)</span>. Right-shifting is the same except that we shift the bits to the right. Right-shifting by <span class="math inline">\(N\)</span> is equivalent to dividing by <span class="math inline">\(2^N\)</span> (and rounding down).</p>
 <h2 id="exercises-2">Exercises</h2>
 <p>So what would <code>25 | 19</code> or <code>25 ^ 19</code> be? How about <code>~25</code> or <code>~19</code>? Can you see a relationship between <code>~17</code>, <code>~25</code> and <code>~19</code>? What happens when you bit-shift these numbers?</p>
 <p>Can you work these out on paper and do you get the same when testing it in the computer?</p>
@@ -427,7 +473,7 @@ $ ./bitwise.exe
 <ul>
 <li>How integers are represented in binary and in hexadecimal.</li>
 <li>How negative integers are handled and signed and unsigned types.</li>
-<li>The four types of integer that we will use in this unit <code>char</code>, <code>unsigned   char</code>, <code>int</code> and <code>unsigned int</code>.</li>
+<li>The four types of integer that we will use in this unit <code>char</code>, <code>unsigned char</code>, <code>int</code> and <code>unsigned int</code>.</li>
 <li>How the basic arithmetic operators <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code> and <code>%</code> behave for each of these types and how to predict their results.</li>
 <li>The bitwise operators <code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>, <code>&lt;&lt;</code> and <code>&gt;&gt;</code> and how to calculate what values they produce.</li>
 </ul>

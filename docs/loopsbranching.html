@@ -4,27 +4,73 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>EMAT10006 - Further Computer Programming - </title>
+  <title>EMAT10006 - Further Computer Programming - loopsbranching</title>
   <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -46,99 +92,99 @@ code > span.er { color: #ff0000; font-weight: bold; }
     </div>
     <div id="main">
 <h2 id="loops-and-branching">Loops and branching</h2>
-<p>Having spent a little time talking about using the shell and make files we're now back to plain old C code. The topic here is loops and branching which are the two basic types of control flow in <em>imperative programming</em>.</p>
+<p>Having spent a little time talking about using the shell and make files we’re now back to plain old C code. The topic here is loops and branching which are the two basic types of control flow in <em>imperative programming</em>.</p>
 <h2 id="if-statements">If statements</h2>
 <p>Just like in Python in C we have <code>if</code> statements that can define when to conditionally execute different blocks of code e.g.:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
-  {
-    printf(<span class="st">&quot;x is greater than 5&quot;</span>);
-  }</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1">  <span class="cf">if</span>(x &gt; <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    printf(<span class="st">&quot;x is greater than 5&quot;</span>);</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  }</a></code></pre></div>
 <p>The main differences from Python here are that the condition attached the <code>if</code> statement (<code>x &gt; 5</code>) needs to be in brackets and that the body of code which is executed is enclosed in curly brackets <code>{</code> and <code>}</code>. In Python the block of code is defined by the indentation level. In C the indentation is optional but is stylistically preferred. (For the purposes of this unit correct indentation is <em>not</em> optional.)</p>
 <p>If the block of code to execute is only one statement then we can shorten this to</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
-    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" data-line-number="1">  <span class="cf">if</span>(x &gt; <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    printf(<span class="st">&quot;x is greater than 5</span><span class="sc">\n</span><span class="st">&quot;</span>);</a></code></pre></div>
 <p>However this form is often discouraged since it can lead to bugs like</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
-    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
-    printf(<span class="st">&quot;and x is greater than 4</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
-<p>In this last example only the first <code>printf</code> statement is part of the if-block. The second looks as if it is because it's indented but the rule is that the block of code is either enclosed in curly brackets or consists of only one statement. The same problem occurs if we put multiple statements on one line:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
-    printf(<span class="st">&quot;x &gt; 5</span><span class="ch">\n</span><span class="st">&quot;</span>); printf(<span class="st">&quot;x &gt; 4</span><span class="ch">\n</span><span class="st">&quot;</span>);</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1">  <span class="cf">if</span>(x &gt; <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    printf(<span class="st">&quot;x is greater than 5</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    printf(<span class="st">&quot;and x is greater than 4</span><span class="sc">\n</span><span class="st">&quot;</span>);</a></code></pre></div>
+<p>In this last example only the first <code>printf</code> statement is part of the if-block. The second looks as if it is because it’s indented but the rule is that the block of code is either enclosed in curly brackets or consists of only one statement. The same problem occurs if we put multiple statements on one line:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" data-line-number="1">  <span class="cf">if</span>(x &gt; <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    printf(<span class="st">&quot;x &gt; 5</span><span class="sc">\n</span><span class="st">&quot;</span>); printf(<span class="st">&quot;x &gt; 4</span><span class="sc">\n</span><span class="st">&quot;</span>);</a></code></pre></div>
 <p>Only the first <code>printf</code> statement is considered to be in the body of the if construct. The indentation and the line spacing are irrelevant.</p>
 <p>Because of this I prefer the long form with the curly brackets and I expect you to use this in your code.</p>
 <h2 id="else">Else</h2>
 <p>We can also attach <code>else</code> and <code>else if</code> clauses to an <code>if</code> statement e.g.:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(x &gt; <span class="dv">5</span>)
-  {
-    printf(<span class="st">&quot;x is greater than 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }
-  <span class="kw">else</span> <span class="kw">if</span>(x &lt; <span class="dv">0</span>)
-  {
-    printf(<span class="st">&quot;x is negative</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }
-  <span class="kw">else</span>
-  {
-    printf(<span class="st">&quot;0 &lt;= x &lt;= 5</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1">  <span class="cf">if</span>(x &gt; <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    printf(<span class="st">&quot;x is greater than 5</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="cf">else</span> <span class="cf">if</span>(x &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  {</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    printf(<span class="st">&quot;x is negative</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="cf">else</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  {</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">    printf(<span class="st">&quot;0 &lt;= x &lt;= 5</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">  }</a></code></pre></div>
 <p>Hopefully you can work out what that does already. Give it a try in a simple program.</p>
 <h2 id="relations-and-logical-operators">Relations and logical operators</h2>
-<p>C defines the same binary relations as Python. Specifically <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>!=</code>. Hopefully you've already seen these. What is different between Python and C is that in Python an expression like <code>a &lt; b</code> results in an object of type <code>bool</code> having the value <code>True</code> or <code>False</code>. In C logical expressions have type <code>int</code> and result in the values <code>1</code> or <code>0</code>. So for example these two are equivalent:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>(a == <span class="dv">0</span>)
-  {
-    <span class="co">// do stuff</span>
-  }
-  <span class="kw">if</span>(a)
-  {
-    <span class="co">// do stuff</span>
-  }</code></pre>
+<p>C defines the same binary relations as Python. Specifically <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>!=</code>. Hopefully you’ve already seen these. What is different between Python and C is that in Python an expression like <code>a &lt; b</code> results in an object of type <code>bool</code> having the value <code>True</code> or <code>False</code>. In C logical expressions have type <code>int</code> and result in the values <code>1</code> or <code>0</code>. So for example these two are equivalent:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1">  <span class="cf">if</span>(a == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="cf">if</span>(a)</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">  {</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">  }</a></code></pre></div>
 <p>When we use a condition as part of an <code>if</code> statement the condition is considered true if it is non-zero and false if it is zero.</p>
 <p>The logical operators in C are <code>&amp;&amp;</code>, <code>||</code> and <code>!</code> which are analogous to the Python operators <code>and</code>, <code>or</code> and <code>not</code>. We can use these to build a more complex condition e.g.:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>((<span class="dv">0</span> &lt;= a) &amp;&amp; (a &lt; N))
-  {
-    printf(<span class="st">&quot;0 &lt;= a &lt; N</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  }</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1">  <span class="cf">if</span>((<span class="dv">0</span> &lt;= a) &amp;&amp; (a &lt; N))</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    printf(<span class="st">&quot;0 &lt;= a &lt; N</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  }</a></code></pre></div>
 <p>In Python we could simply write that as</p>
-<pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">if</span> <span class="dv">0</span> &lt;= a &lt; N:
-    <span class="dt">print</span>(<span class="st">&#39;0 &lt;= a &lt; N&#39;</span>)</code></pre>
-<p>However C does not allow &quot;relation chaining&quot; in this way.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" data-line-number="1">  <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> a <span class="op">&lt;</span> N:</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="bu">print</span>(<span class="st">&#39;0 &lt;= a &lt; N&#39;</span>)</a></code></pre></div>
+<p>However C does not allow “relation chaining” in this way.</p>
 <p>Another point to be aware of which is similar to Python is short-circuiting of logical operators. In an expression <code>a &amp;&amp; b</code> first the <code>a</code> part of the expression will be evaluated. If it is false (<code>0</code>) then there is no need to evaluate the <code>b</code> part of the expression since the expression is already known to have the value <code>0</code>. For example in the following code the function <code>f()</code> is never called:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">if</span>((<span class="dv">3</span> &lt; <span class="dv">2</span>) &amp;&amp; f())
-  {
-    <span class="co">// do stuff</span>
-  }</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1">  <span class="cf">if</span>((<span class="dv">3</span> &lt; <span class="dv">2</span>) &amp;&amp; f())</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">  }</a></code></pre></div>
 <p>The expression <code>3 &lt; 2</code> is false so evaluates to <code>0</code>. The expression <code>0 &amp;&amp; f()</code> will always be false regardless of the value of <code>f()</code> so the there is no need to call <code>f</code>. Short-circuiting happens left-to-right so the left most expression is always evaluated first and then the expressions to the right are only evaluated if necessary. Short circuiting also happens with <code>||</code> so that in the expression <code>a || b</code> the expression <code>b</code> is only evaluated if the expression <code>a</code> evalutes to <code>0</code>.</p>
 <h2 id="while-loops">While loops</h2>
 <p>Again <code>while</code> loops in C are similar to Python:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="dt">int</span> i=<span class="dv">0</span>;
-  <span class="kw">while</span>(i*i &lt; <span class="dv">10</span>)
-  {
-    printf(<span class="st">&quot;i = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i);
-    i++;
-  }
-  printf(<span class="st">&quot;%d^2 &gt;= 10</span><span class="ch">\n</span><span class="st">&quot;</span>, i);</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" data-line-number="1">  <span class="dt">int</span> i=<span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="cf">while</span>(i*i &lt; <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">  {</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">    printf(<span class="st">&quot;i = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">    i++;</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  printf(<span class="st">&quot;%d^2 &gt;= 10</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</a></code></pre></div>
 <p>The output from the above is</p>
-<pre class="sourceCode C"><code class="sourceCode c">i = <span class="dv">0</span>
-i = <span class="dv">1</span>
-i = <span class="dv">2</span>
-i = <span class="dv">3</span>
-<span class="dv">4</span>^<span class="dv">2</span> &gt;= <span class="dv">10</span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1">i = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">i = <span class="dv">1</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">i = <span class="dv">2</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">i = <span class="dv">3</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="dv">4</span>^<span class="dv">2</span> &gt;= <span class="dv">10</span></a></code></pre></div>
 <p>Again the differences are mostly superficial. In C the condition attached to a <code>while</code> loop must be enclosed in brackets and the body of the loop is enclosed in curly brackets. Otherwise it works the same as in Python. We can use all of the same logical relations and operators in a <code>while</code> loop condition as we can in an <code>if</code> statement.</p>
-<p>Pulling the above loop apart what happens is that execution begins with setting <code>i</code> to <code>0</code>. We then enter the loop. The condition is checked at the <em>start</em> of each loop iteration. Since <code>i</code> is initially <code>0</code> the condition <code>i*i &lt; 10</code> becomes <code>0 &lt; 10</code> which is true so evaluates to <code>1</code>. This means that the loop body will execute. The loop body has the statement <code>i++</code> which increases <code>i</code> from <code>0</code> to <code>1</code>. Execution then goes back to the top of the while loop and the condition is checked again, the body is executed again and so on until <code>i</code> becomes <code>4</code>. At that point <code>4*4 &lt; 16</code> is false so evaluates to <code>0</code> terminating the loop. Execution then resumes after the loop at the <code>printf</code> statement which prints <code>4^2 &gt;= 10</code> (4^2 is supposed to be read as &quot;4 squared&quot; although the caret operator <code>^</code> actually has a different meaning in C). Note that the line <code>i = 4</code> is not printed.</p>
+<p>Pulling the above loop apart what happens is that execution begins with setting <code>i</code> to <code>0</code>. We then enter the loop. The condition is checked at the <em>start</em> of each loop iteration. Since <code>i</code> is initially <code>0</code> the condition <code>i*i &lt; 10</code> becomes <code>0 &lt; 10</code> which is true so evaluates to <code>1</code>. This means that the loop body will execute. The loop body has the statement <code>i++</code> which increases <code>i</code> from <code>0</code> to <code>1</code>. Execution then goes back to the top of the while loop and the condition is checked again, the body is executed again and so on until <code>i</code> becomes <code>4</code>. At that point <code>4*4 &lt; 16</code> is false so evaluates to <code>0</code> terminating the loop. Execution then resumes after the loop at the <code>printf</code> statement which prints <code>4^2 &gt;= 10</code> (4^2 is supposed to be read as “4 squared” although the caret operator <code>^</code> actually has a different meaning in C). Note that the line <code>i = 4</code> is not printed.</p>
 <h2 id="for-loops">For loops</h2>
-<p>For loops in C are different to those in Python. In Python we loop over some <em>object</em> e.g. a <code>list</code> or a <code>range</code>. In C a <code>for</code> loop is just an alternate syntax for common forms of <code>while</code> loop. A <code>for</code> loop in C looks like:</p>
-<pre class="sourceCode C"><code class="sourceCode c"><span class="co">/* forloop.c */</span>
-
-<span class="ot">#include &lt;stdio.h&gt;</span>
-
-<span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])
-{
-  <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">5</span>; i++)
-  {
-    printf(<span class="st">&quot;i = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, i);
-  }
-  printf(<span class="st">&quot;finished</span><span class="ch">\n</span><span class="st">&quot;</span>);
-  <span class="kw">return</span> <span class="dv">0</span>;
-}</code></pre>
+<p>For loops in C are different to those in Python. In Python we loop over some <em>object</em> e.g. a <code>list</code> or a <code>range</code>. In C a <code>for</code> loop is just an alternate syntax for common forms of <code>while</code> loop. A <code>for</code> loop in C looks like:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">/* forloop.c */</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[])</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">5</span>; i++)</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  {</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">    printf(<span class="st">&quot;i = %d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">  printf(<span class="st">&quot;finished</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">}</a></code></pre></div>
 <p>We can run this to see</p>
 <pre><code>$ make
 gcc -std=c99 -Wall forloop.c -o forloop.exe
@@ -150,35 +196,35 @@ i = 3
 i = 4
 finished</code></pre>
 <p>The syntax for a for loop is</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(&lt;initialiser&gt;; &lt;condition&gt;; &lt;iterate&gt;)
-  {
-    &lt;body&gt;
-  }</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" data-line-number="1">  <span class="cf">for</span>(&lt;initialiser&gt;; &lt;condition&gt;; &lt;iterate&gt;)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">    &lt;body&gt;</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">  }</a></code></pre></div>
 <p>The execution of a for loop begins by executing the <code>&lt;initialiser&gt;</code> statement. Then at the start of each iteration the <code>&lt;condition&gt;</code> expression is checked (just like for a <code>while</code> loop). Then the loop <code>&lt;body&gt;</code> is executed and after that the <code>&lt;iterate&gt;</code> statement is executed. At that point execution goes back to the top of the loop and <code>&lt;condition&gt;</code> is checked again. We can rewrite this general form as a while loop like so</p>
-<pre class="sourceCode C"><code class="sourceCode c">  &lt;initialiser&gt;
-  <span class="kw">while</span>(&lt;condition&gt;)
-  {
-    &lt;body&gt;
-    &lt;iterate&gt;
-  }</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" data-line-number="1">  &lt;initialiser&gt;</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="cf">while</span>(&lt;condition&gt;)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  {</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">    &lt;body&gt;</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">    &lt;iterate&gt;</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  }</a></code></pre></div>
 <p>Any of the three statements in the <code>for()</code> line is optional. We can make an infinite loop simply by omitting all three:</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(;;)
-  {
-    <span class="co">// infinite loop</span>
-  }</code></pre>
-<p>Although I've just discussed <code>for</code> loops in their full generality, by far the most common type of for loop simply iterates over some integers from <code>0</code> to <code>N-1</code>. This is equivalent to looping over a <code>range</code> in Python e.g.:</p>
-<pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">for</span> n in <span class="dt">range</span>(N):
-    <span class="co"># do stuff with n</span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" data-line-number="1">  <span class="cf">for</span>(;;)</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">    <span class="co">// infinite loop</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">  }</a></code></pre></div>
+<p>Although I’ve just discussed <code>for</code> loops in their full generality, by far the most common type of for loop simply iterates over some integers from <code>0</code> to <code>N-1</code>. This is equivalent to looping over a <code>range</code> in Python e.g.:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1">  <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">    <span class="co"># do stuff with n</span></a></code></pre></div>
 <p>The equivalent in C is just</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;N; n++)
-  {
-    <span class="co">/* do stuff with n */</span>
-  }</code></pre>
-<p>Note that this loop takes <code>n</code> through the values <code>0</code>, <code>1</code>, <code>2</code>, ..., <code>N-1</code>. It does not include an iteration with <code>n=N</code>. This is the same as Python's range object. If we do want a loop that goes from <code>0</code> to <code>N</code> <em>inclusive</em> then we can use <code>&lt;=</code> instead of <code>&lt;</code> in the condition.</p>
-<pre class="sourceCode C"><code class="sourceCode c">  <span class="kw">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;=N; n++)
-  {
-    <span class="co">/* do stuff with n */</span>
-  }</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" data-line-number="1">  <span class="cf">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;N; n++)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="co">/* do stuff with n */</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">  }</a></code></pre></div>
+<p>Note that this loop takes <code>n</code> through the values <code>0</code>, <code>1</code>, <code>2</code>, …, <code>N-1</code>. It does not include an iteration with <code>n=N</code>. This is the same as Python’s range object. If we do want a loop that goes from <code>0</code> to <code>N</code> <em>inclusive</em> then we can use <code>&lt;=</code> instead of <code>&lt;</code> in the condition.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" data-line-number="1">  <span class="cf">for</span>(<span class="dt">int</span> n=<span class="dv">0</span>; n&lt;=N; n++)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">    <span class="co">/* do stuff with n */</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">  }</a></code></pre></div>
 <hr />
 <p>Next section: <a href="functions.html">Functions</a></p>
     </div>

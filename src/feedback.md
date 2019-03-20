@@ -2,6 +2,10 @@ Feedback
 ========
 
 
+Hard-coding test output
+-----------------------
+
+
 Global variables
 ----------------
 
