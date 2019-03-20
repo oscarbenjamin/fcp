@@ -2,6 +2,12 @@ Feedback
 ========
 
 
+Global variables
+----------------
+
+Do not use global variables! (insert examples...)
+
+
 Long main function
 ------------------
 
